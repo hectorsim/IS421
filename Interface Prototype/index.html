@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Itinerary Planner</title>
+		
+		<link rel="stylesheet" href="main.css" />
+		<script src="jquery.js"></script>		
+	</head>
+	<body>
+		<div id="dialog-form" title="Create a new location">
+			<form>
+				<fieldset>
+					<label for="locationName">Name of Country<label>
+					<select name="locationName" id="locationName">
+						<option value="Singapore">Singapore</option>
+						<option value="Malaysia">Malaysia</option>
+						<option value="Hong Kong">Hong Kong</option>
+						<option value="Indonesia">Indonesia</option>
+						<option value="Vietnam">Vietnam</option>
+					</select>
+					
+					<label for="satisfactionLevel"/>Satisfaction Level</label>
+					
+				</fieldset>
+			</form>
+		</div>
+		<div id="location-contain" class="ui-widget">
+			<h1>Locations</h1>
+			<table id="locations" class="ui-widget ui-widget-content">
+				<thead>
+					<tr class="ui-widget-header">
+						<th>Name of country</th>
+						<th>Satisfaction Level</th>
+					</tr>
+					<tbody>
+						<td>Singapore</td>
+						<td>0</td>
+					</tbody>
+				</thead>
+			</table>
+			<button id="create-location">Add Location</button>
+		</div>
+	</body>
+</html>
