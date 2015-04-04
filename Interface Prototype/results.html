@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Itinerary Planner</title>
+		<link href="css/main.css" rel="stylesheet" />
+		<link href="css/leaflet.css" rel="stylesheet" />  
+	</head>
+	<body style="color:black !important">
+		<div class="title-container">
+			<div>
+				<img class="logo" src="images/logo.png" />
+			</div>
+			<div class="title maptitle">
+				IS421: Enterprise Analysis for Decision Support <br/>
+				Itinerary Planner
+			</div>
+		</div>
+		<div class="header mapHeader"></div>
+		<div>
+			<div id="map"></div>	
+		</div>
+	</body>
+	<script src="js/jquery.js"></script>	
+	<script src="js/leaflet.js"></script>
+	<script>
+		// create a map in the "map" div, set the view to a given place and zoom
+		var map = L.map('map').setView([1.3, 103.8], 5);
+
+		// add an OpenStreetMap tile layer
+		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(map);
+		
+		var polyline = L.polyline([], {color: 'red'}).addTo(map);
+		
+		
+		initialize(function(markers) {
+			
+			polyline.addLatLng(markers["Changi Airport"]).bindPopup("<b>$200</b>");
+			polyline.addLatLng(markers["Kuala Lumpur International Airport"]).bindPopup("<b>$320</b>");;
+			polyline.addLatLng(markers["Ho Chi Minh City Airport"]).bindPopup("<b>$200</b>");;
+			polyline.addLatLng(markers["Hong Kong International Airport"]).bindPopup("<b>$130</b>");;
+			polyline.addLatLng(markers["Jakarta Airport"]).bindPopup("<b>$160</b>");;
+			polyline.addLatLng(markers["Changi Airport"]).bindPopup("<b>$120</b>");;
+		});
+		
+		function initialize(drawLine) {
+			var count = 1;
+			var markers = {};
+			
+			setLocationMarker("Changi Airport", function(marker) {
+				markers["Changi Airport"] = marker.getLatLng();
+				if (count == 5) {
+					drawLine(markers);
+				} else {
+					count = count + 1;
+				}
+			});	
+			setLocationMarker("Ho Chi Minh City Airport", function(marker) {
+				markers["Ho Chi Minh City Airport"] = marker.getLatLng();
+				if (count == 5) {
+					drawLine(markers);
+				} else {
+					count = count + 1;
+				}
+			});		
+			setLocationMarker("Kuala Lumpur International Airport", function(marker) {
+				markers["Kuala Lumpur International Airport"] = marker.getLatLng();
+				if (count == 5) {
+					drawLine(markers);
+				} else {
+					count = count + 1;
+				}
+			});			
+			setLocationMarker("Hong Kong International Airport", function(marker) {
+				markers["Hong Kong International Airport"] = marker.getLatLng();
+				if (count == 5) {
+					drawLine(markers);
+				} else {
+					count = count + 1;
+				}
+			});				
+			setLocationMarker("Jakarta Airport", function(marker) {
+				markers["Jakarta Airport"] = marker.getLatLng();
+				if (count == 5) {
+					drawLine(markers);
+				} else {
+					count = count + 1;
+				}
+			});
+		};
+		
+		function setLocationMarker(location, callback) {
+			$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + location, function(data) {
+				var items = [];
+				
+				$.each(data, function(key, val) {
+					var marker = L.marker([ val.lat ,  val.lon ]).addTo(map);
+					marker.bindPopup("<b>" + val.display_name + "</b>");
+					callback(marker);
+					return false;
+				});
+			});
+		}
+	</script>
+</html>

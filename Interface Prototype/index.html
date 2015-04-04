@@ -2,43 +2,91 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Itinerary Planner</title>
-		
-		<link rel="stylesheet" href="main.css" />
-		<script src="jquery.js"></script>		
+		<link href="css/jquery-ui.css" rel="stylesheet">
+		<link href="css/main.css" rel="stylesheet" />
 	</head>
 	<body>
-		<div id="dialog-form" title="Create a new location">
-			<form>
+		<div class="title-container">
+			<div>
+				<img class="logo" src="images/logo.png" />
+			</div>
+			<div class="title">
+				IS421: Enterprise Analysis for Decision Support <br/>
+				Itinerary Planner
+			</div>
+		</div>
+		<div class="header"></div>
+		
+		<div class="content-container">
+			<div id="parameters">
+				<h1>Parameters</h1>
+				<label for="budget">Fixed Budget : $</input>
+				<input id="budget" type="text" value="" />
+				<br/><br/>
+				<label for="budget">Number of days trip : </input>
+				<input id="budget" type="text" value="" />
+			</div>
+			
+			<div id="location-contain">
+				<h1>Starting Location</h1>
+				<select id="startLocation" name="startLocation" class="custom-select">
+					<option value="">Select a country</option>
+					<option value="Singapore" selected>Singapore</option>
+					<option value="Malaysia">Malaysia</option>
+					<option value="Hong Kong">Hong Kong</option>
+					<option value="Indonesia">Indonesia</option>
+					<option value="Vietnam">Vietnam</option>
+				</select>
+				
+				<br/><br/><br/>
+				<h1>Destinations</h1>
+				<table id="locations">
+					<col width=30%>
+					<col width=70%>
+					<thead>
+						<tr>
+							<th>Name of country</th>
+							<th colspan=2>Satisfaction Value</th>
+						</tr>
+						<tbody>
+						</tbody>
+					</thead>
+				</table>
+				<button id="create-location">Add Location</button>
+			</div>
+			
+		</div>
+		<div class="button-container">
+			<button id="generate-button" onclick="window.location.href='results.html'">Generate</button>
+		</div>
+		<!-- Dialog Box -->
+		<div id="dialog-Add" title="Create a new location">
+			<p class="validateTips">Please select a country.</p>
+			
+			<form id="locationForm">
 				<fieldset>
-					<label for="locationName">Name of Country<label>
+					<label for="locationName">Name of Country : <label>
 					<select name="locationName" id="locationName">
+						<option value="">Select a country</option>
 						<option value="Singapore">Singapore</option>
 						<option value="Malaysia">Malaysia</option>
 						<option value="Hong Kong">Hong Kong</option>
 						<option value="Indonesia">Indonesia</option>
 						<option value="Vietnam">Vietnam</option>
 					</select>
-					
-					<label for="satisfactionLevel"/>Satisfaction Level</label>
-					
+					<p>
+						<label for="satisfactionLevel"/>Satisfaction Value : </label>
+						<input type="text" id="satisfactionAmount" readonly />
+					</p>
+					<!-- Jquery Slider -->
+					<div id="slider-range-max"></div>
 				</fieldset>
 			</form>
 		</div>
-		<div id="location-contain" class="ui-widget">
-			<h1>Locations</h1>
-			<table id="locations" class="ui-widget ui-widget-content">
-				<thead>
-					<tr class="ui-widget-header">
-						<th>Name of country</th>
-						<th>Satisfaction Level</th>
-					</tr>
-					<tbody>
-						<td>Singapore</td>
-						<td>0</td>
-					</tbody>
-				</thead>
-			</table>
-			<button id="create-location">Add Location</button>
-		</div>
+
 	</body>
+	
+	<script src="js/jquery.js"></script>	
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/utility.js"></script>
 </html>
