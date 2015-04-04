@@ -8,6 +8,17 @@
 // Use, duplication or disclosure restricted by GSA ADP Schedule
 // Contract with IBM Corp.
 // --------------------------------------------------------------------------
+startlocation = "Singapore"
+lengthOfLocations = 5;
+firstdate = 1;
+enddate = 10;
+budget = 20000;
+Locations = {Singapore, Malaysia, Thailand, Korea, China, Vietnam, Indonesia, Cambodia};
+Dates = {1,2,3,4,5,6,7,8,9,10};
+CostOfLivingOfLocation = [200, 100, 30, 10, 100, 30, 40, 20];
+InitialSatisfactionOfLocation = [0, 20, 200, 400, 30, 40, 50, 60];
+UnitDecreaseInSatisfactionPerDay = 10;
+PriceFromToOnDay = ...;
 
 Fixed = 30;
 FixedBudget = 120;
