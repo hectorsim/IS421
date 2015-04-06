@@ -27,7 +27,6 @@
 /***************************** General Style *************************************/
 /*********************************************************************************/
 .select-wrapper{
-	float: left;
 	display: inline-block;	
 	border-bottom: 1px solid #d8d8d8;            
 	background: url("../images/arrow.png") no-repeat right center;
@@ -204,15 +203,15 @@ tr.highlight
 }
 
 #satisfactionAmount {
-	margin-top: 0.5em;
+	margin-top: 2em;
 	border: 0;
-	color: #f6931f;
+	color: white;
 	width: 20px;
 	background: transparent;
 	font-weight: bold;
 }
 
-.ui-dialog .ui-state-error { padding: .3em; color:red; }
+.ui-dialog .ui-state-error { color:red; }
 .validateTips { border: 1px solid transparent; position:absolute; display:none;}
 
 #parameters {padding: 50px; width: 45%;}

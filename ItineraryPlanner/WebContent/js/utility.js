@@ -15,7 +15,7 @@ $(function() {
 	// Validate Location
 	function checkLocation() {
 		if (location.val().length == 0) {
-			location.addClass("ui-state-error");
+			location.parent().addClass("ui-state-error");
 			updateTips("Please select a country for your itinerary");
 			return false;
 		} else {
@@ -25,7 +25,7 @@ $(function() {
 	
 	function addLocation() {
 		var valid = true;
-		location.removeClass("ui-state-error");
+		location.parent().removeClass("ui-state-error");
 		
 		valid = checkLocation();
 		if (valid) {
@@ -56,7 +56,7 @@ $(function() {
 		close: function() {
 			// Reset all value and cache
 			form[0].reset();
-			location.removeClass("ui-state-error");
+			location.parent().removeClass("ui-state-error");
 		}
 	});
 	
@@ -68,12 +68,13 @@ $(function() {
 	$( "#create-location" ).on( "click", function() {
 		dialog.dialog( "open" );
 		tips.hide();
+		$(".holder").html($( "#locationName option:selected" ).text());
 		amount.val($("#slider-range-max").slider("value"));
 	});
 	
 	location.change(function() {
 		tips.hide();
-		location.removeClass("ui-state-error");
+		location.parent().removeClass("ui-state-error");
 	});
 	
 	// TR on hover
@@ -102,7 +103,7 @@ $(function() {
 		range: "max",
 		min: 0,
 		max: 10,
-		value: 0, 
+		value: 10, 
 		slide: function(event, ui) {
 			amount.val(ui.value);
 		}

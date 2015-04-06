@@ -60,13 +60,13 @@
 			<button id="generate-button" onclick="window.location.href='results.html'">Generate</button>
 		</div>
 		<!-- Dialog Box -->
-		<div id="dialog-Add" title="Create a new location">
+		<div id="dialog-Add" class="dialog-container" title="Create a new location">
 			<p class="validateTips">Please select a country.</p>
 			
 			<form id="locationForm">
 				<fieldset>
-					<label for="locationName">Name of Country : <label>
-					<select name="locationName" id="locationName">
+					<label id="lblLocationName" for="locationName">Name of Country : <label>
+					<select name="locationName" id="locationName" class="custom-select">
 						<option value="">Select a country</option>
 						<option value="Singapore">Singapore</option>
 						<option value="Malaysia">Malaysia</option>
