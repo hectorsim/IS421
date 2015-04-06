@@ -75,33 +75,87 @@ public class SystemFactory {
 	}
 	
 	public static JSONObject formatData(JSONObject rawData) {
-		System.out.println(rawData.toJSONString());
 		
 		String[] params = Constants.PARAMS;
-		int[] locationInformationIndices = Constants.INDEX_FOR_LOCATION;
+		
 		int satisfactionUnitDecrease = Constants.UNIT_DECREASE;
+		int locationName = Constants.INDEX_FOR_LOC;
+		int[] locationInformationIndices = Constants.INDEX_FOR_LOCATION_INFO;
 		int flightCost = Constants.FLIGHT_COST;
 		
-		JSONObject formattedData = new JSONObject();
+		JSONObject locationDatas = new JSONObject();
 		
-		JSONArray locationsArray = new JSONArray();
+		// Format for individual location information
+		String listOfLocation = removeBrackets((String) rawData.get(params[locationName]));
+		String[] locationArray = listOfLocation.split(",");
 		
-		String firstIndex = (String) rawData.get(params[locationInformationIndices[0]]);
-		String[] stringArray = firstIndex.split(",");
+		// Format for flight path and flight cost from location l to location j
+		String flightDetails = removeBrackets((String) rawData.get(params[flightCost]));
+		String[] flightDetailsArray = flightDetails.split("]]");
 		
-		for (int i = 0; i < stringArray.length; i++) {
+		// Format location data and flight path into proper structure
+		for (int i = 0; i < locationArray.length; i++) {
 			JSONObject locationInfo = new JSONObject();
 			
 			for (int j = 0; j < locationInformationIndices.length; j++) {
 				
-				String value = (String) rawData.get(params[locationInformationIndices[j]]);
+				String value = removeBrackets((String) rawData.get(params[locationInformationIndices[j]]));
 				locationInfo.put(params[locationInformationIndices[j]], value.split(",")[i]);
 			}
 			
-			locationsArray.add(locationInfo);
+			JSONObject jsonFlightCost = formatFlightCost(locationArray, flightDetailsArray[i] + "]");
+			locationInfo.put("adjList", jsonFlightCost);
+			
+			locationDatas.put(locationArray[i], locationInfo);
 		}
-				
-		System.out.println(locationsArray);
+
+		// Parse all information formatted into one JSON
+		JSONObject formattedData = new JSONObject();
+		formattedData.put("DATAS", locationDatas);
+		formattedData.put("DecreaseInUnit", rawData.get(params[satisfactionUnitDecrease]));
+		
 		return formattedData;
+	}
+	
+	public static JSONObject formatFlightCost(String[] locationArray, String flightCosts) {
+		JSONObject jsonFlightCost = new JSONObject();
+		
+		flightCosts = flightCosts.substring(flightCosts.indexOf("[")+1, flightCosts.length());
+		String[] flightArray = flightCosts.split("]");
+		
+		for (int i = 0; i < locationArray.length; i++) {
+			String days = removeBrackets(flightArray[i]);
+			String[] daysArray = days.split(" ");
+			
+			JSONArray json_daysArray = new JSONArray();
+			for (String value : daysArray) {
+				json_daysArray.add(value);
+			}
+			
+			jsonFlightCost.put(locationArray[i], json_daysArray);
+		}
+		
+		return jsonFlightCost;
+	}
+	
+	public static String removeBrackets(String value) {
+		
+		if (value.contains("{")) {
+			value = value.substring(value.indexOf("{")+1, value.length());
+			
+			if (value.contains("}")) {
+				value = value.substring(0, value.lastIndexOf("}"));
+			}
+			
+		} else if  (value.contains("[")) {
+			value = value.substring(value.indexOf("[")+1, value.length());
+			
+			if (value.contains("]")) {
+				value = value.substring(0, value.lastIndexOf("]"));
+			}			
+			
+		}
+		
+		return value;
 	}
 }
