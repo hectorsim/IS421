@@ -21,6 +21,7 @@ public class PlannerServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		super.doPost(req, resp);
+		System.out.println(" I am Here");
 	}
 
 }
