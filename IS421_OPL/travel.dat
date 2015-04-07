@@ -15,10 +15,10 @@ firstdate = 1;
 enddate = 7;
 Dates = {1,2,3,4,5,6,7};
 Dates_mod = {1,2,3,4,5,6};
-Dates_mod2 = {2,3,4,5};
 
 startlocation = SIN;
 lengthOfLocations = 3;
+biggerThanLengthOfLocation = 4;
 Locations = {SIN,PEK,PVG};
 Locations_2_N_1 = {PEK,PVG};
 CostOfLivingOfLocation = [93,48,48];
