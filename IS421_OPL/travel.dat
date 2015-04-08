@@ -1,0 +1,43 @@
+// --------------------------------------------------------------------------
+// Licensed Materials - Property of IBM
+//
+// 5725-A06 5725-A29 5724-Y48 5724-Y49 5724-Y54 5724-Y55
+// Copyright IBM Corporation 1998, 2013. All Rights Reserved.
+//
+// Note to U.S. Government Users Restricted Rights:
+// Use, duplication or disclosure restricted by GSA ADP Schedule
+// Contract with IBM Corp.
+// --------------------------------------------------------------------------
+budget = 10000;
+UnitDecreaseInSatisfactionPerDay = 10;
+
+firstdate = 1;
+enddate = 7;
+Dates = {1,2,3,4,5,6,7};
+Dates_mod = {1,2,3,4,5,6};
+
+startlocation = SIN;
+lengthOfLocations = 3;
+biggerThanLengthOfLocation = 4;
+Locations = {SIN,PEK,PVG};
+Locations_2_N_1 = {PEK,PVG};
+CostOfLivingOfLocation = [93,48,48];
+InitialSatisfactionOfLocation = [93,66,95];
+
+PriceFromToOnDay = [
+	[
+		[99999 99999 99999 99999 99999 99999 99999]
+		[110 110 110 110 110 110 110]
+		[270 270 270 270 270 270 270]
+	]
+	[
+		[110 110 110 110 110 110 110]
+		[99999 99999 99999 99999 99999 99999 99999]
+		[248 248 248 248 248 248 248]
+	]
+	[
+		[270 270 270 270 270 270 270]
+		[248 248 248 248 248 248 248]
+		[99999 99999 99999 99999 99999 99999 99999]
+	]
+];

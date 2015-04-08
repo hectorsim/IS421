@@ -24,31 +24,27 @@ import org.json.simple.parser.ParseException;
 
 import com.opencsv.CSVReader;
 
+@SuppressWarnings("deprecation")
 public class RetrievePrice {
 
-	private final static String url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=";
-	private static String apikey = "";
-	private static ArrayList<String> apiKeyList = new ArrayList<String>() {
+	private final String url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=";
+	private String apikey = "";
+	@SuppressWarnings("serial")
+	private ArrayList<String> apiKeyList = new ArrayList<String>() {
 		{
-			add("AIzaSyBQdqXDwPyJzgJjvf9upn9uqHG__LcwKXw"); // ei-g6t2
-			add("AIzaSyD1T1lsgB0z260xEjkRSaaY8-b6k7ZDCfg"); // 2012-g5t5
-			add("AIzaSyBq3GRD5imY-dlP6NwPXCHMrQtdEG4PhOU"); // hector-sim
-			add("AIzaSyDF1vrdOxW_kWKs-aKEXbrJz1lb--818jA"); // hectorrrsim
-			add("AIzaSyAPu-w5OLj2jb_ZfwH9vaCn3nwOPMMXErg"); // schedulous
+			// add("API-KEY HERE");
 		}
 	};
-	private final static String flightDate = "2015-05-12";
-	private final static String USER_AGENT = "Mozilla/5.0";
+	private final String flightDate = "2015-05-12";
+	private final String USER_AGENT = "Mozilla/5.0";
+	private final String fileName = "./data/flights.csv";
 
-	public static void main(String args[]) {
-		processCSV();
-	}
-
-	private static void processCSV() {
+	public void processCSV() {
 		int counter = 1;
 		String departure = null;
+		CSVReader reader = null;
 		try {
-			CSVReader reader = new CSVReader(new FileReader(new File("./data/flights.csv")));
+			reader = new CSVReader(new FileReader(new File(fileName)));
 			String[] record = null;
 			while ((record = reader.readNext()) != null) {
 				for (int i = 0; i < record.length; i++) {
@@ -74,10 +70,17 @@ public class RetrievePrice {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			if(reader!=null)
+				try {
+					reader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 		}
 	}
 
-	private static String convertToSGD(String basePrice) throws ClientProtocolException,
+	private String convertToSGD(String basePrice) throws ClientProtocolException,
 			IOException {
 		if(basePrice==null)
 			return "0";
@@ -90,6 +93,7 @@ public class RetrievePrice {
 		
 		String url = "http://www.freecurrencyconverterapi.com/api/v3/convert?q="+currenyMap+"&compact=y";
 
+		@SuppressWarnings("resource")
 		HttpClient client = new DefaultHttpClient();
 		HttpGet request = new HttpGet(url);
 
@@ -112,7 +116,7 @@ public class RetrievePrice {
 		return ""+(int)convertedAmount;
 	}
 
-	public static String getFlightPrice(int counter, String departure, String arrival)
+	public String getFlightPrice(int counter, String departure, String arrival)
 			throws ClientProtocolException, IOException {
 		String jsonString = generateJSONMessage(departure, arrival);
 //		System.out.println(jsonString);
@@ -163,7 +167,7 @@ public class RetrievePrice {
 		return extractKeyword(result.toString(),"baseFareTotal");
 	}
 
-	private static String extractKeyword(String jsonResult, String keyword) {
+	private String extractKeyword(String jsonResult, String keyword) {
 		JSONParser parser = new JSONParser();
 		KeyFinder finder = new KeyFinder();
 		finder.setMatchKey(keyword);
@@ -188,7 +192,7 @@ public class RetrievePrice {
 	 * "seniorCount": 0 }, "solutions": 20, "refundable": false } }
 	 */
 	@SuppressWarnings("unchecked")
-	private static String generateJSONMessage(String departure, String arrival) {
+	private String generateJSONMessage(String departure, String arrival) {
 		// create passengers object
 		JSONObject passenger = new JSONObject();
 		passenger.put("adultCount", new Integer(1));
