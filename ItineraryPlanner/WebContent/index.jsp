@@ -20,16 +20,16 @@
 	</div>
 	<div class="header"></div>
 
-	<form method="post" action="itineraryplanning.do"
-		enctype="multipart/form-data">
+	<form method="post" action="itineraryplanning.do">
 
 		<div class="content-container">
 			<div id="parameters">
 				<h1>Parameters</h1>
-				<label for="budget">Fixed Budget : $</input> <input id="budget"
-					type="text" value="" /> <br />
-				<br /> <label for="budget">Number of days trip : </input> <input
-						id="budget" type="text" value="" />
+				<label for="budget">Fixed Budget : $</label>
+				<input id="budget" name="budget" type="text" value="" />
+				<br/><br/>
+				<label for="noOfDays">Number of days trip : </label>
+				<input id="noOfDays" name="noOfDays" type="text" value="" />
 			</div>
 
 			<div id="location-contain">
@@ -46,7 +46,7 @@
 				<br />
 				<br />
 				<h1>Destinations</h1>
-				<table id="locations">
+				<table name="locations" id="locations">
 					<col width=30%>
 					<col width=70%>
 					<thead>
