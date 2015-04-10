@@ -8,16 +8,50 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 
 // Data retrieved from server
 var nodes = {
-	"locations":["Changi Airport", 
-		"Kuala Lumpur International Airport", 
-		"Ho Chi Minh City Airport", 
-		"Hong Kong International Airport", 
-		"Jakarta Airport"], 
-	"path":["Changi Airport", 
-		"Kuala Lumpur International Airport", 
-		"Ho Chi Minh City Airport", 
-		"Hong Kong International Airport", 
-		"Jakarta Airport", "Changi Airport"]};
+	"locations":[
+		"Beijing - Beijing Capital International Airport",
+		"Shanghai - Pudong International Airport",
+		"Hong Kong - Hong Kong International Airport", 
+		"Osaka - Kansai International Airport", 
+		"Tokyo - Tokyo International Airport", 
+		"Seoul - Incheon International Airport", 
+		"Kaohsiung - Kaohsiung International Airport",
+		"Taipei - Taiwan Taoyuan International Airport",
+		"Phnom Penh - Phnom Penh International Airport",
+		"Siem Reap - Siem Reap International Airport",
+		"Bali - Ngurah Rai International Airport",
+		"Jakarta - Jakarta Airport",
+		"Kuala Lumpur - Kuala Lumpur International Airport",
+		"Penang - Penang International Airport",
+		"Yangon - Yangon International Airport",
+		"Manila - Ninoy Aquino International Airport",
+		"Bangkok - Suvarnabhumi Airport",
+		"Phuket - Phuket International Airport",
+		"Hanoi - Noi Bai International Airport",
+		"Ho Chi Minh City - Ho Chi Minh City Airport",
+		"Singapore - Singapore Changi Airport"], 
+	"path":["Beijing - Beijing Capital International Airport",
+		"Shanghai - Pudong International Airport",
+		"Hong Kong - Hong Kong International Airport", 
+		"Osaka - Kansai International Airport", 
+		"Tokyo - Tokyo International Airport", 
+		"Seoul - Incheon International Airport", 
+		"Kaohsiung - Kaohsiung International Airport",
+		"Taipei - Taiwan Taoyuan International Airport",
+		"Phnom Penh - Phnom Penh International Airport",
+		"Siem Reap - Siem Reap International Airport",
+		"Bali - Ngurah Rai International Airport",
+		"Jakarta - Jakarta Airport",
+		"Kuala Lumpur - Kuala Lumpur International Airport",
+		"Penang - Penang International Airport",
+		"Yangon - Yangon International Airport",
+		"Manila - Ninoy Aquino International Airport",
+		"Bangkok - Suvarnabhumi Airport",
+		"Phuket - Phuket International Airport",
+		"Hanoi - Noi Bai International Airport",
+		"Ho Chi Minh City - Ho Chi Minh City Airport",
+		"Singapore - Singapore Changi Airport"]};
+		
 var polyline = L.polyline([], {color: 'red'}).addTo(map);
 
 initializeGraph(nodes, function(markers, path) {
@@ -49,11 +83,15 @@ function addLocationMarker(location, callback) {
 	$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + location, function(data) {
 		var items = [];
 		
-		$.each(data, function(key, val) {
-			var marker = L.marker([ val.lat ,  val.lon ]).addTo(map);
-			marker.bindPopup("<b>" + val.display_name + "</b>");
-			callback(location, marker);
-			return false;
-		});
+		if (data.length <= 0) {
+			console.log(location + " cannot be found in Google map!")
+		} else {
+			$.each(data, function(key, val) {
+				var marker = L.marker([ val.lat ,  val.lon ]).addTo(map);
+				marker.bindPopup("<b>" + val.display_name + "</b>");
+				callback(location, marker);
+				return false;
+			});
+		}
 	});
 }

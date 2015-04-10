@@ -1,6 +1,11 @@
 package com.entity;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.json.simple.JSONArray;
 
 public class Graph {
 	
@@ -25,6 +30,20 @@ public class Graph {
 		return this.vertices.get(key);
 	}
 	
+	public Vertex getVertexByLocationId(String locationId) {
+		Iterator<Vertex> iter = this.vertices.values().iterator();
+		
+		while (iter.hasNext()) {
+			Vertex v = iter.next();
+			
+			if (v.getLocationId().equalsIgnoreCase(locationId)) {
+				return v;
+			}
+		}
+		
+		return null;
+	}
+	
 	/**
 	 * Add a new vertex into the graph
 	 * @param key
@@ -40,5 +59,40 @@ public class Graph {
 	 */
 	public void removeVertex(int key) {
 		this.vertices.remove(key);
+	}
+	
+	/**
+	 * Print out graph data structure
+	 */
+	public String toString() {
+		String text = "";
+				
+		Iterator<Entry<Integer, Vertex>> iter = this.vertices.entrySet().iterator();
+		
+		while (iter.hasNext()) {
+			Map.Entry<Integer, Vertex> value = (Map.Entry<Integer, Vertex>) iter.next();
+			
+			int vertexId = value.getKey();
+			Vertex v = value.getValue();
+			
+			text += "Location " + vertexId + " : \n";
+			text += v.toString() + "\n\n";
+		}
+		
+		return text;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public JSONArray toJSON() {
+		JSONArray dataArray = new JSONArray();
+		
+		Iterator<Vertex> iter = this.vertices.values().iterator();
+		
+		while (iter.hasNext()) {
+			Vertex v = iter.next();
+			dataArray.add(v.toJSON());
+		}
+		
+		return dataArray;
 	}
 }
