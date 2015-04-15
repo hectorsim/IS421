@@ -20,10 +20,10 @@
 		<div class="content-container">
 			<div id="parameters">
 				<h1>Parameters</h1>
-				<label for="budget">Fixed Budget : $</input>
+				<label for="budget">Fixed Budget : $</label>
 				<input id="budget" type="text" value="" />
 				<br/><br/>
-				<label for="budget">Number of days trip : </input>
+				<label for="budget">Number of days trip : </label>
 				<input id="budget" type="text" value="" />
 			</div>
 			
@@ -39,20 +39,23 @@
 				</select>
 				
 				<br/><br/><br/>
-				<h1>Destinations</h1>
-				<table id="locations">
-					<col width=30%>
-					<col width=70%>
-					<thead>
-						<tr>
-							<th>Name of country</th>
-							<th colspan=2>Satisfaction Value</th>
-						</tr>
-						<tbody>
-						</tbody>
-					</thead>
-				</table>
-				<button id="create-location">Add Location</button>
+				<h1><input id="isDestionation" type="checkbox" name="isDestination" /><label for="isDestionation">Select Specific Destinations</label></h1>
+				<div id="addLocation" style="display:none;">
+					<h1>Destinations</h1>
+					<table id="locations">
+						<col width=30%>
+						<col width=70%>
+						<thead>
+							<tr>
+								<th>Name of country</th>
+								<th colspan=2>Satisfaction Value</th>
+							</tr>
+							<tbody>
+							</tbody>
+						</thead>
+					</table>
+					<button id="create-location">Add Location</button>
+				</div>
 			</div>
 			
 		</div>

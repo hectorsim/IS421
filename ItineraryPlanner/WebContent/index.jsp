@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="com.ItineraryPlanner.Constants,com.entity.Graph,com.entity.Vertex,java.util.ArrayList;" language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -7,6 +7,10 @@
 <title>Itinerary Planner</title>
 <link href="css/jquery-ui.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet" />
+<%
+	Graph map = Constants.GRAPH;
+	ArrayList<Vertex> locationList = map.getListOfVertex();
+%>
 </head>
 <body>
 	<div class="title-container">
@@ -20,16 +24,16 @@
 	</div>
 	<div class="header"></div>
 
-	<form method="post" action="itineraryplanning.do"
-		enctype="multipart/form-data">
+	<form method="post" action="itineraryplanning.do">
 
 		<div class="content-container">
 			<div id="parameters">
 				<h1>Parameters</h1>
-				<label for="budget">Fixed Budget : $</input> <input id="budget"
-					type="text" value="" /> <br />
-				<br /> <label for="budget">Number of days trip : </input> <input
-						id="budget" type="text" value="" />
+				<label for="budget">Fixed Budget : $</label>
+				<input id="budget" name="budget" type="text" value="" />
+				<br/><br/>
+				<label for="noOfDays">Number of days trip : </label>
+				<input id="noOfDays" name="noOfDays" type="text" value="" />
 			</div>
 
 			<div id="location-contain">
@@ -37,28 +41,33 @@
 				<select id="startLocation" name="startLocation"
 					class="custom-select">
 					<option value="">Select a country</option>
-					<option value="Singapore" selected>Singapore</option>
-					<option value="Malaysia">Malaysia</option>
-					<option value="Hong Kong">Hong Kong</option>
-					<option value="Indonesia">Indonesia</option>
-					<option value="Vietnam">Vietnam</option>
+					<%
+						for(Vertex i : locationList) {
+					%>
+						<option value="<%=i.getId()%>"><%=i.getLocationName() %></option>
+					<%
+						}
+					%>
 				</select> <br />
 				<br />
 				<br />
-				<h1>Destinations</h1>
-				<table id="locations">
-					<col width=30%>
-					<col width=70%>
-					<thead>
-						<tr>
-							<th>Name of country</th>
-							<th colspan=2>Satisfaction Value</th>
-						</tr>
-					<tbody>
-					</tbody>
-					</thead>
-				</table>
-				<button type="button" id="create-location">Add Location</button>
+				<h1><input id="isDestionation" type="checkbox" name="isDestination" /><label for="isDestionation">Select Specific Destinations</label></h1>
+				<div id="addLocation" style="display:none;">
+					<h1>Destinations</h1>
+					<table name="locations" id="locations">
+						<col width=50%>
+						<col width=50%>
+						<thead>
+							<tr>
+								<th>Name of country</th>
+								<th colspan=2>Satisfaction Value</th>
+							</tr>
+						<tbody>
+						</tbody>
+						</thead>
+					</table>
+					<button type="button" id="create-location">Add Location</button>
+				</div>
 			</div>
 
 		</div>
@@ -78,11 +87,13 @@
 					Country : <label> <select name="locationName"
 						id="locationName" class="custom-select">
 							<option value="">Select a country</option>
-							<option value="Singapore">Singapore</option>
-							<option value="Malaysia">Malaysia</option>
-							<option value="Hong Kong">Hong Kong</option>
-							<option value="Indonesia">Indonesia</option>
-							<option value="Vietnam">Vietnam</option>
+							<%
+								for(Vertex i : locationList) {
+							%>
+								<option value="<%=i.getId()%>"><%=i.getLocationName() %></option>
+							<%
+								}
+							%>
 					</select>
 						<p>
 							<label for="satisfactionLevel" />Satisfaction Value :</label> <input

@@ -38,14 +38,14 @@ public class DataInitialization implements ServletContextListener {
 		String contextPath = servletContext.getRealPath(File.separator);
 		
 		// Formatting for raw data into proper data
-		JSONObject data = SystemFactory.datRetrieval(contextPath);
+		JSONObject rawData = SystemFactory.datRetrieval(contextPath);
 		
-		//Initializing data into constant variables
-		Constants.JSONDATA = (JSONObject) data.get("DATAS");
-		Constants.DECREASE_IN_UNIT = Integer.valueOf((String) data.get("DecreaseInUnit"));
+		// Initialize raw data
+		SystemFactory.formatData(rawData);
 		
-		System.out.println(Constants.JSONDATA);
-		System.out.println("DATA INITIALIZATION COMPLETED");
+		System.out.println(Constants.GRAPH.toString());
+		
+		System.out.println(Constants.GRAPH.toJSON().toJSONString());
 	}
 
 }

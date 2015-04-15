@@ -6,12 +6,17 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.entity.Graph;
+import com.entity.Vertex;
+
 public class SystemFactory {
 	
+	@SuppressWarnings("unchecked")
 	public static JSONObject datRetrieval(String context) {
 		String datString = Constants.DATSTRING;
 		String dataPath = Constants.DATAPATH;
@@ -70,72 +75,88 @@ public class SystemFactory {
 			e.printStackTrace();
 		}
 		
-		
-		return formatData(data);
+		return data;
 	}
 	
-	public static JSONObject formatData(JSONObject rawData) {
+	@SuppressWarnings("unchecked")
+	public static void formatData(JSONObject rawData) {
 		
 		String[] params = Constants.PARAMS;
 		
-		int satisfactionUnitDecrease = Constants.UNIT_DECREASE;
-		int locationName = Constants.INDEX_FOR_LOC;
-		int[] locationInformationIndices = Constants.INDEX_FOR_LOCATION_INFO;
-		int flightCost = Constants.FLIGHT_COST;
-		
-		JSONObject locationDatas = new JSONObject();
+		JSONObject json_Satis = new JSONObject();
 		
 		// Format for individual location information
-		String listOfLocation = removeBrackets((String) rawData.get(params[locationName]));
+		String listOfLocation = removeBrackets((String) rawData.get(params[Constants.INDEX_FOR_LOC]));
 		String[] locationArray = listOfLocation.split(",");
 		
-		// Format for flight path and flight cost from location l to location j
-		String flightDetails = removeBrackets((String) rawData.get(params[flightCost]));
-		String[] flightDetailsArray = flightDetails.split("]]");
+		Graph graph = new Graph();
 		
 		// Format location data and flight path into proper structure
 		for (int i = 0; i < locationArray.length; i++) {
-			JSONObject locationInfo = new JSONObject();
+		
+			// Retrieve cost of living
+			String livingCostArray = removeBrackets((String) rawData.get(params[Constants.INDEX_FOR_COSTLIVING]));
+			double costOfLiving = Double.valueOf(livingCostArray.split(",")[i]);
 			
-			for (int j = 0; j < locationInformationIndices.length; j++) {
-				
-				String value = removeBrackets((String) rawData.get(params[locationInformationIndices[j]]));
-				locationInfo.put(params[locationInformationIndices[j]], value.split(",")[i]);
-			}
+			// Creation of vertex according to the given data
+			Vertex vertex = new Vertex(i, locationArray[i], 
+					LocationMatch.getLocationName(locationArray[i]), costOfLiving);
 			
-			JSONObject jsonFlightCost = formatFlightCost(locationArray, flightDetailsArray[i] + "]");
-			locationInfo.put("adjList", jsonFlightCost);
+			// Add vertex into the graph
+			graph.addVertex(i, vertex);
 			
-			locationDatas.put(locationArray[i], locationInfo);
+			// Retrieve Satisfaction
+			String SatisfactionArray = removeBrackets((String) rawData.get(params[Constants.INDEX_FOR_SATISFACTION]));
+			int location_Satis = Integer.valueOf(SatisfactionArray.split(",")[i]);
+			json_Satis.put(locationArray[i], location_Satis);
 		}
 
-		// Parse all information formatted into one JSON
-		JSONObject formattedData = new JSONObject();
-		formattedData.put("DATAS", locationDatas);
-		formattedData.put("DecreaseInUnit", rawData.get(params[satisfactionUnitDecrease]));
+		// Format for flight path and flight cost from location l to location j
+		String flightDetails = removeBrackets((String) rawData.get(params[Constants.FLIGHT_COST]));
+		String[] flightDetailsArray = flightDetails.split("]]");
+				
+		// Format flight cost according to adjacent list using Graph object
+		graph = formatFlightcost(graph, locationArray, flightDetailsArray);
 		
-		return formattedData;
+		Constants.GRAPH = graph;
+		Constants.DEFAULT_LOCATION_SATISFACTION = json_Satis;
 	}
 	
-	public static JSONObject formatFlightCost(String[] locationArray, String flightCosts) {
-		JSONObject jsonFlightCost = new JSONObject();
+	public static Graph formatFlightcost(Graph graph, String[] locationArray, String[] flightDetailsArray) {
 		
-		flightCosts = flightCosts.substring(flightCosts.indexOf("[")+1, flightCosts.length());
-		String[] flightArray = flightCosts.split("]");
-		
+		// Individual vertex
 		for (int i = 0; i < locationArray.length; i++) {
-			String days = removeBrackets(flightArray[i]);
-			String[] daysArray = days.split(" ");
+			Vertex vertex_i = graph.getVertexByLocationId(locationArray[i]);
 			
-			JSONArray json_daysArray = new JSONArray();
-			for (String value : daysArray) {
-				json_daysArray.add(value);
+			// Retrieve flight cost for per day
+			String flightCosts = flightDetailsArray[i] + "]";
+			flightCosts = flightCosts.substring(flightCosts.indexOf("[")+1, flightCosts.length());
+			String[] flightArray = flightCosts.split("]");
+			
+			NextVertex: for (int j = 0; j < locationArray.length; j++) {
+				Vertex vertex_j = graph.getVertexByLocationId(locationArray[j]);
+				
+				String daysPrices = removeBrackets(flightArray[j]);
+				String[] daysArray = daysPrices.split(" ");
+				
+				// Convert string of flight prices to double of flight prices
+				Double[] priceArray = new Double[daysArray.length];
+				for (int k = 0; k < priceArray.length; k++) {
+					double priceDay = Double.valueOf(daysArray[k]);
+					
+					// If any value in the array is on max value, vertex j does not link to vertex i
+					if (priceDay >= Constants.maxValue) {
+						continue NextVertex;
+					} else {
+						priceArray[k] = priceDay;
+					}
+				}
+				
+				vertex_i.setAdj(vertex_j.getId(), priceArray);
 			}
-			
-			jsonFlightCost.put(locationArray[i], json_daysArray);
 		}
 		
-		return jsonFlightCost;
+		return graph;
 	}
 	
 	public static String removeBrackets(String value) {

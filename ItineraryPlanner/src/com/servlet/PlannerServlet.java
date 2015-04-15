@@ -20,8 +20,15 @@ public class PlannerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doPost(req, resp);
-		System.out.println(" I am Here");
+		
+		String strBudget = req.getParameter("budget");
+		String strNoOfDays = req.getParameter("noOfDays");
+		String startLocation = req.getParameter("startLocation");
+		
+		System.out.println("User total Budget is " + Double.valueOf(strBudget) + " and " 
+				+ Integer.valueOf(strNoOfDays) + " days " 
+				+ "at start location " + startLocation);
+		//super.doPost(req, resp);
 	}
 
 }
