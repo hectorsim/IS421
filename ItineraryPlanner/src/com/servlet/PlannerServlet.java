@@ -53,6 +53,7 @@ public class PlannerServlet extends HttpServlet {
 					Integer.valueOf(startLocation));
 		}
 		
+		// Run algorithm for optimal solution
 		if (processingOption.equalsIgnoreCase("heuristic")) {
 			runHeuristic(user);
 		} else {
@@ -61,7 +62,7 @@ public class PlannerServlet extends HttpServlet {
 	}
 	
 	public void runHeuristic(User user) {
-		System.out.println("Total Cost : " + user.getTotalSatisfaction());
+		
 	}
 
 	public void runOPL() {
