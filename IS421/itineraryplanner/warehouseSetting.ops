@@ -3,5 +3,6 @@
 <settings version="2">
   <category name="cplex">
     <setting name="cutpass" value="-1"/>
+    <setting name="populatelim" value="10000"/>
   </category>
 </settings>
