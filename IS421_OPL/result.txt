@@ -1,0 +1,671 @@
+Result======
+Objective value: 748Time 0.516 seconds.
+Result======
+Objective value: 748Time 0.547 seconds.
+Location at Day 1: 
+Location at Day 2: 
+Location at Day 3: 
+Location at Day 4: 
+Location at Day 5: 
+Location at Day 6: 
+Location at Day 7: 
+Location at Day 8: 
+Location at Day 9: 
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.531 seconds.
+Location at Day 1: 
+Location at Day 2: 
+Location at Day 3: 
+Location at Day 4: 
+Location at Day 5: 
+Location at Day 6: 
+Location at Day 7: 
+Location at Day 8: 
+Location at Day 9: 
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.469 seconds.
+Result======
+Objective value: 748Time 0.469 seconds.
+Result======
+Objective value: 748Time 0.547 seconds.
+Location at Day 1: 
+Location at Day 2: 
+Location at Day 3: 
+Location at Day 4: 
+Location at Day 5: 
+Location at Day 6: 
+Location at Day 7: 
+Location at Day 8: 
+Location at Day 9: 
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.547 seconds.
+Location at Day 1: aaaaaaaaaaaaaaaaaa
+Location at Day 2: aaaaaaaaaaaaaaaaaa
+Location at Day 3: aaaaaaaaaaaaaaaaaa
+Location at Day 4: aaaaaaaaaaaaaaaaaa
+Location at Day 5: aaaaaaaaaaaaaaaaaa
+Location at Day 6: aaaaaaaaaaaaaaaaaa
+Location at Day 7: aaaaaaaaaaaaaaaaaa
+Location at Day 8: aaaaaaaaaaaaaaaaaa
+Location at Day 9: aaaaaaaaaaaaaaaaaa
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.547 seconds.
+Location at Day 1: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 2: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 3: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 4: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 5: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 6: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 7: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 8: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 9: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.516 seconds.
+Result======
+Objective value: 748Time 0.469 seconds.
+Location at Day 1: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 2: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 3: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 4: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 5: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 6: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 7: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 8: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 9: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.5 seconds.
+Location at Day 1: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 2: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 3: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 4: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 5: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 6: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 7: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 8: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 9: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.468 seconds.
+Location at Day 1: 123456789101112131415161718
+Location at Day 2: 123456789101112131415161718
+Location at Day 3: 123456789101112131415161718
+Location at Day 4: 123456789101112131415161718
+Location at Day 5: 123456789101112131415161718
+Location at Day 6: 123456789101112131415161718
+Location at Day 7: 123456789101112131415161718
+Location at Day 8: 123456789101112131415161718
+Location at Day 9: 123456789101112131415161718
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.531 seconds.
+Location at Day 1: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 2: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 3: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 4: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 5: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 6: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 7: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 8: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+Location at Day 9: undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.453 seconds.
+Location at Day 1: 
+Location at Day 2: 
+Location at Day 3: 
+Location at Day 4: 
+Location at Day 5: 
+Location at Day 6: 
+Location at Day 7: 
+Location at Day 8: 
+Location at Day 9: 
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.5 seconds.
+Location at Day 1: 
+Location at Day 2: 
+Location at Day 3: 
+Location at Day 4: 
+Location at Day 5: 
+Location at Day 6: 
+Location at Day 7: 
+Location at Day 8: 
+Location at Day 9: 
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.485 seconds.
+Result======
+Objective value: 748Time 0.485 seconds.
+Result======
+Objective value: 748Time 0.562 seconds.
+Location at Day 1: 
+Location at Day 2: 
+Location at Day 3: 
+Location at Day 4: 
+Location at Day 5: 
+Location at Day 6: 
+Location at Day 7: 
+Location at Day 8: 
+Location at Day 9: 
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.703 seconds.
+Location at Day 1: 
+Location at Day 2: 
+Location at Day 3: 
+Location at Day 4: 
+Location at Day 5: 
+Location at Day 6: 
+Location at Day 7: 
+Location at Day 8: 
+Location at Day 9: 
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.781 seconds.
+Location at Day 1: 
+Location at Day 2: 
+Location at Day 3: 
+Location at Day 4: 
+Location at Day 5: 
+Location at Day 6: 
+Location at Day 7: 
+Location at Day 8: 
+Location at Day 9: 
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.625 seconds.
+Location at Day 1: 
+Location at Day 2: 
+Location at Day 3: 
+Location at Day 4: 
+Location at Day 5: 
+Location at Day 6: 
+Location at Day 7: 
+Location at Day 8: 
+Location at Day 9: 
+ Flight cost: 0 + cost of living: 0 = 3000
+Result======
+Objective value: 748Time 0.563 seconds.
+Location at Day 1:  flying to PNH with ticket cost at 150
+Location at Day 2:  flying to REP with ticket cost at 67
+Location at Day 3:  flying to PVG with ticket cost at 310
+Location at Day 4:  flying to KHH with ticket cost at 410
+Location at Day 5:  flying to HKG with ticket cost at 215
+Location at Day 6:  flying to HND with ticket cost at 181
+Location at Day 7:  flying to TPE with ticket cost at 458
+Location at Day 8:  flying to RGN with ticket cost at 468
+Location at Day 9:  flying to SINTWO with ticket cost at 103
+ Flight cost: 2362 + cost of living: 474 = 164
+Result======
+Objective value: 226Time 2.859 seconds.
+Location at Day 1:  flying to PEK with ticket cost at 110
+Location at Day 2:  flying to HND with ticket cost at 519
+Location at Day 3:  flying to KIX with ticket cost at 263
+Location at Day 4:  flying to PVG with ticket cost at 235
+Location at Day 5:  flying to SINTWO with ticket cost at 270
+Location at Day 6:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 7:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 8:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 9:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 10:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 11:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 12:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 13:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 14:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 15:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 16:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 17:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 18:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 19:  stay and incurring	daily cost 93 with negative satisfaction10
+ Flight cost: 1397 + cost of living: 1651 = 1952
+Result======
+Objective value: -1374Time 2.797 seconds.
+Location at Day 1:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 2:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 3:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 4:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 5:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 6:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 7:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 8:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 9:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 10:  flying to PEK with ticket cost at 110
+Location at Day 11:  flying to HND with ticket cost at 519
+Location at Day 12:  flying to KIX with ticket cost at 263
+Location at Day 13:  flying to PVG with ticket cost at 235
+Location at Day 14:  flying to SINTWO with ticket cost at 270
+Location at Day 15:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 16:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 17:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 18:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 19:  stay and incurring	daily cost 93 with negative satisfaction10
+ Flight cost: 1397 + cost of living: 1651 = 1952
+Result======
+Objective value: -1206Time 1.703 seconds.
+Location at Day 1:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 2:  flying to PVG with ticket cost at 270
+Location at Day 3:  flying to KIX with ticket cost at 235
+Location at Day 4:  flying to HND with ticket cost at 263
+Location at Day 5:  flying to PEK with ticket cost at 519
+Location at Day 6:  flying to HKG with ticket cost at 266
+Location at Day 7:  flying to SINTWO with ticket cost at 170
+Location at Day 8:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 9:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 10:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 11:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 12:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 13:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 14:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 15:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 16:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 17:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 18:  stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 19:  stay and incurring	daily cost 93 with negative satisfaction10
+ Flight cost: 1723 + cost of living: 1633 = 1644
+Result======
+Objective value: 26Time 4.281 seconds.
+Location at Day 1:  flying to PVG with ticket cost at 270
+Location at Day 2:  stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 3:  stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 4:  stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 5:  stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 6:  stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 7:  stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 8:  stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 9:  stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 10:  stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 11:  stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 12:  stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 13:  flying to KIX with ticket cost at 235
+Location at Day 14:  stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 15:  flying to HND with ticket cost at 263
+Location at Day 16:  stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 17:  flying to PEK with ticket cost at 519
+Location at Day 18:  stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 19:  flying to SINTWO with ticket cost at 110
+ Flight cost: 1397 + cost of living: 1085 = 2518
+Result======
+Objective value: -1374Time 2.766 seconds.
+Location at Day 1: SIN stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 2: SIN stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 3: SIN stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 4: SIN stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 5: SIN stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 6: SIN stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 7: SIN stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 8: SIN stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 9: SIN stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 10: from SIN flying to PEK with ticket cost at 110
+Location at Day 11: from PEK flying to HND with ticket cost at 519
+Location at Day 12: from HND flying to KIX with ticket cost at 263
+Location at Day 13: from KIX flying to PVG with ticket cost at 235
+Location at Day 14: from PVG flying to SINTWO with ticket cost at 270
+Location at Day 15: SINTWO stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 16: SINTWO stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 17: SINTWO stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 18: SINTWO stay and incurring	daily cost 93 with negative satisfaction10
+Location at Day 19: SINTWO stay and incurring	daily cost 93 with negative satisfaction10
+ Flight cost: 1397 + cost of living: 0 = 3603
+Result======
+Objective value: 26Time 4.984 seconds.
+Location at Day 1: from SIN flying to PVG with ticket cost at 270
+Location at Day 2: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 3: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 4: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 5: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 6: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 7: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 8: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 9: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 10: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 11: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 12: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 13: from PVG flying to KIX with ticket cost at 235
+Location at Day 14: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 15: from KIX flying to HND with ticket cost at 263
+Location at Day 16: HND stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 17: from HND flying to PEK with ticket cost at 519
+Location at Day 18: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 19: from PEK flying to SINTWO with ticket cost at 110
+ Flight cost: 1397 + cost of living: 0 = 3603
+Result======
+Objective value: 26Time 5.063 seconds.
+Location at Day 1: from SIN flying to PVG with ticket cost at 270
+Location at Day 2: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 3: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 4: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 5: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 6: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 7: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 8: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 9: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 10: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 11: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 12: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 13: from PVG flying to KIX with ticket cost at 235
+Location at Day 14: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 15: from KIX flying to HND with ticket cost at 263
+Location at Day 16: HND stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 17: from HND flying to PEK with ticket cost at 519
+Location at Day 18: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 19: from PEK flying to SINTWO with ticket cost at 110
+ Flight cost: 1397 + cost of living: 1085 = 2518
+Result======
+Objective value: 110Time 7.672 seconds.
+Location at Day 1: from SIN flying to PEK with ticket cost at 110
+Location at Day 2: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 3: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 4: from PEK flying to HND with ticket cost at 519
+Location at Day 5: from HND flying to KIX with ticket cost at 263
+Location at Day 6: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 7: from KIX flying to PVG with ticket cost at 235
+Location at Day 8: from PVG flying to SINTWO with ticket cost at 270
+Location at Day 9: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 10: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 11: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 12: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 13: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 14: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 15: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 16: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 17: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 18: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 19: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+ Flight cost: 1397 + cost of living: 432 = 3171
+Result======
+Objective value: 155Time 7.906 seconds.
+Location at Day 1: from SIN flying to PEK with ticket cost at 110
+Location at Day 2: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 3: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 4: from PEK flying to HND with ticket cost at 519
+Location at Day 5: from HND flying to KIX with ticket cost at 263
+Location at Day 6: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 7: from KIX flying to PVG with ticket cost at 235
+Location at Day 8: from PVG flying to SINTWO with ticket cost at 270
+Location at Day 9: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 10: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 11: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 12: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 13: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 14: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 15: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 16: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 17: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 18: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 19: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+ Flight cost: 1397 + cost of living: 432 = 3171
+Result======
+Objective value: 455Time 6.422 seconds.
+Location at Day 1: SIN stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 2: SIN stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 3: SIN stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 4: SIN stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 5: SIN stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 6: SIN stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 7: SIN stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 8: SIN stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 9: SIN stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 10: from SIN flying to PEK with ticket cost at 110
+Location at Day 11: from PEK flying to HND with ticket cost at 519
+Location at Day 12: from HND flying to KIX with ticket cost at 263
+Location at Day 13: from KIX flying to PVG with ticket cost at 235
+Location at Day 14: from PVG flying to SINTWO with ticket cost at 270
+Location at Day 15: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 16: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 17: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 18: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 19: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+ Flight cost: 1397 + cost of living: 256 = 3347
+Result======
+Objective value: 445Time 4.703 seconds.
+Location at Day 1: from SIN flying to PEK with ticket cost at 110
+Location at Day 2: from PEK flying to HND with ticket cost at 519
+Location at Day 3: from HND flying to KIX with ticket cost at 263
+Location at Day 4: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 5: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 6: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 7: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 8: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 9: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 10: from KIX flying to PVG with ticket cost at 235
+Location at Day 11: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 12: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 13: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 14: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 15: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 16: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 17: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 18: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 19: from PVG flying to SINTWO with ticket cost at 270
+ Flight cost: 1397 + cost of living: 1120 = 2483
+Result======
+Objective value: 445Time 4.984 seconds.
+Location at Day 1: from SIN flying to PEK with ticket cost at 110
+Location at Day 2: from PEK flying to HND with ticket cost at 519
+Location at Day 3: from HND flying to KIX with ticket cost at 263
+Location at Day 4: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 5: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 6: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 7: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 8: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 9: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 10: from KIX flying to PVG with ticket cost at 235
+Location at Day 11: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 12: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 13: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 14: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 15: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 16: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 17: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 18: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 19: from PVG flying to SINTWO with ticket cost at 270
+ Flight cost: 1397 + cost of living: 1120 = 2517
+Result======
+Objective value: 440Time 1.921 seconds.
+Location at Day 1: from SIN flying to PVG with ticket cost at 270
+Location at Day 2: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 3: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 4: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 5: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 6: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 7: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 8: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 9: PVG stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 10: from PVG flying to KIX with ticket cost at 235
+Location at Day 11: from KIX flying to HKG with ticket cost at 181
+Location at Day 12: from HKG flying to PEK with ticket cost at 266
+Location at Day 13: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 14: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 15: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 16: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 17: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 18: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 19: from PEK flying to SINTWO with ticket cost at 110
+ Flight cost: 1062 + cost of living: 923 = 1985
+Result======
+Objective value: 440Time 1.609 seconds.
+Location at Day 1: from SIN flying to PEK with ticket cost at 110
+Location at Day 2: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 3: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 4: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 5: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 6: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 7: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 8: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 9: from PEK flying to HKG with ticket cost at 266
+Location at Day 10: from HKG flying to KIX with ticket cost at 181
+Location at Day 11: from KIX flying to PVG with ticket cost at 235
+Location at Day 12: PVG stay and incurring	daily cost 49 with negative satisfaction10
+Location at Day 13: PVG stay and incurring	daily cost 49 with negative satisfaction10
+Location at Day 14: PVG stay and incurring	daily cost 49 with negative satisfaction10
+Location at Day 15: PVG stay and incurring	daily cost 49 with negative satisfaction10
+Location at Day 16: PVG stay and incurring	daily cost 49 with negative satisfaction10
+Location at Day 17: PVG stay and incurring	daily cost 49 with negative satisfaction10
+Location at Day 18: PVG stay and incurring	daily cost 49 with negative satisfaction10
+Location at Day 19: from PVG flying to SINTWO with ticket cost at 270
+ Flight cost: 1062 + cost of living: 931 = 1993
+Result======
+Objective value: 440Time 1.109 seconds.
+Location at Day 1: from SIN flying to PEK with ticket cost at 110
+Location at Day 2: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 3: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 4: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 5: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 6: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 7: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 8: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 9: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 10: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 11: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 12: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 13: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 14: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 15: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 16: from PEK flying to PVG with ticket cost at 248
+Location at Day 17: from PVG flying to KIX with ticket cost at 235
+Location at Day 18: from KIX flying to HKG with ticket cost at 181
+Location at Day 19: from HKG flying to SINTWO with ticket cost at 170
+ Flight cost: 944 + cost of living: 975 = 1919
+Result======
+Objective value: 440Time 1.578 seconds.
+Location at Day 1: from SIN flying to PEK with ticket cost at 110
+Location at Day 2: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 3: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 4: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 5: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 6: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 7: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 8: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 9: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 10: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 11: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 12: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 13: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 14: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 15: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 16: from PEK flying to PVG with ticket cost at 248
+Location at Day 17: from PVG flying to KIX with ticket cost at 235
+Location at Day 18: from KIX flying to HKG with ticket cost at 181
+Location at Day 19: from HKG flying to SINTWO with ticket cost at 170
+ Flight cost: 944 + cost of living: 975 = 1919
+Result======
+Objective value: 390Time 1.797 seconds.
+Location at Day 1: from SIN flying to HKG with ticket cost at 170
+Location at Day 2: HKG stay and incurring	daily cost 75 with negative satisfaction10
+Location at Day 3: HKG stay and incurring	daily cost 75 with negative satisfaction10
+Location at Day 4: from HKG flying to KIX with ticket cost at 181
+Location at Day 5: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 6: from KIX flying to PVG with ticket cost at 235
+Location at Day 7: PVG stay and incurring	daily cost 100 with negative satisfaction10
+Location at Day 8: PVG stay and incurring	daily cost 100 with negative satisfaction10
+Location at Day 9: PVG stay and incurring	daily cost 100 with negative satisfaction10
+Location at Day 10: PVG stay and incurring	daily cost 100 with negative satisfaction10
+Location at Day 11: from PVG flying to PEK with ticket cost at 248
+Location at Day 12: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 13: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 14: from PEK flying to SINTWO with ticket cost at 110
+Location at Day 15: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 16: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 17: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 18: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 19: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+ Flight cost: 944 + cost of living: 1029 = 1973
+Result======
+Objective value: 390Time 2 seconds.
+Location at Day 1: from SIN flying to HKG with ticket cost at 170
+Location at Day 2: HKG stay and incurring	daily cost 75 with negative satisfaction10
+Location at Day 3: HKG stay and incurring	daily cost 75 with negative satisfaction10
+Location at Day 4: from HKG flying to KIX with ticket cost at 181
+Location at Day 5: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 6: from KIX flying to PVG with ticket cost at 235
+Location at Day 7: PVG stay and incurring	daily cost 100 with negative satisfaction10
+Location at Day 8: PVG stay and incurring	daily cost 100 with negative satisfaction10
+Location at Day 9: PVG stay and incurring	daily cost 100 with negative satisfaction10
+Location at Day 10: PVG stay and incurring	daily cost 100 with negative satisfaction10
+Location at Day 11: from PVG flying to PEK with ticket cost at 248
+Location at Day 12: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 13: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 14: from PEK flying to SINTWO with ticket cost at 110
+Location at Day 15: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 16: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 17: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 18: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 19: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+ Flight cost: 944 + cost of living: 1029 = 1973
+Result======
+Objective value: 390Time 1.828 seconds.
+Result======
+Objective value: 390Time 2.062 seconds.
+Location at Day 1: from SIN flying to HKG with ticket cost at 170
+Location at Day 2: HKG stay and incurring	daily cost 75 with negative satisfaction10
+Location at Day 3: HKG stay and incurring	daily cost 75 with negative satisfaction10
+Location at Day 4: from HKG flying to KIX with ticket cost at 181
+Location at Day 5: KIX stay and incurring	daily cost 80 with negative satisfaction10
+Location at Day 6: from KIX flying to PVG with ticket cost at 235
+Location at Day 7: PVG stay and incurring	daily cost 100 with negative satisfaction10
+Location at Day 8: PVG stay and incurring	daily cost 100 with negative satisfaction10
+Location at Day 9: PVG stay and incurring	daily cost 100 with negative satisfaction10
+Location at Day 10: PVG stay and incurring	daily cost 100 with negative satisfaction10
+Location at Day 11: from PVG flying to PEK with ticket cost at 248
+Location at Day 12: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 13: PEK stay and incurring	daily cost 48 with negative satisfaction10
+Location at Day 14: from PEK flying to SINTWO with ticket cost at 110
+Location at Day 15: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 16: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 17: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 18: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+Location at Day 19: SINTWO stay and incurring	daily cost 0 with negative satisfaction10
+ Flight cost: 944 + cost of living: 1029 = 1973
+ Budget = 27
+Result======
+Objective value: 150Time 1.031 seconds.
+Location at Day 1: SIN stay and incurring	daily cost 0
+Location at Day 2: SIN stay and incurring	daily cost 0
+Location at Day 3: SIN stay and incurring	daily cost 0
+Location at Day 4: from SIN flying to HKG with ticket cost at 170
+Location at Day 5: HKG stay and incurring	daily cost 75
+Location at Day 6: HKG stay and incurring	daily cost 75
+Location at Day 7: from HKG flying to KIX with ticket cost at 181
+Location at Day 8: KIX stay and incurring	daily cost 80
+Location at Day 9: from KIX flying to PVG with ticket cost at 235
+Location at Day 10: PVG stay and incurring	daily cost 100
+Location at Day 11: PVG stay and incurring	daily cost 100
+Location at Day 12: PVG stay and incurring	daily cost 100
+Location at Day 13: PVG stay and incurring	daily cost 100
+Location at Day 14: from PVG flying to PEK with ticket cost at 248
+Location at Day 15: PEK stay and incurring	daily cost 48
+Location at Day 16: PEK stay and incurring	daily cost 48
+Location at Day 17: from PEK flying to SINTWO with ticket cost at 110
+Location at Day 18: SINTWO stay and incurring	daily cost 0
+Location at Day 19: SINTWO stay and incurring	daily cost 0
+ Flight cost: 944 + cost of living: 1029 = 1973
+ Left Budget = 27
+Result======
+Objective value: 150Time 0.5 seconds.
+Location at Day 1: from SIN flying to PEK with ticket cost at 110
+Location at Day 2: PEK stay and incurring	daily cost 48
+Location at Day 3: PEK stay and incurring	daily cost 48
+Location at Day 4: from PEK flying to PVG with ticket cost at 248
+Location at Day 5: PVG stay and incurring	daily cost 100
+Location at Day 6: PVG stay and incurring	daily cost 100
+Location at Day 7: PVG stay and incurring	daily cost 100
+Location at Day 8: PVG stay and incurring	daily cost 100
+Location at Day 9: from PVG flying to KIX with ticket cost at 235
+Location at Day 10: KIX stay and incurring	daily cost 80
+Location at Day 11: from KIX flying to HKG with ticket cost at 181
+Location at Day 12: HKG stay and incurring	daily cost 75
+Location at Day 13: HKG stay and incurring	daily cost 75
+Location at Day 14: from HKG flying to SINTWO with ticket cost at 170
+Location at Day 15: SINTWO stay and incurring	daily cost 0
+Location at Day 16: SINTWO stay and incurring	daily cost 0
+Location at Day 17: SINTWO stay and incurring	daily cost 0
+Location at Day 18: SINTWO stay and incurring	daily cost 0
+Location at Day 19: SINTWO stay and incurring	daily cost 0
+ Flight cost: 944 + cost of living: 1029 = 1973
+ Left Budget = 27
