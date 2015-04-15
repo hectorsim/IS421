@@ -4,6 +4,10 @@ $(function() {
 	amount = $("#satisfactionAmount"),
 	tips = $(".validateTips");
 	
+	$( "#startLocation" ).selectmenu();
+	$( "#locationName" ).selectmenu();
+	$( "#processingOptions").buttonset();
+	
 	// Validating Fields
 	function updateTips(t) {
 		tips.text(t).addClass("ui-state-highlight").show();
@@ -108,16 +112,6 @@ $(function() {
 			amount.val(ui.value);
 		}
 	});
-	
-	// Custom Select
-	 $(".custom-select").each(function(){
-		$(this).wrap( "<span class='select-wrapper'></span>" );
-		$(this).after("<span class='holder'></span>");
-	});
-	$(".custom-select").change(function(){
-		var selectedOption = $(this).find(":selected").text();
-		$(this).next(".holder").text(selectedOption);
-	}).trigger('change');
 	
 	// Checkbox for select destination
 	$("#isDestionation").click(function() {

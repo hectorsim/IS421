@@ -13,11 +13,15 @@ public class Graph {
 	/**
 	 * Hash that contains vertices
 	 */
-	HashMap<Integer, Vertex> vertices;
-	
+	public HashMap<Integer, Vertex> vertices;
+	/**
+	 * Get start location
+	 */
+	public int startLocationId;
 	/**
 	 * Constructor to initialize the graph object
 	 */
+	
 	public Graph() {
 		this.vertices = new HashMap<Integer, Vertex>();
 	}
@@ -72,6 +76,30 @@ public class Graph {
 		this.vertices.remove(key);
 	}
 	
+	/**
+	 * Get start location id
+	 * @return
+	 */
+	public int getStartLocationId() {
+		return startLocationId;
+	}
+
+	/**
+	 * Get the vertex for the start locatio
+	 * @return
+	 */
+	public Vertex getStartVertex() {
+		return this.vertices.get(this.startLocationId);
+	}
+	
+	/**
+	 * Set the start location id
+	 * @param startLocationId
+	 */
+	public void setStartLocationId(int startLocationId) {
+		this.startLocationId = startLocationId;
+	}
+
 	/**
 	 * Print out graph data structure
 	 */

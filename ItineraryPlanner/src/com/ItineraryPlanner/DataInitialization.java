@@ -3,8 +3,6 @@
  */
 package com.ItineraryPlanner;
 
-import java.io.File;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -33,19 +31,25 @@ public class DataInitialization implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent arg0) {
 		// TODO Auto-generated method stub
 		System.out.println("DATA INITIALIZATION PROCESSING...");
+		TimeTracker timer = new TimeTracker();
 		
 		ServletContext servletContext = arg0.getServletContext();
-		String contextPath = servletContext.getRealPath(File.separator);
+		String contextPath = servletContext.getRealPath(Constants.FILESEPARATOR);
 		
 		// Formatting for raw data into proper data
 		JSONObject rawData = SystemFactory.datRetrieval(contextPath);
+		timer.addLap("Retrieval of data from DAT file");
 		
 		// Initialize raw data
 		SystemFactory.formatData(rawData);
-		
-		System.out.println(Constants.GRAPH.toString());
+		timer.addLap("Initialization of all data");
 		
 		System.out.println(Constants.GRAPH.toJSON().toJSONString());
+		System.out.println(Constants.DEFAULT_LOCATION_SATISFACTION);
+		System.out.println();
+		
+		System.out.println("DATA INITIALIZATION Completed");
+		System.out.println(timer.timeToString());
 	}
 
 }

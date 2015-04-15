@@ -20,6 +20,8 @@ public class Vertex {
 	String locationName;
 	double livingCost;
 	HashMap<Integer, Double[]> adjList;
+	
+	int noOfDays;
 	boolean isVisited;
 	
 	/**
@@ -35,6 +37,8 @@ public class Vertex {
 		this.locationName = locationName;
 		this.livingCost = livingCost;
 		this.adjList = new HashMap<Integer, Double[]>();
+		
+		noOfDays = 0;
 		this.isVisited = false;
 	}
 	
@@ -52,6 +56,8 @@ public class Vertex {
 		this.locationName = locationName;
 		this.livingCost = livingCost;
 		this.adjList = new HashMap<Integer, Double[]>();
+		
+		noOfDays = 0;
 		this.isVisited = isVisited;
 	}
 
@@ -124,7 +130,7 @@ public class Vertex {
 	 * Get all adjacent vertex
 	 * @return
 	 */
-	public HashMap<Integer, Double[]> getVertices() {
+	public HashMap<Integer, Double[]> getAdjList() {
 		return this.adjList;
 	}
 
@@ -153,6 +159,22 @@ public class Vertex {
 		this.adjList.remove(id);
 	}
 	
+	/**
+	 * Get the number of days to stay in the vertex
+	 * @return
+	 */
+	public int getNoOfDays() {
+		return noOfDays;
+	}
+
+	/**
+	 * Set the number of days to stay in the vertex
+	 * @param noOfDays
+	 */
+	public void setNoOfDays(int noOfDays) {
+		this.noOfDays = noOfDays;
+	}
+
 	/**
 	 * Get the status whether is the vertex visited
 	 * @return

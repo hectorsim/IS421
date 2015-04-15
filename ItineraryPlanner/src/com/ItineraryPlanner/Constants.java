@@ -1,11 +1,23 @@
 package com.ItineraryPlanner;
+import java.io.File;
+
 import org.json.simple.JSONObject;
 
 import com.entity.Graph;
 
 public class Constants {
+	public static final String FILESEPARATOR = File.separator;
+	/**
+	 * Data path for heuristics
+	 */
 	public final static String DATAPATH = "data\\";
 	public final static String DATSTRING = "flightdata.dat";
+	
+	/**
+	 * Data path for OPL
+	 */
+	public static final String MODSTRING = "warehouse.mod";
+	public static final String DATSTRING2 = "simpleWarehouse.dat";
 	
 	// Retrieval of data must be in sequence according to .dat file
 	public final static String[] PARAMS = {
