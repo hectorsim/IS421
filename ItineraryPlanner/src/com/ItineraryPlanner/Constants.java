@@ -25,10 +25,9 @@ public class Constants {
 	public final static double maxValue = 99999.0;
 	
 	/**
-	 * Constant Data Variables
+	 * Constant Data Variables template
 	 */
 	public static Graph GRAPH;
 	public static JSONObject DEFAULT_LOCATION_SATISFACTION;
-	
 	public static int DECREASE_IN_UNIT;
 }

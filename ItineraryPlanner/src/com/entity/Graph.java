@@ -1,5 +1,6 @@
 package com.entity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -21,6 +22,16 @@ public class Graph {
 		this.vertices = new HashMap<Integer, Vertex>();
 	}
 	
+	public ArrayList<Vertex> getListOfVertex() {
+		ArrayList<Vertex> nameList = new ArrayList<Vertex>();
+		
+		Iterator<Vertex> iter = this.vertices.values().iterator();
+		while (iter.hasNext()) {
+			nameList.add(iter.next());
+		}
+		
+		return nameList;
+	}
 	/**
 	 * get the vertex from the graph
 	 * @param key

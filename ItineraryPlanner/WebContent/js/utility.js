@@ -30,7 +30,7 @@ $(function() {
 		valid = checkLocation();
 		if (valid) {
 			$("#locations tbody").append("<tr>" +
-			"<td>" + location.val() + "</td>" +
+			"<td>" + "<input type='checkbox' name='locationList' value='" + location.val() + ":" + amount.val() + "' checked hidden>" + $("#locationName option:selected").text() + "</td>" +
 			"<td>" + amount.val() + "</td>" +
 			"<td></td>" +
 			"</tr>");
@@ -118,4 +118,14 @@ $(function() {
 		var selectedOption = $(this).find(":selected").text();
 		$(this).next(".holder").text(selectedOption);
 	}).trigger('change');
+	
+	// Checkbox for select destination
+	$("#isDestionation").click(function() {
+		if (!$(this).is(':checked')) {
+			$("#addLocation").hide();
+        } else {
+        	$("#addLocation").show();
+        }
+        
+	})
 });
