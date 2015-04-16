@@ -1,5 +1,7 @@
 package com.opl;
 
+import org.json.simple.JSONObject;
+
 import com.ItineraryPlanner.Constants;
 
 import ilog.cplex.IloCplex;
@@ -13,7 +15,9 @@ import ilog.opl.IloOplSettings;
 
 public class OPLFactory {
 	
-	public static void runOPL(String context) throws Exception {
+	public static JSONObject runOPL(String context) throws Exception {
+		JSONObject results = new JSONObject();
+		
 		String dataDir = context + Constants.DATAPATH;
 		String modString = Constants.MODSTRING;
 		String datString = Constants.DATSTRING2;
@@ -59,5 +63,7 @@ public class OPLFactory {
 		}
 		
 		oplF.end();
+		
+		return results;
 	}
 }

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.ItineraryPlanner.Constants;
@@ -128,11 +129,19 @@ public class User {
 		this.satisfactionLevels = satisfactionLevels;
 	}
 	
+	/**
+	 * Convert the graph object of the user to String format
+	 * @return
+	 */
 	public String graphToString() {
 		return this.graph.toString();
 	}
 	
 
+	/**
+	 * Calculate and retrieve the total cost for the itinerary
+	 * @return
+	 */
 	public double getTotalCost() {
 		double totalCost = 0.0;
 		int day = 0;
@@ -155,6 +164,10 @@ public class User {
 		return totalCost;
 	}
 	
+	/**
+	 * Calculate and get the total satisfaction for the itinerary
+	 * @return
+	 */
 	public int getTotalSatisfaction() {
 		int totalSatistaction = 0;
 		
@@ -170,16 +183,9 @@ public class User {
 		return totalSatistaction;
 	}
 	
-	public String[] getPathString() {
-		String[] pathString = new String[path.size()];
-		
-		for (int i = 0; i < path.size(); i++) {
-			pathString[i] = path.get(i).getLocationName();
-		}
-		
-		return pathString;
-	}
-	
+	/**
+	 * Convert object to string
+	 */
 	public String toString() {
 		String text = "";
 		
@@ -200,6 +206,10 @@ public class User {
 		return text;
 	}
 	
+	/**
+	 * Convert object to JSONObject
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public JSONObject toJSON() {
 		JSONObject json_User = new JSONObject();
@@ -219,5 +229,47 @@ public class User {
 		json_User.put("GraphDetails", this.graph.toJSON());
 		
 		return json_User;
+	}
+
+	/**
+	 * Generate overall results for the optimal path for user iitnerary
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public JSONObject generateResults() {
+		JSONObject jsonHeuristicResults = new JSONObject();
+		
+		JSONArray jsonPath = new JSONArray();
+		int day = 0;
+		for (int i = 0; i < path.size(); i++) {
+			JSONObject jsonVertex = new JSONObject();
+			
+			Vertex current = path.get(i);
+			jsonVertex.put("location", current.getLocationName());
+			jsonVertex.put("costOfLiving", "$" + current.getLivingCost() + " per day");
+			jsonVertex.put("noOfDaysStay", current.getNoOfDays() + " Days");
+			
+			day += current.getNoOfDays();
+			
+			if (i < path.size()-1) {
+				Vertex next = path.get(i+1);
+				HashMap<Integer, Double[]> adjList = current.getAdjList();
+				
+				Double[] priceList = adjList.get(next.getId());
+				double flightPrice = priceList[day];
+				
+				jsonVertex.put("flightPrice", "$" + flightPrice);
+			} else {
+				jsonVertex.put("flightPrice", "$0");
+			}
+			
+			jsonPath.add(jsonVertex);
+		}
+		
+		jsonHeuristicResults.put("path", jsonPath);
+		jsonHeuristicResults.put("totalCost", getTotalCost());
+		jsonHeuristicResults.put("totalSatisfaction", getTotalSatisfaction());
+		
+		return jsonHeuristicResults;
 	}
 }
