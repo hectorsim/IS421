@@ -50,12 +50,10 @@ public class OPLFactory {
 			String time = cal.get(Calendar.HOUR_OF_DAY) + "_"
 					+ cal.get(Calendar.MINUTE) + "_" + cal.get(Calendar.SECOND);
 			String datString = "travel-" + date + "T" + time + ".dat";
-			System.out.println("@@@@@ "+datString);
 			String outputPath = OPLFactory.class.getResource(
 					Constants.OPL_DATADIR).getPath()
 					+ "/" + datString;
 			File file = new File(outputPath);
-			System.out.println(file.getName());
 			if (!file.exists()) {
 				file.createNewFile();
 			}
