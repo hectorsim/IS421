@@ -3,7 +3,10 @@
  */
 package com.ItineraryPlanner;
 
-import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -33,19 +36,26 @@ public class DataInitialization implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent arg0) {
 		// TODO Auto-generated method stub
 		System.out.println("DATA INITIALIZATION PROCESSING...");
+		TimeTracker timer = new TimeTracker();
 		
-		ServletContext servletContext = arg0.getServletContext();
-		String contextPath = servletContext.getRealPath(File.separator);
-		
+//		ServletContext servletContext = arg0.getServletContext();
+//		System.out.println(this.getClass().getResource("/data").getPath());
+//		String contextPath = servletContext.getRealPath(Constants.FILESEPARATOR);
+
 		// Formatting for raw data into proper data
-		JSONObject rawData = SystemFactory.datRetrieval(contextPath);
+		JSONObject rawData = SystemFactory.datRetrieval();
+		timer.addLap("Retrieval of data from DAT file");
 		
 		// Initialize raw data
 		SystemFactory.formatData(rawData);
-		
-		System.out.println(Constants.GRAPH.toString());
+		timer.addLap("Initialization of all data");
 		
 		System.out.println(Constants.GRAPH.toJSON().toJSONString());
+		System.out.println(Constants.DEFAULT_LOCATION_SATISFACTION);
+		System.out.println();
+		
+		System.out.println("DATA INITIALIZATION Completed");
+		System.out.println(timer.timeToString());
 	}
 
 }

@@ -32,50 +32,6 @@
 /*********************************************************************************/
 /***************************** General Style *************************************/
 /*********************************************************************************/
-.select-wrapper {
-	display: inline-block;
-	border-bottom: 1px solid #d8d8d8;
-	background: url("../images/arrow.png") no-repeat right center;
-	cursor: pointer;
-}
-
-.select-wrapper, .select-wrapper select {
-	width: 420px;
-	height: 26px;
-	line-height: 26px;
-}
-
-.select-wrapper:hover {
-	background: url("../images/arrow_hover.png") no-repeat right;
-	border-color: #239fdb;
-}
-
-.select-wrapper .holder {
-	display: block;
-	margin: 0 35px 0 5px;
-	white-space: nowrap;
-	overflow: hidden;
-	cursor: pointer;
-	position: relative;
-	z-index: -1;
-	top: 3px;
-}
-
-.select-wrapper select {
-	margin: 0;
-	position: absolute;
-	z-index: 2;
-	cursor: pointer;
-	outline: none;
-	opacity: 0;
-	/* CSS hacks for older browsers */
-	_noFocusLine: expression(this.hideFocus = true);
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	filter: alpha(opacity = 0);
-	-khtml-opacity: 0;
-	-moz-opacity: 0;
-}
-
 select {
 	font-size: 1em;
 }
@@ -203,6 +159,12 @@ h1 {
 	color: black !important;
 }
 
+.togglePositioning {
+	position: absolute;
+	right:0;
+	top:0;
+	margin: 50px;
+}
 /*********************************************************************************/
 /********************************* Container *************************************/
 /*********************************************************************************/

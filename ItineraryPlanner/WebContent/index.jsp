@@ -1,4 +1,4 @@
-<%@ page import="com.ItineraryPlanner.Constants,com.entity.Graph,com.entity.Vertex,java.util.ArrayList;" language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="com.ItineraryPlanner.Constants,com.entity.Graph,com.entity.Vertex,java.util.ArrayList" language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -25,26 +25,28 @@
 	<div class="header"></div>
 
 	<form method="post" action="itineraryplanning.do">
-
+		<div id="processingOptions" class="togglePositioning">
+			<input type="radio" value="heuristic" id="heuristicTab" name="processMethod" checked><label for="heuristicTab">Heuristic</label>
+    		<input type="radio" value="opl" id="oplTab" name="processMethod""><label for="oplTab">OPL</label>
+		</div>
 		<div class="content-container">
 			<div id="parameters">
 				<h1>Parameters</h1>
 				<label for="budget">Fixed Budget : $</label>
-				<input id="budget" name="budget" type="text" value="" />
+				<input id="budget" name="budget" type="text" value="3000" />
 				<br/><br/>
 				<label for="noOfDays">Number of days trip : </label>
-				<input id="noOfDays" name="noOfDays" type="text" value="" />
+				<input id="noOfDays" name="noOfDays" type="text" value="10" />
 			</div>
 
 			<div id="location-contain">
 				<h1>Starting Location</h1>
-				<select id="startLocation" name="startLocation"
-					class="custom-select">
+				<select id="startLocation" name="startLocation">
 					<option value="">Select a country</option>
 					<%
 						for(Vertex i : locationList) {
 					%>
-						<option value="<%=i.getId()%>"><%=i.getLocationName() %></option>
+						<option value="<%=i.getId() %>"><%=i.getLocationName() %></option>
 					<%
 						}
 					%>
@@ -85,7 +87,7 @@
 			<fieldset>
 				<label id="lblLocationName" for="locationName">Name of
 					Country : <label> <select name="locationName"
-						id="locationName" class="custom-select">
+						id="locationName">
 							<option value="">Select a country</option>
 							<%
 								for(Vertex i : locationList) {

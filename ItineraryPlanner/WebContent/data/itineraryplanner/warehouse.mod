@@ -1,8 +1,3 @@
-/*********************************************
- * OPL 12.6.0.0 Model
- * Author: Leon
- * Creation Date: Mar 25, 2015 at 6:18:24 PM
- *********************************************/
 string startlocation = ...;
 string endlocation = ...;
 int lengthOfLocations = ...;

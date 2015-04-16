@@ -5,27 +5,34 @@ import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.entity.Graph;
+import com.entity.User;
 import com.entity.Vertex;
 
 public class SystemFactory {
 	
 	@SuppressWarnings("unchecked")
-	public static JSONObject datRetrieval(String context) {
-		String datString = Constants.DATSTRING;
-		String dataPath = Constants.DATAPATH;
+	public static JSONObject datRetrieval() {
+		String datString = Constants.FLIGHTDATSTRING;
+		String dataPath = Constants.FLIGHTDATAPATH;
 		String[] params = Constants.PARAMS;
 		
 		JSONObject data = new JSONObject();
 		
 		try {
-			DataInputStream input = new DataInputStream(new FileInputStream(context + dataPath + datString));
+//			DataInputStream input = new DataInputStream(new FileInputStream(context + dataPath + datString));
+//			BufferedReader datReader = new BufferedReader(new InputStreamReader(input));
+			
+			InputStream input = SystemFactory.class.getResourceAsStream(dataPath+datString);
 			BufferedReader datReader = new BufferedReader(new InputStreamReader(input));
 			
 			boolean isIncluded = false;
@@ -99,16 +106,16 @@ public class SystemFactory {
 			double costOfLiving = Double.valueOf(livingCostArray.split(",")[i]);
 			
 			// Creation of vertex according to the given data
-			Vertex vertex = new Vertex(i, locationArray[i], 
+			Vertex vertex = new Vertex((i+1), locationArray[i], 
 					LocationMatch.getLocationName(locationArray[i]), costOfLiving);
 			
 			// Add vertex into the graph
-			graph.addVertex(i, vertex);
+			graph.addVertex(vertex.getId(), vertex);
 			
 			// Retrieve Satisfaction
 			String SatisfactionArray = removeBrackets((String) rawData.get(params[Constants.INDEX_FOR_SATISFACTION]));
 			int location_Satis = Integer.valueOf(SatisfactionArray.split(",")[i]);
-			json_Satis.put(locationArray[i], location_Satis);
+			json_Satis.put(vertex.getId(), location_Satis);
 		}
 
 		// Format for flight path and flight cost from location l to location j
@@ -120,6 +127,8 @@ public class SystemFactory {
 		
 		Constants.GRAPH = graph;
 		Constants.DEFAULT_LOCATION_SATISFACTION = json_Satis;
+		
+		Constants.DECREASE_IN_UNIT = Integer.valueOf((String) rawData.get(params[Constants.UNIT_DECREASE]));
 	}
 	
 	public static Graph formatFlightcost(Graph graph, String[] locationArray, String[] flightDetailsArray) {
@@ -178,5 +187,64 @@ public class SystemFactory {
 		}
 		
 		return value;
+	}
+	
+	/**
+	 * Default initialization of User
+	 * @param budget
+	 * @param noOfStays
+	 * @param startLocation
+	 * @return User
+	 */
+	public static User intializesUser(double budget, int noOfStays, int startLocation) {
+		// Get default satisfaction level
+		Graph graph = Constants.GRAPH;
+		graph.setStartLocationId(startLocation);
+		
+		return new User(budget, noOfStays, getDefaultSatisfactionLevel(), graph);
+	}
+	
+	/**
+	 * Initialization of user with their preferences
+	 * @param budget
+	 * @param noOfStays
+	 * @param startLocation
+	 * @param preferences
+	 * @return User
+	 */
+	public static User intializesUser(double budget, int noOfStays, int startLocation, String[] preferences) {
+		Graph graph = new Graph();
+		
+		HashMap<Integer, Integer> satisfactionValue = new HashMap<Integer, Integer>();
+		
+		// Set start location
+		Vertex startVertex = Constants.GRAPH.getVertex(startLocation);
+		satisfactionValue.put(startVertex.getId(), 0);
+		
+		graph.addVertex(startVertex.getId(), startVertex);
+		graph.setStartLocationId(startVertex.getId());
+		
+		for (String value : preferences) {
+			String[] values = value.split(":");
+			satisfactionValue.put(Integer.valueOf(values[0]), Integer.valueOf(values[1]));
+			
+			Vertex v = Constants.GRAPH.getVertex(Integer.valueOf(values[0]));
+			graph.addVertex(v.getId(), v);
+		}
+		
+		return new User(budget, noOfStays, satisfactionValue, graph);
+	}
+	
+	public static HashMap<Integer, Integer> getDefaultSatisfactionLevel() {
+		HashMap<Integer, Integer> satisfactionValue = new HashMap<Integer, Integer>();
+		
+		 @SuppressWarnings("unchecked")
+		Iterator<Entry<Integer,Integer>> iter = Constants.DEFAULT_LOCATION_SATISFACTION.entrySet().iterator();
+		 while(iter.hasNext()) {
+			 Map.Entry<Integer,Integer> values = iter.next();
+			 satisfactionValue.put(values.getKey(), values.getValue());
+		 }
+		 
+		 return satisfactionValue;
 	}
 }

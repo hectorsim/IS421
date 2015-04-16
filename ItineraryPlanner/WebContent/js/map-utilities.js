@@ -6,53 +6,69 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// Data retrieved from server
-var nodes = {
-	"locations":["Changi Airport", 
-		"Kuala Lumpur International Airport", 
-		"Ho Chi Minh City Airport", 
-		"Hong Kong International Airport", 
-		"Jakarta Airport"], 
-	"path":["Changi Airport", 
-		"Kuala Lumpur International Airport", 
-		"Ho Chi Minh City Airport", 
-		"Hong Kong International Airport", 
-		"Jakarta Airport", "Changi Airport"]};
-var polyline = L.polyline([], {color: 'red'}).addTo(map);
-
-initializeGraph(nodes, function(markers, path) {
+// Trigger for user interface set up
+initializeGraph(function(markers, path) {
+	var count = 1;
+	
+	// For every path in the graph
 	for (var index in path) {
-		polyline.addLatLng(markers[path[index]]).bindPopup("<b>$200</b>");
+		if (count < path.length) {
+			var currentLocation = path[index];
+			var nextLocation = path[parseInt(index) + 1];
+			
+			// Connect current location to the next location
+			var pointList = [markers[currentLocation.location], markers[nextLocation.location]];
+			var flightPath = new L.Polyline(pointList, {
+			    color: 'black',
+			    weight: 3,
+			    opacity: 0.5,
+			    smoothFactor: 1
+			}).bindPopup("<b>Flight Cost: </b>" + currentLocation.flightPrice);
+			
+			flightPath.addTo(map);
+			count = count + 1;
+		}
 	}
 });
 
-function initializeGraph(nodes, callback) {
-	var count = 1;
-	var markers = {};
-	
-	for (var index in nodes.locations) {
-		var nodeName = nodes.locations[index];
+// Initialization of network onto the map
+function initializeGraph(callback) {
+	$.get('itineraryplanning.do', function (results) {  
+		var result_json = jQuery.parseJSON(results);
+		console.log("Results Output : " + JSON.stringify(result_json));
 		
-		addLocationMarker(nodeName, function(location, marker) {
-			markers[location] = marker.getLatLng();
+		var nodes = result_json.path;
+		var count = 1;
+		var markers = {};
+		
+		for (var index in nodes) {
+			var nodeDetail = nodes[index];
 			
-			if (count == nodes.locations.length) {
-				callback(markers, nodes.path);
-			} else {
-				count = count + 1;
-			}
-		});	
-	}
+			addLocationMarker(nodeDetail, function(location, marker) {
+				markers[location] = marker.getLatLng();
+				
+				if (count == nodes.length) {
+					callback(markers, nodes);
+				} else {
+					count = count + 1;
+				}
+			});
+		}
+	});
 };
 
-function addLocationMarker(location, callback) {
-	$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + location, function(data) {
-		var items = [];
+// Add location marker on the map after google search
+function addLocationMarker(locationDetail, callback) {
+	var nodeName = locationDetail.location; 
+	
+	$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + nodeName, function(data) {
 		
 		$.each(data, function(key, val) {
 			var marker = L.marker([ val.lat ,  val.lon ]).addTo(map);
-			marker.bindPopup("<b>" + val.display_name + "</b>");
-			callback(location, marker);
+			marker.bindPopup("<b>Location: </b>" + val.display_name + "<br/>" +
+					"<b>Cost of Living: </b>" +  locationDetail.costOfLiving + "<br/>" +
+					"<b>Number of stays: </b>" + locationDetail.noOfDaysStay);
+			callback(nodeName, marker);
 			return false;
 		});
 	});

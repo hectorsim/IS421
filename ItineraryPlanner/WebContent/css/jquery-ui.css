@@ -719,6 +719,7 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner {
 }
 
 .ui-selectmenu-open {
+	z-index: 1001;
 	display: block;
 }
 
@@ -728,6 +729,9 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner {
 	position: relative;
 	text-decoration: none;
 	cursor: pointer;
+	background: transparent !important;
+  	border: none !important;
+  	border-bottom: 1px solid #444444 !important;
 }
 
 .ui-selectmenu-button span.ui-icon {
@@ -1026,8 +1030,8 @@ body .ui-tooltip {
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active
 	{
-	border: 1px solid #26b3f7;
-	background: #0972a5
+	border: 1px solid #ffffff;
+	background: #ffffff
 		url("images/ui-bg_highlight-hard_20_0972a5_1x100.png") 50% 50%
 		repeat-x;
 	font-weight: normal;
