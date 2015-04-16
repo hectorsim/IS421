@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 
-import com.ItineraryPlanner.Constants;
+import com.ItineraryPlanner.DataParameters;
 import com.ItineraryPlanner.SystemFactory;
 import com.entity.User;
 import com.opl.OPLFactory;
@@ -79,9 +79,11 @@ public class PlannerServlet extends HttpServlet {
 		if (processingOption.equalsIgnoreCase("heuristic")) {
 			results = runHeuristic(user);
 		} else {
+			
 			ArrayList<String> destinations = new ArrayList<String>();
+			
 			if (selectedLocations == null) {
-				destinations = Constants.ALL_DESTINATIONS;
+				destinations = DataParameters.getAllLocations();
 			} else {
 				destinations = new ArrayList<String>(
 						Arrays.asList(selectedLocations));
@@ -111,6 +113,7 @@ public class PlannerServlet extends HttpServlet {
 		
 		File datFile = OPLFactory.generateDat(tripLength, budget, selectedDestination,
 				startDestination);
+		
 		System.out.println(datFile.getAbsolutePath());
 		try {
 			OPLFactory.runOPL(datFile);

@@ -24,34 +24,7 @@ public class Constants {
 	public static final String OPL_DATADIR = "/itineraryplanner/";
 	public static final String OPL_MODSTRING = "warehouse.mod";
 	public static final String OPL_DATSTRING = "travel_main.dat";
-	
-	public static final ArrayList<String> ALL_DESTINATIONS = new ArrayList<String>() {
-		{
-			add("SIN");
-			add("PEK");
-			add("PVG");
-			add("HKG");
-			add("KIX");
-			add("HND");
-			add("ICN");
-			add("KHH");
-			add("TPE");
-			add("PNH");
-			add("REP");
-			add("DPS");
-			add("CGK");
-			add("KUL");
-			add("PEN");
-			add("RGN");
-			add("MNL");
-			add("BKK");
-			add("HKT");
-			add("HAN");
-			add("SGN");
-		}
-	};
 
-	
 	// Retrieval of data must be in sequence according to .dat file
 	public final static String[] PARAMS = {
 		"Locations",
