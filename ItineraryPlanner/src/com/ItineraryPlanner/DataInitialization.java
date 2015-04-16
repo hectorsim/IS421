@@ -3,12 +3,6 @@
  */
 package com.ItineraryPlanner;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-
-import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -56,6 +50,11 @@ public class DataInitialization implements ServletContextListener {
 		
 		System.out.println("DATA INITIALIZATION Completed");
 		System.out.println(timer.timeToString());
+		
+		testingPlatform();
 	}
 
+	public void testingPlatform() {
+		System.out.println(DataParameters.getAllLocations());
+	}
 }

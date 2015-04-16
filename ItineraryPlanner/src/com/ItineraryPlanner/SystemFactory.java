@@ -1,8 +1,6 @@
 package com.ItineraryPlanner;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -107,7 +105,7 @@ public class SystemFactory {
 			
 			// Creation of vertex according to the given data
 			Vertex vertex = new Vertex((i+1), locationArray[i], 
-					LocationMatch.getLocationName(locationArray[i]), costOfLiving);
+					DataParameters.getLocationName(locationArray[i]), costOfLiving);
 			
 			// Add vertex into the graph
 			graph.addVertex(vertex.getId(), vertex);

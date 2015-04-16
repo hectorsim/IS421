@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.ItineraryPlanner.Constants;
+import com.ItineraryPlanner.DataParameters;
 import com.opencsv.CSVReader;
 
 public class PriceMatrix {
 
 	private String valueDelimiter = " ";
-	private final int totalDestinations = 21;
+	private final int totalDestinations = DataParameters.getNumberOfLocations();
 
 	private int[][] priceMatrix = null;
 	private ArrayList<String> countryOrder;
@@ -26,60 +27,6 @@ public class PriceMatrix {
 		this.airportDestinations = airportDestinations;
 		this.numberOfDestinations = airportDestinations.size() + 1;
 	}
-
-	@SuppressWarnings("serial")
-	private HashMap<String, Integer> countryCost = new HashMap<String, Integer>() {
-		{
-			put("SIN", 93);
-			put("PEK", 48);
-			put("PVG", 48);
-			put("HKG", 75);
-			put("KIX", 80);
-			put("HND", 80);
-			put("ICN", 82);
-			put("KHH", 57);
-			put("TPE", 57);
-			put("PNH", 57);
-			put("REP", 57);
-			put("DPS", 39);
-			put("CGK", 39);
-			put("KUL", 45);
-			put("PEN", 45);
-			put("RGN", 53);
-			put("MNL", 40);
-			put("BKK", 46);
-			put("HKT", 46);
-			put("HAN", 41);
-			put("SGN", 41);
-		}
-	};
-
-	@SuppressWarnings("serial")
-	private HashMap<String, Integer> countryIndex = new HashMap<String, Integer>() {
-		{
-			put("SIN", 1);
-			put("PEK", 2);
-			put("PVG", 3);
-			put("HKG", 4);
-			put("KIX", 5);
-			put("HND", 6);
-			put("ICN", 7);
-			put("KHH", 8);
-			put("TPE", 9);
-			put("PNH", 10);
-			put("REP", 11);
-			put("DPS", 12);
-			put("CGK", 13);
-			put("KUL", 14);
-			put("PEN", 15);
-			put("RGN", 16);
-			put("MNL", 17);
-			put("BKK", 18);
-			put("HKT", 19);
-			put("HAN", 20);
-			put("SGN", 21);
-		}
-	};
 
 	@SuppressWarnings("unchecked")
 	public String generateDAT() throws Exception {
@@ -100,7 +47,7 @@ public class PriceMatrix {
 					row = airportDestinations.indexOf(currentCountry);
 					int col = 0;
 					for (String codes : airportDestinations) {
-						int index = countryIndex.get(codes);
+						int index = DataParameters.countryIndex().get(codes);
 						String val = record[index].toString();
 						int price = 0;
 						if (val.equals("-"))
@@ -191,7 +138,7 @@ public class PriceMatrix {
 				locations.append(country);
 				minCountryStay.append(generateMinStay());
 			}
-			costOfLiving.append(countryCost.get(country));
+			costOfLiving.append(DataParameters.getCostOfLiving(country));
 			satisfactionValue.append(generateSatisfationValue());
 
 			if (i + 1 < countryOrder.size()) {
