@@ -2,6 +2,8 @@ package com.servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.servlet.ServletContext;
@@ -33,44 +35,57 @@ public class PlannerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		String processingOption = req.getParameter("processMethod");
-		
+
 		/** Initialization of user account **/
 		String strBudget = req.getParameter("budget");
 		String strNoOfDays = req.getParameter("noOfDays");
 		String startLocation = req.getParameter("startLocation");
-		
+
 		String isDestination = req.getParameter("isDestination");
-		
+
 		User user;
+		String[] selectedLocations = null;
 		if (isDestination != null) {
-			String[] selectedLocations = req.getParameterValues("locationList");
-			user = SystemFactory.intializesUser(Double.valueOf(strBudget), Integer.valueOf(strNoOfDays), 
+			selectedLocations = req.getParameterValues("locationList");
+			user = SystemFactory.intializesUser(Double.valueOf(strBudget),
+					Integer.valueOf(strNoOfDays),
 					Integer.valueOf(startLocation), selectedLocations);
 		} else {
-			user = SystemFactory.intializesUser(Double.valueOf(strBudget), Integer.valueOf(strNoOfDays), 
+			user = SystemFactory.intializesUser(Double.valueOf(strBudget),
+					Integer.valueOf(strNoOfDays),
 					Integer.valueOf(startLocation));
 		}
-		
+
 		if (processingOption.equalsIgnoreCase("heuristic")) {
 			runHeuristic(user);
 		} else {
-			runOPL();
+			ArrayList<String> destinations = new ArrayList<String>();
+			if (selectedLocations == null) {
+				destinations = Constants.ALL_DESTINATIONS;
+			} else {
+				destinations = new ArrayList<String>(
+						Arrays.asList(selectedLocations));
+			}
+			int tripLength = Integer.parseInt(strNoOfDays);
+			runOPL(tripLength, strBudget, destinations, startLocation);
 		}
 	}
-	
+
 	public void runHeuristic(User user) {
 		System.out.println("Total Cost : " + user.getTotalSatisfaction());
 	}
 
-	public void runOPL() {
-		ServletContext context = getServletContext();
-		
+	public void runOPL(int tripLength, String budget,
+			ArrayList<String> selectedDestination, String startDestination) {
+		File datFile = OPLFactory.generateDat(tripLength, budget, selectedDestination,
+				startDestination);
+		System.out.println(datFile.getAbsolutePath());
 		try {
-			OPLFactory.runOPL(context.getRealPath(Constants.FILESEPARATOR));
+			OPLFactory.runOPL(datFile);
+			OPLFactory.cleanup(datFile);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

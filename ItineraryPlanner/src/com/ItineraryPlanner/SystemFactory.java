@@ -5,6 +5,7 @@ import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,15 +21,18 @@ import com.entity.Vertex;
 public class SystemFactory {
 	
 	@SuppressWarnings("unchecked")
-	public static JSONObject datRetrieval(String context) {
-		String datString = Constants.DATSTRING;
-		String dataPath = Constants.DATAPATH;
+	public static JSONObject datRetrieval() {
+		String datString = Constants.FLIGHTDATSTRING;
+		String dataPath = Constants.FLIGHTDATAPATH;
 		String[] params = Constants.PARAMS;
 		
 		JSONObject data = new JSONObject();
 		
 		try {
-			DataInputStream input = new DataInputStream(new FileInputStream(context + dataPath + datString));
+//			DataInputStream input = new DataInputStream(new FileInputStream(context + dataPath + datString));
+//			BufferedReader datReader = new BufferedReader(new InputStreamReader(input));
+			
+			InputStream input = SystemFactory.class.getResourceAsStream(dataPath+datString);
 			BufferedReader datReader = new BufferedReader(new InputStreamReader(input));
 			
 			boolean isIncluded = false;
