@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,24 +25,22 @@ public class PlannerServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		super.doGet(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+	
 		String processingOption = req.getParameter("processMethod");
-
+		
 		/** Initialization of user account **/
 		String strBudget = req.getParameter("budget");
 		String strNoOfDays = req.getParameter("noOfDays");
 		String startLocation = req.getParameter("startLocation");
-
+		
 		String isDestination = req.getParameter("isDestination");
-
+		
 		User user;
 		String[] selectedLocations = null;
 		if (isDestination != null) {
@@ -57,7 +53,8 @@ public class PlannerServlet extends HttpServlet {
 					Integer.valueOf(strNoOfDays),
 					Integer.valueOf(startLocation));
 		}
-
+		
+		// Run algorithm for optimal solution
 		if (processingOption.equalsIgnoreCase("heuristic")) {
 			runHeuristic(user);
 		} else {

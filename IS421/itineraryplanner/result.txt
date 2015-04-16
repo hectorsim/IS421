@@ -153,3 +153,43 @@ Location at Day 3: HKG stay and incurring	daily cost 75
 Location at Day 4: from HKG flying to SINTWO with ticket cost at 170
  Flight cost: 340 + cost of living: 318 = 658
  Left Budget = 6342
+Result======
+Objective value: 122Time 0.031 seconds.
+Location at Day 1: from SIN flying to KUL with ticket cost at 16
+Location at Day 2: KUL stay and incurring	daily cost 45
+Location at Day 3: KUL stay and incurring	daily cost 45
+Location at Day 4: from KUL flying to SINTWO with ticket cost at 16
+ Flight cost: 32 + cost of living: 228 = 260
+ Left Budget = 6740
+Result======
+Objective value: 114Time 0.063 seconds.
+Location at Day 1: from SIN flying to HKG with ticket cost at 170
+Location at Day 2: HKG stay and incurring	daily cost 75
+Location at Day 3: HKG stay and incurring	daily cost 75
+Location at Day 4: from HKG flying to SINTWO with ticket cost at 170
+ Flight cost: 340 + cost of living: 318 = 658
+ Left Budget = 6342
+Result======
+Objective value: 111Time 0.062 seconds.
+Location at Day 1: from SIN flying to PEK with ticket cost at 110
+Location at Day 2: PEK stay and incurring	daily cost 48
+Location at Day 3: PEK stay and incurring	daily cost 48
+Location at Day 4: from PEK flying to SINTWO with ticket cost at 110
+ Flight cost: 220 + cost of living: 237 = 457
+ Left Budget = 6543
+Result======
+Objective value: 135Time 0.032 seconds.
+Location at Day 1: from SIN flying to HKG with ticket cost at 170
+Location at Day 2: HKG stay and incurring	daily cost 75
+Location at Day 3: HKG stay and incurring	daily cost 75
+Location at Day 4: from HKG flying to SINTWO with ticket cost at 170
+ Flight cost: 340 + cost of living: 318 = 658
+ Left Budget = 6342
+Result======
+Objective value: 147Time 0.062 seconds.
+Location at Day 1: from SIN flying to PVG with ticket cost at 270
+Location at Day 2: PVG stay and incurring	daily cost 48
+Location at Day 3: PVG stay and incurring	daily cost 48
+Location at Day 4: from PVG flying to SINTWO with ticket cost at 270
+ Flight cost: 540 + cost of living: 237 = 777
+ Left Budget = 6223
