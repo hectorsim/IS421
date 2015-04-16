@@ -3,6 +3,11 @@
  */
 package com.ItineraryPlanner;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -33,11 +38,12 @@ public class DataInitialization implements ServletContextListener {
 		System.out.println("DATA INITIALIZATION PROCESSING...");
 		TimeTracker timer = new TimeTracker();
 		
-		ServletContext servletContext = arg0.getServletContext();
-		String contextPath = servletContext.getRealPath(Constants.FILESEPARATOR);
-		
+//		ServletContext servletContext = arg0.getServletContext();
+//		System.out.println(this.getClass().getResource("/data").getPath());
+//		String contextPath = servletContext.getRealPath(Constants.FILESEPARATOR);
+
 		// Formatting for raw data into proper data
-		JSONObject rawData = SystemFactory.datRetrieval(contextPath);
+		JSONObject rawData = SystemFactory.datRetrieval();
 		timer.addLap("Retrieval of data from DAT file");
 		
 		// Initialize raw data

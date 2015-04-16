@@ -1,9 +1,9 @@
 package com.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +34,6 @@ public class PlannerServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		ServletContext context = getServletContext();
 		String str = (String) context.getAttribute("Results");
 		PrintWriter out = resp.getWriter();  
@@ -47,8 +46,7 @@ public class PlannerServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+	
 		String processingOption = req.getParameter("processMethod");
 		
 		/* Initialization of user account */
@@ -59,12 +57,15 @@ public class PlannerServlet extends HttpServlet {
 		String isDestination = req.getParameter("isDestination");
 		
 		User user;
+		String[] selectedLocations = null;
 		if (isDestination != null) {
-			String[] selectedLocations = req.getParameterValues("locationList");
-			user = SystemFactory.intializesUser(Double.valueOf(strBudget), Integer.valueOf(strNoOfDays), 
+			selectedLocations = req.getParameterValues("locationList");
+			user = SystemFactory.intializesUser(Double.valueOf(strBudget),
+					Integer.valueOf(strNoOfDays),
 					Integer.valueOf(startLocation), selectedLocations);
 		} else {
-			user = SystemFactory.intializesUser(Double.valueOf(strBudget), Integer.valueOf(strNoOfDays), 
+			user = SystemFactory.intializesUser(Double.valueOf(strBudget),
+					Integer.valueOf(strNoOfDays),
 					Integer.valueOf(startLocation));
 		}
 		
@@ -75,7 +76,15 @@ public class PlannerServlet extends HttpServlet {
 		if (processingOption.equalsIgnoreCase("heuristic")) {
 			results = runHeuristic(user);
 		} else {
-			results = runOPL();
+			ArrayList<String> destinations = new ArrayList<String>();
+			if (selectedLocations == null) {
+				destinations = Constants.ALL_DESTINATIONS;
+			} else {
+				destinations = new ArrayList<String>(
+						Arrays.asList(selectedLocations));
+			}
+			int tripLength = Integer.parseInt(strNoOfDays);
+			runOPL(tripLength, strBudget, destinations, startLocation);
 		}
 		
 		// Store in servlet context and navigate to results.html
@@ -84,7 +93,7 @@ public class PlannerServlet extends HttpServlet {
 		
 		resp.sendRedirect("results.html");
 	}
-	
+
 	/**
 	 * Run results via Heuristics
 	 * @param user
@@ -94,18 +103,15 @@ public class PlannerServlet extends HttpServlet {
 		return user.generateResults();
 	}
 
-	/**
-	 * Run result via OPL
-	 * @return
-	 */
-	public JSONObject runOPL() {
-		ServletContext context = getServletContext();
-		JSONObject jsonOPLResults = new JSONObject();
-		
+	public void runOPL(int tripLength, String budget,
+			ArrayList<String> selectedDestination, String startDestination) {
+		File datFile = OPLFactory.generateDat(tripLength, budget, selectedDestination,
+				startDestination);
+		System.out.println(datFile.getAbsolutePath());
 		try {
-			jsonOPLResults = OPLFactory.runOPL(context.getRealPath(Constants.FILESEPARATOR));
+			OPLFactory.runOPL(datFile);
+			OPLFactory.cleanup(datFile);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
