@@ -23,8 +23,10 @@ public class OPLFactory {
 
 	public static File generateDat(int tripLength, String budget,
 			ArrayList<String> selectedDestination, String startDestination) {
+		
 		System.out.println(tripLength + "\t" + budget + "\t"
 				+ selectedDestination.size() + "\t" + startDestination);
+		
 		PriceMatrix pm = new PriceMatrix(selectedDestination, tripLength);
 		String results;
 		try {
@@ -57,6 +59,7 @@ public class OPLFactory {
 			if (!file.exists()) {
 				file.createNewFile();
 			}
+			
 			FileWriter fw = new FileWriter(file.getAbsoluteFile());
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(results);
@@ -142,7 +145,5 @@ public class OPLFactory {
 		} else {
 			System.out.println("Delete operation is failed.");
 		}
-		
-		return results;
 	}
 }

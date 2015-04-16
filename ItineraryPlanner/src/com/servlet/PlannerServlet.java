@@ -1,9 +1,12 @@
 package com.servlet;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -104,7 +107,8 @@ public class PlannerServlet extends HttpServlet {
 	}
 
 	public void runOPL(int tripLength, String budget,
-			ArrayList<String> selectedDestination, String startDestination) {
+		ArrayList<String> selectedDestination, String startDestination) {
+		
 		File datFile = OPLFactory.generateDat(tripLength, budget, selectedDestination,
 				startDestination);
 		System.out.println(datFile.getAbsolutePath());
@@ -114,7 +118,5 @@ public class PlannerServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		return jsonOPLResults;
 	}
 }
