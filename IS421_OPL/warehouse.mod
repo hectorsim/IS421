@@ -15,7 +15,7 @@ float budget = ...;
 {int} Dates_mod = ...;
 float CostOfLivingOfLocation[Locations] = ...;
 float InitialSatisfactionOfLocation[Locations] = ...;
-float UnitDecreaseInSatisfactionPerDay = ...;
+float UnitDecreaseInSatisfactionPerDay[Locations] = ...;
 float MinimumDaysStayAtLocation[Locations] = ...;
 int PriceFromToOnDay[Locations][Locations][Dates] = ...;
 dvar boolean U[Locations][Dates];
@@ -25,8 +25,8 @@ dvar int V[Locations];
 
 maximize
   sum( loc in Locations ) (
-    A[loc]*InitialSatisfactionOfLocation[loc] + UnitDecreaseInSatisfactionPerDay*A[loc] - 
-    sum( d in Dates ) ( U[loc][d] * UnitDecreaseInSatisfactionPerDay ) 
+    A[loc]*InitialSatisfactionOfLocation[loc] + UnitDecreaseInSatisfactionPerDay[loc]*A[loc] - 
+    sum( d in Dates ) ( U[loc][d] * UnitDecreaseInSatisfactionPerDay[loc] ) 
   );
   
 subject to {
@@ -83,9 +83,9 @@ subject to {
 	+ sum(l in Locations, j in Locations, d in Dates)(X[l][j][d] * PriceFromToOnDay[l][j][d])
 	<= budget;
 	
-	/** Subtour */
+	/** Subtour BUG HERE */
 	forall(l in Locations)
-	  2 <= V[l] <= lengthOfLocations;
+	  1 <= V[l] <= lengthOfLocations;
 	forall(l in Locations, j in Locations)
 	  V[l]-V[j]+(lengthOfLocations-1)*(sum(d in Dates)X[l][j][d]) <= lengthOfLocations-2;
 	
