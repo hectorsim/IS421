@@ -38,7 +38,7 @@ public class DataInitialization implements ServletContextListener {
 		//JSONObject rawData = SystemFactory.datRetrieval();
 		//timer.addLap("Retrieval of data from DAT file");
 		
-		// Initialize raw data
+		DataParameters.LocationIndexing();
 		SystemFactory.formatGraph();
 		timer.addLap("Initialization of all data");
 		

@@ -46,7 +46,7 @@ public class PriceMatrix {
 					row = airportDestinations.indexOf(currentCountry);
 					int col = 0;
 					for (String codes : airportDestinations) {
-						int index = DataParameters.LocationIndex().get(codes);
+						int index = DataParameters.countryIndexById.get(codes);
 						String val = record[index].toString();
 						int price = 0;
 						if (val.equals("-"))
@@ -127,15 +127,13 @@ public class PriceMatrix {
 			String country = countryOrder.get(i);
 			int minStayValue = DataParameters.minDayStay.get(country);
 			int satValue = DataParameters.defaultSatisfactionValue.get(country);
-			int unitDecreaseVal = (int) (Math.random()*((satValue / minStayValue) - 1));
+			int unitDecreaseVal = DataParameters.unitDecreasePerLocation.get(country);
 			
 			if (i == 0) {
 				startCountry = country;
-				locations.append(country);
-				minCountryStay.append(1);
-				satisfactionValue.append(100);
-				satisfactionValueDecrease.append(100);
-			} else if (i == countryOrder.size() - 1) {
+			}
+			
+			if (i == countryOrder.size() - 1) {
 				endCountry = country + "TWO";
 				locations.append(endCountry);
 				minCountryStay.append(1);

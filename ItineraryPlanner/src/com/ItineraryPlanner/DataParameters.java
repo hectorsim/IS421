@@ -13,18 +13,60 @@ import com.entity.Vertex;
 import com.opencsv.CSVReader;
 
 public class DataParameters {
-	
+	public static HashMap<Integer, String> countryIdByIndex;
+	public static HashMap<String, Integer> countryIndexById;
 	/*
 	 * Default satisfaction and minimum day stay used by OPL computations
 	 */
 	public static HashMap<String, Integer> defaultSatisfactionValue;
 	public static HashMap<String, Integer> minDayStay;
+	public static HashMap<String, Integer> unitDecreasePerLocation;
 	
 	/*
 	 *  Default satisfaction and minimum day stay used by Heuristics
 	 */
 	public static HashMap<Integer, Integer> defaultSatisfactionValueByIndex;
 	public static HashMap<Integer, Integer> minDayStayByIndex;
+	public static HashMap<Integer, Integer> unitDecreasePerLocationByIndex;
+	
+	/**
+	 * Set the unit decrease for per location
+	 * @param startLocationId
+	 */
+	public static void setUnitDecrement(int startLocationId, 
+			HashMap<Integer, Integer> satisfactionValues, HashMap<Integer, Integer> minDatStay) {
+		
+		unitDecreasePerLocationByIndex = new HashMap<Integer, Integer>();
+		unitDecreasePerLocation = new HashMap<String, Integer>();
+		
+		Location[] locationList = Location.values();
+		
+		for (int i = 0; i < locationList.length; i++) {
+			String locationId = locationList[i].toString();
+			int locationIndex = countryIndexById.get(locationId);
+					
+			if (locationIndex == startLocationId) {
+				unitDecreasePerLocationByIndex.put(locationIndex, 100);
+				unitDecreasePerLocation.put(locationId, 100);
+			} else {
+				int unitDecrease = generateUnitDecrease(satisfactionValues.get(locationIndex), 
+						minDatStay.get(locationIndex));
+				
+				unitDecreasePerLocationByIndex.put(locationIndex, unitDecrease);
+				unitDecreasePerLocation.put(locationId, unitDecrease);				
+			}
+		}
+	}
+	
+	/**
+	 * Generate unit decrease for per location
+	 * @param satValue
+	 * @param minStayValue
+	 * @return
+	 */
+	public static int generateUnitDecrease(int satValue, int minStayValue) {
+		return (int) (Math.random()*((satValue / minStayValue) - 1));
+	}
 	
 	/* Set price matrix */
 	/**
@@ -83,17 +125,24 @@ public class DataParameters {
 	/**
 	 * Generate minimum stays for per location
 	 */
-	public static void generateMinStayForLocation() {
+	public static void generateMinStayForLocation(int startLocationId) {
 		minDayStay =  new HashMap<String, Integer>();
 		minDayStayByIndex = new HashMap<Integer, Integer>();
 		
 		Location[] locationList = Location.values();
 		for (int i = 0; i < locationList.length; i++) {
 			String locationId = locationList[i].toString();
-			int minStay = generateMinStay();
+			int locationIndex = countryIndexById.get(locationId);
 			
-			minDayStay.put(locationId, minStay);
-			minDayStayByIndex.put(LocationIndex().get(locationId), minStay);
+			if (locationIndex == startLocationId) {
+				minDayStay.put(locationId, 1);
+				minDayStayByIndex.put(locationIndex, 0);
+			} else {
+				int minStay = generateMinStay();
+				
+				minDayStay.put(locationId, minStay);
+				minDayStayByIndex.put(locationIndex, minStay);
+			}
 		}
 	}
 	
@@ -109,17 +158,24 @@ public class DataParameters {
 	/**
 	 * Allocate satisfaction value per location
 	 */
-	public static void generateDefaultSatisfactionValue() {
+	public static void generateDefaultSatisfactionValue(int startLocationId) {
 		defaultSatisfactionValue =  new HashMap<String, Integer>();
 		defaultSatisfactionValueByIndex	= new HashMap<Integer, Integer>();
 		
 		Location[] locationList = Location.values();
 		for (int i = 0; i < locationList.length; i++) {
 			String locationId = locationList[i].toString();
-			int satisfactionLevel = generateSatisfationValue();
+			int locationIndex = countryIndexById.get(locationId);
 			
-			defaultSatisfactionValue.put(locationId, satisfactionLevel);
-			defaultSatisfactionValueByIndex.put(LocationIndex().get(locationId), satisfactionLevel);
+			if (locationIndex == startLocationId) {
+				defaultSatisfactionValue.put(locationId, 100);
+				defaultSatisfactionValueByIndex.put(countryIndexById.get(locationId), 100);
+			} else {
+				int satisfactionLevel = generateSatisfationValue();
+			
+				defaultSatisfactionValue.put(locationId, satisfactionLevel);
+				defaultSatisfactionValueByIndex.put(countryIndexById.get(locationId), satisfactionLevel);
+			}
 			
 		}
 	}
@@ -140,21 +196,6 @@ public class DataParameters {
 		return value;
 	}
 	
-	/**
-	 * Index all location in the list
-	 * @return
-	 */
-	/* Location Indexing */
-	public static HashMap<String, Integer> LocationIndex() {
-		HashMap<String, Integer> countryIndex = new HashMap<String, Integer>();
-		
-		Location[] locationList = Location.values();
-		for (int i = 0; i < locationList.length; i++) {
-			countryIndex.put(locationList[i].toString(), (i+1));
-		}
-		
-		return countryIndex;
-	}
  	
 	/**
 	 * Retrieve cost of living according to a location id
@@ -189,6 +230,22 @@ public class DataParameters {
 			case HAN: return 41;
 			case SGN: return 41;
 			default: return 99999;
+		}
+	}
+	
+	/**
+	 * Index all location in the list
+	 * @return
+	 */
+	/* Location Indexing */
+	public static void LocationIndexing() {
+		countryIdByIndex = new HashMap<Integer, String>();
+		countryIndexById = new HashMap<String, Integer>();
+		
+		Location[] locationList = Location.values();
+		for (int i = 0; i < locationList.length; i++) {
+			countryIndexById.put(locationList[i].toString(), (i+1));
+			countryIdByIndex.put((i+1), locationList[i].toString());
 		}
 	}
 	

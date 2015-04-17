@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.ItineraryPlanner.Constants;
+import com.ItineraryPlanner.DataParameters;
 import com.heuristic.Solutions;
 
 /**
@@ -143,7 +143,7 @@ public class User {
 			int noOfDays = visited.getNoOfDays();
 			int satisfaction = satisfactionLevels.get(visited.getId()); 
 			
-			totalSatistaction += noOfDays*satisfaction - (((noOfDays*(noOfDays-1)) / 2) * Constants.satisfactionDecreaseStep);
+			totalSatistaction += noOfDays*satisfaction - (((noOfDays*(noOfDays-1)) / 2) * DataParameters.unitDecreasePerLocationByIndex.get(visited.getId()));
 		}
 		
 		return totalSatistaction;

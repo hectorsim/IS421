@@ -15,7 +15,7 @@ public class SystemFactory {
 		ArrayList<String> allLocations = DataParameters.getAllLocations();
 		
 		for (String location : allLocations) {
-			int index = DataParameters.LocationIndex().get(location);
+			int index = DataParameters.countryIndexById.get(location);
 			Vertex v = new Vertex(
 					index, 
 					location, 
@@ -37,9 +37,12 @@ public class SystemFactory {
 	 */
 	public static User intializesUser(double budget, int noOfStays, int startLocation) {
 		// Generate min stay and randomize satisfaction value for per location
-		DataParameters.generateMinStayForLocation();
-		DataParameters.generateDefaultSatisfactionValue();
-					
+		DataParameters.generateMinStayForLocation(startLocation);
+		DataParameters.generateDefaultSatisfactionValue(startLocation);
+		DataParameters.setUnitDecrement(startLocation, 
+				DataParameters.defaultSatisfactionValueByIndex, 
+				DataParameters.minDayStayByIndex);
+		
 		// Get default satisfaction level
 		Graph graph = Constants.GRAPH;
 		
@@ -60,8 +63,8 @@ public class SystemFactory {
 	 */
 	public static User intializesUser(double budget, int noOfStays, int startLocation, String[] preferences) {
 		// Generate min stay for per location
-		DataParameters.generateMinStayForLocation();
-					
+		DataParameters.generateMinStayForLocation(startLocation);	
+		
 		Graph graph = new Graph();
 		
 		HashMap<Integer, Integer> satisfactionValue = new HashMap<Integer, Integer>();
@@ -82,6 +85,9 @@ public class SystemFactory {
 		}
 		
 		DataParameters.setPriceMatrix(graph, noOfStays);
+		DataParameters.setUnitDecrement(startLocation, 
+				satisfactionValue, 
+				DataParameters.minDayStayByIndex);	
 		
 		graph.generatePreferenceScore(noOfStays, satisfactionValue);
 		return new User(budget, noOfStays, satisfactionValue, graph);
