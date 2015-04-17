@@ -102,7 +102,7 @@ public class PlannerServlet extends HttpServlet {
 			}
 			
 			// OPL execution
-			runOPL(tripLength, strBudget, destinations, startLocation);
+			runOPL(user,tripLength, strBudget, destinations, startLocation);
 		}
 
 		// Store in servlet context and navigate to results.html
@@ -123,7 +123,7 @@ public class PlannerServlet extends HttpServlet {
 		return user.retrieveOptimalSolution();
 	}
 
-	public void runOPL(int tripLength, String budget,
+	public void runOPL(User user, int tripLength, String budget,
 			ArrayList<String> selectedDestination, String startLocation) {
 		
 		String startDestination = null;
@@ -146,8 +146,8 @@ public class PlannerServlet extends HttpServlet {
 		File datFile = OPLFactory.generateDat(tripLength, budget, airportCodes,
 				startDestination);
 		try {
-			OPLFactory.runOPL(datFile);
-			// OPLFactory.cleanup(datFile);
+			OPLFactory.runOPL(user,datFile);
+			 OPLFactory.cleanup(datFile);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -13,6 +13,14 @@ public class Solutions {
 	private Graph graph;
 	
 	public Solutions(ArrayList<Vertex> path, double totalCost,
+			int totalPreferences) {
+		super();
+		this.path = path;
+		this.totalCost = totalCost;
+		this.totalPreferences = totalPreferences;
+	}
+
+	public Solutions(ArrayList<Vertex> path, double totalCost,
 			int totalPreferences, Vertex potentialVertex, Graph graph) {
 		
 		this.path = path;

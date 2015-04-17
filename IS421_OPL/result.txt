@@ -853,3 +853,95 @@ Location at Day 18: PEK stay and incurring	daily cost 48
 Location at Day 19: from PEK flying to SINTWO with ticket cost at 110
  Flight cost: 546 + cost of living: 1269 = 1815
  Left Budget = 185
+Result======
+Objective value: -16Time 1.938 seconds.
+Location at Day 1: from SIN flying to HKG with ticket cost at 170
+Location at Day 2: HKG stay and incurring	daily cost 75
+Location at Day 3: HKG stay and incurring	daily cost 75
+Location at Day 4: HKG stay and incurring	daily cost 75
+Location at Day 5: HKG stay and incurring	daily cost 75
+Location at Day 6: HKG stay and incurring	daily cost 75
+Location at Day 7: HKG stay and incurring	daily cost 75
+Location at Day 8: HKG stay and incurring	daily cost 75
+Location at Day 9: HKG stay and incurring	daily cost 75
+Location at Day 10: HKG stay and incurring	daily cost 75
+Location at Day 11: HKG stay and incurring	daily cost 75
+Location at Day 12: HKG stay and incurring	daily cost 75
+Location at Day 13: HKG stay and incurring	daily cost 75
+Location at Day 14: HKG stay and incurring	daily cost 75
+Location at Day 15: HKG stay and incurring	daily cost 75
+Location at Day 16: from HKG flying to PEK with ticket cost at 266
+Location at Day 17: PEK stay and incurring	daily cost 48
+Location at Day 18: PEK stay and incurring	daily cost 48
+Location at Day 19: from PEK flying to SINTWO with ticket cost at 110
+ Flight cost: 546 + cost of living: 1269 = 1815
+ Left Budget = 185
+Result======
+Objective value: -16Time 1.359 seconds.
+Location at Day 1: from SIN flying to HKG with ticket cost at 170
+Location at Day 2: HKG stay and incurring	daily cost 75
+Location at Day 3: HKG stay and incurring	daily cost 75
+Location at Day 4: HKG stay and incurring	daily cost 75
+Location at Day 5: HKG stay and incurring	daily cost 75
+Location at Day 6: HKG stay and incurring	daily cost 75
+Location at Day 7: HKG stay and incurring	daily cost 75
+Location at Day 8: HKG stay and incurring	daily cost 75
+Location at Day 9: HKG stay and incurring	daily cost 75
+Location at Day 10: HKG stay and incurring	daily cost 75
+Location at Day 11: HKG stay and incurring	daily cost 75
+Location at Day 12: HKG stay and incurring	daily cost 75
+Location at Day 13: HKG stay and incurring	daily cost 75
+Location at Day 14: HKG stay and incurring	daily cost 75
+Location at Day 15: HKG stay and incurring	daily cost 75
+Location at Day 16: from HKG flying to PEK with ticket cost at 266
+Location at Day 17: PEK stay and incurring	daily cost 48
+Location at Day 18: PEK stay and incurring	daily cost 48
+Location at Day 19: from PEK flying to SINTWO with ticket cost at 110
+ Flight cost: 546 + cost of living: 1269 = 1815
+ Left Budget = 185
+Result======
+Objective value: -16Time 1.172 seconds.
+Location at Day 1: from SIN flying to HKG with ticket cost at 170
+Location at Day 2: HKG stay and incurring	daily cost 75
+Location at Day 3: HKG stay and incurring	daily cost 75
+Location at Day 4: HKG stay and incurring	daily cost 75
+Location at Day 5: HKG stay and incurring	daily cost 75
+Location at Day 6: HKG stay and incurring	daily cost 75
+Location at Day 7: HKG stay and incurring	daily cost 75
+Location at Day 8: HKG stay and incurring	daily cost 75
+Location at Day 9: HKG stay and incurring	daily cost 75
+Location at Day 10: HKG stay and incurring	daily cost 75
+Location at Day 11: HKG stay and incurring	daily cost 75
+Location at Day 12: HKG stay and incurring	daily cost 75
+Location at Day 13: HKG stay and incurring	daily cost 75
+Location at Day 14: HKG stay and incurring	daily cost 75
+Location at Day 15: HKG stay and incurring	daily cost 75
+Location at Day 16: from HKG flying to PEK with ticket cost at 266
+Location at Day 17: PEK stay and incurring	daily cost 48
+Location at Day 18: PEK stay and incurring	daily cost 48
+Location at Day 19: from PEK flying to SINTWO with ticket cost at 110
+ Flight cost: 546 + cost of living: 1269 = 1815
+ Left Budget = 185
+Result======
+Objective value: 184Time 1.547 seconds.
+Location at Day 1: from SIN flying to PEK with ticket cost at 110
+Location at Day 2: PEK stay and incurring	daily cost 48
+Location at Day 3: PEK stay and incurring	daily cost 48
+Location at Day 4: from PEK flying to HKG with ticket cost at 266
+Location at Day 5: HKG stay and incurring	daily cost 75
+Location at Day 6: HKG stay and incurring	daily cost 75
+Location at Day 7: HKG stay and incurring	daily cost 75
+Location at Day 8: HKG stay and incurring	daily cost 75
+Location at Day 9: HKG stay and incurring	daily cost 75
+Location at Day 10: HKG stay and incurring	daily cost 75
+Location at Day 11: HKG stay and incurring	daily cost 75
+Location at Day 12: HKG stay and incurring	daily cost 75
+Location at Day 13: HKG stay and incurring	daily cost 75
+Location at Day 14: HKG stay and incurring	daily cost 75
+Location at Day 15: HKG stay and incurring	daily cost 75
+Location at Day 16: HKG stay and incurring	daily cost 75
+Location at Day 17: HKG stay and incurring	daily cost 75
+Location at Day 18: HKG stay and incurring	daily cost 75
+Location at Day 19: from HKG flying to SINTWO with ticket cost at 170
+ Flight cost: 546 + cost of living: 1269 = 1815
+ Left Budget = 185

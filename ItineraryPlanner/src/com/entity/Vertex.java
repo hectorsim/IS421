@@ -19,6 +19,7 @@ public class Vertex {
 	String locationId;
 	String locationName;
 	double livingCost;
+	double flightOutCost;
 	HashMap<Integer, Double[]> adjList;
 	
 	int noOfDays;
@@ -207,6 +208,7 @@ public class Vertex {
 		text += "Location Id: " + this.locationId + "\n";
 		text += "Location Address: " + this.locationName + "\n";
 		text += "Living Cost: " + this.livingCost + "\n";
+		text += "Flight Cost: " + this.flightOutCost + "\n";
 		text += "Adjacent Locations: \n";
 		
 		if (this.adjList.size() > 0) {
@@ -246,6 +248,7 @@ public class Vertex {
 		vertexLocation.put("locationId", this.locationId);
 		vertexLocation.put("locationAddress", this.locationName);
 		vertexLocation.put("livingCost", this.livingCost);
+		vertexLocation.put("flightCostOut", this.flightOutCost);
 		
 		JSONArray adjList_json = new JSONArray();
 		

@@ -65,9 +65,14 @@ subject to {
 	sum(j in Locations, d in Dates) X[endlocation][j][d] == 0;
 	sum(j in Locations, d in Dates) X[j][endlocation][d] == 1;
 	
-	/** Binatize A from X */
+	// binatize A from U
 	forall(l in Locations)
-	  A[l] == sum(d in Dates, j in Locations)(X[l][j][d]);
+	  999*A[l] >= sum(d in Dates) (U[l][d]);
+	forall(l in Locations)
+	  sum(d in Dates) (U[l][d]) >= A[l];
+	/** Binatize A from X */
+	//forall(l in Locations)
+	//  A[l] == sum(d in Dates, j in Locations)(X[l][j][d]);
 	
 	/** START, END LOCATION must be travelled to*/
 	U[startlocation][firstdate] == 1;

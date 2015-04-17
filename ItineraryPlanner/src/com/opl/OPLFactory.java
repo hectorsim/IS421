@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import com.ItineraryPlanner.Constants;
+import com.entity.User;
+import com.heuristic.Solutions;
 
 public class OPLFactory {
 
@@ -73,7 +75,7 @@ public class OPLFactory {
 		return null;
 	}
 
-	public static void runOPL(File datFile) throws Exception {
+	public static void runOPL(User user, File datFile) throws Exception {
 		// Initialization of OPL Factory
 		IloOplFactory.setDebugMode(false);
 		IloOplFactory oplF = new IloOplFactory();
@@ -128,6 +130,8 @@ public class OPLFactory {
 				System.out.println("OBJECTIVE:" + opl.getCplex().getObjValue());
 				opl.postProcess();
 				opl.printSolution(System.out);
+				Solutions opl_solution = user.processOPL(opl);
+				System.out.println(user.generateOPL(opl_solution));
 			} else {
 				System.out.println("No Solution");
 			}
