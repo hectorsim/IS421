@@ -36,12 +36,6 @@ public class SystemFactory {
 	 * @return User
 	 */
 	public static User intializesUser(double budget, int noOfStays, int startLocation) {
-		// Generate min stay and randomize satisfaction value for per location
-		DataParameters.generateMinStayForLocation(startLocation);
-		DataParameters.generateDefaultSatisfactionValue(startLocation);
-		DataParameters.setUnitDecrement(startLocation, 
-				DataParameters.defaultSatisfactionValueByIndex, 
-				DataParameters.minDayStayByIndex);
 		
 		// Get default satisfaction level
 		Graph graph = Constants.GRAPH;
@@ -67,7 +61,7 @@ public class SystemFactory {
 	 */
 	public static User intializesUser(double budget, int noOfStays, int startLocation, String[] preferences) {
 		// Generate min stay for per location
-		DataParameters.generateMinStayForLocation(startLocation);	
+		DataParameters.generateMinStayForLocation(0);
 		
 		Graph graph = new Graph();
 		

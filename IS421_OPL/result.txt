@@ -1029,3 +1029,55 @@ Location at Day 8: PEK stay and incurring	daily cost 48
 Location at Day 9: from PEK flying to SINTWO with ticket cost at 188
  Flight cost: 1036 + cost of living: 647 = 1683
  Left Budget = 2638
+Result======
+Objective value: -151Time 0.609 seconds.
+Location at Day 1: SIN stay and incurring	daily cost 93
+Location at Day 2: SIN stay and incurring	daily cost 93
+Location at Day 3: SIN stay and incurring	daily cost 93
+Location at Day 4: SIN stay and incurring	daily cost 93
+Location at Day 5: from SIN flying to PVG with ticket cost at 358
+Location at Day 6: PVG stay and incurring	daily cost 48
+Location at Day 7: PVG stay and incurring	daily cost 48
+Location at Day 8: PVG stay and incurring	daily cost 48
+Location at Day 9: from PVG flying to SINTWO with ticket cost at 331
+ Flight cost: 689 + cost of living: 657 = 1346
+ Left Budget = 1654
+Result======
+Objective value: 499Time 0.61 seconds.
+Location at Day 1: SIN stay and incurring	daily cost 93
+Location at Day 2: SIN stay and incurring	daily cost 93
+Location at Day 3: SIN stay and incurring	daily cost 93
+Location at Day 4: SIN stay and incurring	daily cost 93
+Location at Day 5: from SIN flying to KHH with ticket cost at 444
+Location at Day 6: KHH stay and incurring	daily cost 57
+Location at Day 7: KHH stay and incurring	daily cost 57
+Location at Day 8: KHH stay and incurring	daily cost 57
+Location at Day 9: from KHH flying to SINTWO with ticket cost at 451
+ Flight cost: 895 + cost of living: 693 = 1588
+ Left Budget = 1412
+Result======
+Objective value: -351Time 0.953 seconds.
+Location at Day 1: SIN stay and incurring	daily cost 93
+Location at Day 2: SIN stay and incurring	daily cost 93
+Location at Day 3: SIN stay and incurring	daily cost 93
+Location at Day 4: SIN stay and incurring	daily cost 93
+Location at Day 5: from SIN flying to PVG with ticket cost at 358
+Location at Day 6: PVG stay and incurring	daily cost 48
+Location at Day 7: PVG stay and incurring	daily cost 48
+Location at Day 8: PVG stay and incurring	daily cost 48
+Location at Day 9: from PVG flying to SINTWO with ticket cost at 331
+ Flight cost: 689 + cost of living: 657 = 1346
+ Left Budget = 1654
+Result======
+Objective value: 610Time 2.39 seconds.
+Location at Day 1: from SIN flying to BKK with ticket cost at 151
+Location at Day 2: BKK stay and incurring	daily cost 46
+Location at Day 3: BKK stay and incurring	daily cost 46
+Location at Day 4: from BKK flying to PEK with ticket cost at 441
+Location at Day 5: PEK stay and incurring	daily cost 48
+Location at Day 6: PEK stay and incurring	daily cost 48
+Location at Day 7: PEK stay and incurring	daily cost 48
+Location at Day 8: PEK stay and incurring	daily cost 48
+Location at Day 9: from PEK flying to SINTWO with ticket cost at 197
+ Flight cost: 789 + cost of living: 471 = 1260
+ Left Budget = 1740

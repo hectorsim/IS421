@@ -83,12 +83,16 @@ public class PlannerServlet extends HttpServlet {
 
 		/* Run optimal results */
 		JSONObject results = new JSONObject();
-
+		System.out.println(DataParameters.unitDecreasePerLocation.toString());
+		System.out.println(DataParameters.minDayStay.toString());
+		System.out.println(DataParameters.defaultSatisfactionValue.toString());
 		// Run algorithm for optimal solution
 		if (processingOption.equalsIgnoreCase("heuristic")) {
 			// Heuristic Execution
 			System.out.println(Constants.GRAPH.toJSON().toJSONString());
 			results = runHeuristic(user);
+
+			System.out.println("Final:"+results.toJSONString());
 		} else {
 
 			// Preparation of OPL data
@@ -130,7 +134,7 @@ public class PlannerServlet extends HttpServlet {
 			// OPL execution
 			results = runOPL(user, tripLength, strBudget, processedDestinations,
 					satisfactionArray, startLocation);
-
+			System.out.println("Final:"+results.toJSONString());
 		}
 
 		// Store in servlet context and navigate to results.html
@@ -150,18 +154,20 @@ public class PlannerServlet extends HttpServlet {
 		TimeTracker timer = new TimeTracker();
 		factory.GRASPConstruction();
 		timer.addLap("GRASP Constructor");
-		
+		JSONObject result = user.retrieveOptimalSolution();
+		result.put("Time_Taken", timer.shortTime());
 		System.out.println(timer.timeToString());
-		return user.retrieveOptimalSolution();
+		return result;
 	}
 
 	public JSONObject runOPL(User user, int tripLength, String budget,
 			ArrayList<String> selectedDestination,
 			ArrayList<Integer> satisfactionArray, String startLocation) {
 
+		TimeTracker timer = new TimeTracker();
 		String startDestination = null;
 		ArrayList<String> airportCodes = new ArrayList<String>();
-
+		JSONObject result = null;
 		for (int i = 0; i < selectedDestination.size(); i++) {
 			String airport = selectedDestination.get(i);
 			System.out.println(airport + "\t" + startLocation);
@@ -180,14 +186,17 @@ public class PlannerServlet extends HttpServlet {
 				selectedDestination, satisfactionArray, startDestination);
 		try {
 			OPLFactory.runOPL(user, datFile);
-			OPLFactory.cleanup(datFile);
-			return OPLFactory.runOPL(user,datFile);
+			result = OPLFactory.runOPL(user,datFile);
 //			 OPLFactory.cleanup(datFile);
 		} catch (Exception e) {
 			JSONObject json_results = new JSONObject();
 			json_results.put("Error", e.getMessage());
 			
-			return json_results;
+			result = json_results;
 		}
+		timer.addLap("OPL Complete");
+		result.put("Time_Taken", timer.shortTime());
+		System.out.println(timer.timeToString());
+		return result;
 	}
 }
