@@ -117,33 +117,43 @@ public class PriceMatrix {
 	private String generateCountryData(ArrayList<String> countryOrder) {
 		String startCountry = null;
 		String endCountry = null;
-		StringBuilder locations = new StringBuilder(), costOfLiving = new StringBuilder(), satisfactionValue = new StringBuilder(), minCountryStay = new StringBuilder();
+		StringBuilder locations = new StringBuilder(), costOfLiving = new StringBuilder(), satisfactionValue = new StringBuilder(), minCountryStay = new StringBuilder(), satisfactionValueDecrease = new StringBuilder();
 		locations.append("Locations = {");
 		costOfLiving.append("CostOfLivingOfLocation = [");
 		satisfactionValue.append("InitialSatisfactionOfLocation = [");
 		minCountryStay.append("MinimumDaysStayAtLocation = [");
+		satisfactionValueDecrease.append("UnitDecreaseInSatisfactionPerDay = [");
 		for (int i = 0; i < countryOrder.size(); i++) {
 			String country = countryOrder.get(i);
-
+			int minStayValue = DataParameters.minDayStay.get(country);
+			int satValue = DataParameters.defaultSatisfactionValue.get(country);
+			int unitDecreaseVal = (int) (Math.random()*((satValue / minStayValue) - 1));
+			
 			if (i == 0) {
 				startCountry = country;
 				locations.append(country);
 				minCountryStay.append(1);
+				satisfactionValue.append(100);
+				satisfactionValueDecrease.append(100);
 			} else if (i == countryOrder.size() - 1) {
 				endCountry = country + "TWO";
 				locations.append(endCountry);
 				minCountryStay.append(1);
+				satisfactionValue.append(100);
+				satisfactionValueDecrease.append(100);
 			} else {
 				locations.append(country);
-				minCountryStay.append(DataParameters.minDayStay.get(country));
+				minCountryStay.append(minStayValue);
+				satisfactionValue.append(satValue);	
+				satisfactionValueDecrease.append(unitDecreaseVal);
 			}
 			costOfLiving.append(DataParameters.getCostOfLiving(country));
-			satisfactionValue.append(DataParameters.defaultSatisfactionValue.get(country));
 
 			if (i + 1 < countryOrder.size()) {
 				locations.append(",");
 				costOfLiving.append(",");
 				satisfactionValue.append(",");
+				satisfactionValueDecrease.append(",");
 				minCountryStay.append(",");
 			}
 		}
@@ -151,6 +161,7 @@ public class PriceMatrix {
 		locations.append("};");
 		costOfLiving.append("];");
 		satisfactionValue.append("];");
+		satisfactionValueDecrease.append("];");
 		minCountryStay.append("];");
 		startCountry = "startlocation = " + startCountry + ";";
 		endCountry = "endlocation = " + endCountry + ";";
@@ -159,7 +170,7 @@ public class PriceMatrix {
 				+ (numberOfDestinations + 1) + ";";
 		String result = startCountry + "\n" + endCountry + "\n" + lengthOfLocations + "\n"
 				+ biggerThanLengthOfLocation + "\n" + locations + "\n" + costOfLiving + "\n"
-				+ satisfactionValue + "\n" + minCountryStay;
+				+ satisfactionValue + "\n" + minCountryStay + "\n" + satisfactionValueDecrease;
 		return result;
 	}
 

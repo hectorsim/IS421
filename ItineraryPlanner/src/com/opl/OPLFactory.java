@@ -33,10 +33,11 @@ public class OPLFactory {
 			results = pm.generateDAT();
 
 			String budgetString = "budget = " + budget + ";";
-			String unitDecrease = "UnitDecreaseInSatisfactionPerDay = "
-					+ Constants.satisfactionDecreaseStep + ";";
+			// String unitDecrease = "UnitDecreaseInSatisfactionPerDay = "
+			// 		+ Constants.satisfactionDecreaseStep + ";";
 
-			results = budgetString + "\n" + unitDecrease + "\n\n" + results;
+			// results = budgetString + "\n" + unitDecrease + "\n\n" + results;
+			results = budgetString + "\n\n" + results;
 
 			//System.out.println(results);
 
