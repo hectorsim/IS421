@@ -152,6 +152,14 @@ public class Vertex {
 	}
 	
 	/**
+	 * Check whether location is connect to this vertex
+	 * @param locationId
+	 * @return
+	 */
+	public boolean isConnected(int locationId) {
+		return this.adjList.containsKey(locationId);
+	}
+	/**
 	 * Delete a adjacent vertex connected to current
 	 * @param id
 	 */

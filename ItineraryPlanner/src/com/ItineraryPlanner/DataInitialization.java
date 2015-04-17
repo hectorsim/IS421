@@ -6,8 +6,6 @@ package com.ItineraryPlanner;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import org.json.simple.JSONObject;
-
 /**
  * @author Leon
  * Initialization of DAT data
@@ -37,24 +35,17 @@ public class DataInitialization implements ServletContextListener {
 //		String contextPath = servletContext.getRealPath(Constants.FILESEPARATOR);
 
 		// Formatting for raw data into proper data
-		JSONObject rawData = SystemFactory.datRetrieval();
-		timer.addLap("Retrieval of data from DAT file");
+		//JSONObject rawData = SystemFactory.datRetrieval();
+		//timer.addLap("Retrieval of data from DAT file");
 		
 		// Initialize raw data
-		SystemFactory.formatData(rawData);
+		SystemFactory.formatGraph();
 		timer.addLap("Initialization of all data");
 		
 		System.out.println(Constants.GRAPH.toJSON().toJSONString());
-		System.out.println(Constants.DEFAULT_LOCATION_SATISFACTION);
 		System.out.println();
 		
 		System.out.println("DATA INITIALIZATION Completed");
 		System.out.println(timer.timeToString());
-		
-		testingPlatform();
-	}
-
-	public void testingPlatform() {
-		System.out.println(DataParameters.getAllLocations());
 	}
 }

@@ -10,6 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.ItineraryPlanner.Constants;
+import com.heuristic.Solutions;
 
 /**
  * Object for User Object
@@ -17,12 +18,12 @@ import com.ItineraryPlanner.Constants;
  *
  */
 public class User {
-	public Graph graph;
-	public double budget;
-	public int noOfStays;
-	public HashMap<Integer, Integer> satisfactionLevels;
+	private Graph graph;
+	private double budget;
+	private int noOfStays;
+	private HashMap<Integer, Integer> satisfactionLevels;
 	
-	public ArrayList<Vertex> path;
+	public ArrayList<Solutions> solutionList;
 	
 	/**
 	 * Constructor to initialize the User object
@@ -37,32 +38,7 @@ public class User {
 		this.satisfactionLevels = satisfactionLevels;
 		
 		this.graph = graph;
-		
-		path = new ArrayList<Vertex>();
-		/** Dummy data **/
-		path.add(this.graph.getVertex(1));
-		
-		Vertex v2 = this.graph.getVertex(2);
-		v2.setNoOfDays(2);
-		path.add(v2);
-		
-		Vertex v3 = this.graph.getVertex(3);
-		v3.setNoOfDays(2);
-		path.add(v3);
-		
-		Vertex v4 = this.graph.getVertex(4);
-		v4.setNoOfDays(2);
-		path.add(v4);
-		
-		Vertex v5 = this.graph.getVertex(5);
-		v5.setNoOfDays(2);
-		path.add(v5);
-		
-		Vertex v6 = this.graph.getVertex(7);
-		v6.setNoOfDays(1);
-		path.add(v6);
-		
-		path.add(this.graph.getVertex(1));
+		solutionList = new ArrayList<Solutions>();
 	}
 
 	/** 
@@ -130,32 +106,23 @@ public class User {
 	}
 	
 	/**
-	 * Convert the graph object of the user to String format
+	 * Calculate recommended cost
 	 * @return
 	 */
-	public String graphToString() {
-		return this.graph.toString();
-	}
-	
-
-	/**
-	 * Calculate and retrieve the total cost for the itinerary
-	 * @return
-	 */
-	public double getTotalCost() {
+	public double getRecommendedTotalCost(ArrayList<Vertex> recommendPath) {
 		double totalCost = 0.0;
 		int day = 0;
 		
-		for (int i = 0; i < path.size(); i++) {
-			Vertex current = path.get(i);
+		for (int i = 0; i < recommendPath.size(); i++) {
+			Vertex current = recommendPath.get(i);
 			
 			totalCost += current.getLivingCost() * current.getNoOfDays();
 			day += current.getNoOfDays();
 			
-			if (i < path.size()-1) {
-				Vertex next = path.get(i+1);
+			if (i < recommendPath.size()-1) {
+				Vertex next = recommendPath.get(i+1);
 				HashMap<Integer, Double[]> adjList = current.getAdjList();
-				
+				System.out.println(day);
 				Double[] priceList = adjList.get(next.getId());
 				totalCost += priceList[day];
 			}
@@ -165,23 +132,64 @@ public class User {
 	}
 	
 	/**
-	 * Calculate and get the total satisfaction for the itinerary
+	 * Calculate and get the total satisfaction for the recommended itinerary
 	 * @return
 	 */
-	public int getTotalSatisfaction() {
+	public int getRecommendedTotalSatisfaction(ArrayList<Vertex> recommendPath) {
 		int totalSatistaction = 0;
 		
-		for (int i = 0; i < path.size(); i++) {
-			Vertex visited = path.get(i);
-			
+		for (Vertex visited : recommendPath) {
 			int noOfDays = visited.getNoOfDays();
 			int satisfaction = satisfactionLevels.get(visited.getId()); 
 			
-			totalSatistaction += noOfDays*satisfaction - (((noOfDays*(noOfDays-1)) / 2) * Constants.DECREASE_IN_UNIT);
+			totalSatistaction += noOfDays*satisfaction - (((noOfDays*(noOfDays-1)) / 2) * Constants.satisfactionDecreaseStep);
 		}
 		
 		return totalSatistaction;
 	}
+	
+	/**
+	 * Retrieve the number of days spents on the recommended tour
+	 * @param tour
+	 * @return
+	 */
+	public int getRecommendedTotalDays(ArrayList<Vertex> recommendPath) {
+		int numberOfDays = 0;
+		
+		for (Vertex visited : recommendPath) {
+			numberOfDays += visited.getNoOfDays();
+		}
+		
+		return numberOfDays;
+	}
+	
+	/**
+	 * Retrieve solution list
+	 * @return
+	 */
+	public ArrayList<Solutions> getSolutionList() {
+		return solutionList;
+	}
+
+	/**
+	 * Set solution list
+	 * @param solutionList
+	 */
+	public void setSolutionList(ArrayList<Solutions> solutionList) {
+		this.solutionList = solutionList;
+	}
+
+	public void addSolution(Solutions solution) {
+		this.solutionList.add(solution);
+	}
+	/**
+	 * Convert the graph object of the user to String format
+	 * @return
+	 */
+	public String graphToString() {
+		return this.graph.toString();
+	}
+	
 	
 	/**
 	 * Convert object to string
@@ -231,12 +239,29 @@ public class User {
 		return json_User;
 	}
 
+	public JSONObject retrieveOptimalSolution() {
+		Solutions bestSolution = null;
+		
+		for (Solutions solution : this.solutionList) {
+			if (bestSolution == null) {
+				bestSolution = solution;
+			} else {
+				if (bestSolution.getTotalPreferences() < solution.getTotalPreferences()) {
+					bestSolution = solution;
+				}
+			}
+		}
+		
+		return generateResults(bestSolution);
+	}
+	
 	/**
 	 * Generate overall results for the optimal path for user iitnerary
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public JSONObject generateResults() {
+	public JSONObject generateResults(Solutions solution) {
+		ArrayList<Vertex> path = solution.getPath();
 		JSONObject jsonHeuristicResults = new JSONObject();
 		
 		JSONArray jsonPath = new JSONArray();
@@ -267,8 +292,8 @@ public class User {
 		}
 		
 		jsonHeuristicResults.put("path", jsonPath);
-		jsonHeuristicResults.put("totalCost", getTotalCost());
-		jsonHeuristicResults.put("totalSatisfaction", getTotalSatisfaction());
+		jsonHeuristicResults.put("totalCost", solution.getTotalCost());
+		jsonHeuristicResults.put("totalSatisfaction", solution.getTotalPreferences());
 		
 		return jsonHeuristicResults;
 	}

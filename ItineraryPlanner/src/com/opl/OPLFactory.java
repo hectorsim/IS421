@@ -38,7 +38,7 @@ public class OPLFactory {
 
 			results = budgetString + "\n" + unitDecrease + "\n\n" + results;
 
-			// System.out.println(results);
+			//System.out.println(results);
 
 			// write to file
 			// final String fileName = "/travel_" + airportCodes.size() +

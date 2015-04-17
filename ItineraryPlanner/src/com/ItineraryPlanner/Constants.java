@@ -1,13 +1,9 @@
 package com.ItineraryPlanner;
-import java.io.File;
-import java.util.ArrayList;
-
-import org.json.simple.JSONObject;
 
 import com.entity.Graph;
 
 public class Constants {
-	public static final String FILESEPARATOR = File.separator;
+	
 	/**
 	 * Data path for heuristics
 	 */
@@ -17,9 +13,9 @@ public class Constants {
 	/**
 	 * Data path for OPL
 	 */
-	public static final int dashValue = 99999;
 	public static final int satisfactionDecreaseStep = 10;
 	public static final String PRICEMATRIXCSV = "/data/price_matrix.csv";
+	public static final int dashValue = 99999;
 	
 	public static final String OPL_DATADIR = "/itineraryplanner/";
 	public static final String OPL_MODSTRING = "warehouse.mod";
@@ -46,6 +42,4 @@ public class Constants {
 	 * Constant Data Variables template
 	 */
 	public static Graph GRAPH;
-	public static JSONObject DEFAULT_LOCATION_SATISFACTION;
-	public static int DECREASE_IN_UNIT;
 }

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.ItineraryPlanner.Constants;
 import com.ItineraryPlanner.DataParameters;
@@ -47,7 +46,7 @@ public class PriceMatrix {
 					row = airportDestinations.indexOf(currentCountry);
 					int col = 0;
 					for (String codes : airportDestinations) {
-						int index = DataParameters.countryIndex().get(codes);
+						int index = DataParameters.LocationIndex().get(codes);
 						String val = record[index].toString();
 						int price = 0;
 						if (val.equals("-"))
@@ -136,10 +135,10 @@ public class PriceMatrix {
 				minCountryStay.append(1);
 			} else {
 				locations.append(country);
-				minCountryStay.append(generateMinStay());
+				minCountryStay.append(DataParameters.minDayStay.get(country));
 			}
 			costOfLiving.append(DataParameters.getCostOfLiving(country));
-			satisfactionValue.append(generateSatisfationValue());
+			satisfactionValue.append(DataParameters.defaultSatisfactionValue.get(country));
 
 			if (i + 1 < countryOrder.size()) {
 				locations.append(",");
@@ -164,23 +163,6 @@ public class PriceMatrix {
 		return result;
 	}
 
-	private int generateMinStay() {
-		int range = (5 - 3) + 1;
-		return (int) (Math.random() * range) + 3;
-	}
-
-	// f(x) = -0.65x^2+5x+2
-	private int generateSatisfationValue() {
-		double x = -1;
-		while (!(1 <= x && x <= 2.) && !(5.6 <= x && x <= 7)) {
-			x = (Math.random() * 10);
-			// System.out.println(x);
-		}
-		int value = (int) (((-0.65) * Math.pow(x, 2) + 5 * x + 2) * 10);
-		// System.out.println(x + "\t" + value);
-		return value;
-	}
-
 	private String generateDATPrice(int[][] priceMatrix) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("PriceFromToOnDay = [");
@@ -194,7 +176,7 @@ public class PriceMatrix {
 					// price
 					int price = value;
 					if(price != Constants.dashValue)
-						price = price + generateSatisfationValue();
+						price = price + DataParameters.generateSatisfationValue();
 					
 					sb.append(price);
 					if (i + 1 < numberOfDays)

@@ -8,24 +8,39 @@ import java.util.Map.Entry;
 
 import org.json.simple.JSONArray;
 
+import com.ItineraryPlanner.Constants;
+
 public class Graph {
 	
 	/**
 	 * Hash that contains vertices
 	 */
-	public HashMap<Integer, Vertex> vertices;
+	private HashMap<Integer, Vertex> vertices;
 	/**
 	 * Get start location
 	 */
-	public int startLocationId;
+	private int startLocationId;
 	/**
 	 * Constructor to initialize the graph object
 	 */
+	private HashMap<Integer, Double> prefScore = null; 
 	
 	public Graph() {
 		this.vertices = new HashMap<Integer, Vertex>();
 	}
 	
+	/**
+	 * Retrieve hash of vertices
+	 * @return
+	 */
+	public HashMap<Integer, Vertex> getVertices() {
+		return this.vertices;
+	}
+	
+	/**
+	 * Retrieve an array of vertices
+	 * @return
+	 */
 	public ArrayList<Vertex> getListOfVertex() {
 		ArrayList<Vertex> nameList = new ArrayList<Vertex>();
 		
@@ -36,6 +51,7 @@ public class Graph {
 		
 		return nameList;
 	}
+	
 	/**
 	 * get the vertex from the graph
 	 * @param key
@@ -100,6 +116,50 @@ public class Graph {
 		this.startLocationId = startLocationId;
 	}
 
+	/**
+	 * Retrieve the preference scoring
+	 */
+	public HashMap<Integer, Double> getPreferenecScores() {
+		return this.prefScore;
+	}
+	
+	/**
+	 * Generate preferences score
+	 * @param noOfDays
+	 * @param preferences
+	 */
+	public void generatePreferenceScore(int noOfDays, HashMap<Integer, Integer> preferences) {
+		this.prefScore = new HashMap<Integer, Double>();
+		
+		Iterator<Entry<Integer, Vertex>> iter = this.vertices.entrySet().iterator();
+		
+		while (iter.hasNext()) {
+			Map.Entry<Integer, Vertex> values = iter.next();
+			int index = values.getKey();
+			Vertex v = values.getValue();
+			
+			double preferenceScore = calculateCPScore(noOfDays, preferences.get(index), v.getLivingCost()); 
+			this.prefScore.put(index, preferenceScore);
+		}
+	}
+	
+	/**
+	 * Calculation of preference score for individual locations
+	 * @param noOfDays
+	 * @param preferenceScore
+	 * @param livingCost
+	 * @return
+	 */
+	public double calculateCPScore(int noOfDays, int preferenceScore, double livingCost) {
+		double score = 0;
+		
+		for (int i=1; i<=noOfDays; i++) {
+			score += Math.round((i * livingCost * 100 / ((i * preferenceScore)-(i * Constants.satisfactionDecreaseStep * (i-1) / 2))));
+		}
+		
+		return score/noOfDays;
+	}
+	
 	/**
 	 * Print out graph data structure
 	 */
