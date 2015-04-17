@@ -83,7 +83,6 @@ public class PlannerServlet extends HttpServlet {
 
 		/* Run optimal results */
 		JSONObject results = new JSONObject();
-
 		// Run algorithm for optimal solution
 		if (processingOption.equalsIgnoreCase("heuristic")) {
 			// Heuristic Execution
@@ -130,7 +129,6 @@ public class PlannerServlet extends HttpServlet {
 			// OPL execution
 			results = runOPL(user, tripLength, strBudget, processedDestinations,
 					satisfactionArray, startLocation);
-
 		}
 
 		// Store in servlet context and navigate to results.html
@@ -150,9 +148,7 @@ public class PlannerServlet extends HttpServlet {
 		TimeTracker timer = new TimeTracker();
 		factory.GRASPConstruction();
 		timer.addLap("GRASP Constructor");
-		
 		user.setProcessingTime(timer.timeToHtml());
-		return user.retrieveOptimalSolution();
 	}
 
 	public JSONObject runOPL(User user, int tripLength, String budget,
@@ -161,7 +157,6 @@ public class PlannerServlet extends HttpServlet {
 		
 		String startDestination = null;
 		ArrayList<String> airportCodes = new ArrayList<String>();
-
 		for (int i = 0; i < selectedDestination.size(); i++) {
 			String airport = selectedDestination.get(i);
 			System.out.println(airport + "\t" + startLocation);
@@ -189,7 +184,6 @@ public class PlannerServlet extends HttpServlet {
 			JSONObject json_results = new JSONObject();
 			json_results.put("Error", e.getMessage());
 			
-			return json_results;
 		}
 	}
 }

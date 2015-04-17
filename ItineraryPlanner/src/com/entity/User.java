@@ -171,8 +171,8 @@ public class User {
 			int satisfaction = satisfactionLevels.get(visited.getId());
 
 			int decreaseInUnit = DataParameters.unitDecreasePerLocationByIndex.get(visited.getId());
-			;
-			totalSatistaction += noOfDays*satisfaction - (((noOfDays*(noOfDays-1)) / 2) * decreaseInUnit);
+			
+			totalSatistaction += satisfaction - (noOfDays * decreaseInUnit);
 		}
 
 		return totalSatistaction;

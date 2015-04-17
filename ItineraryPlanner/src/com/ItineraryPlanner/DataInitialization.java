@@ -39,6 +39,13 @@ public class DataInitialization implements ServletContextListener {
 		//timer.addLap("Retrieval of data from DAT file");
 		
 		DataParameters.LocationIndexing();
+		DataParameters.generateMinStayForLocation(1);
+		DataParameters.generateDefaultSatisfactionValue(1);
+		// Generate min stay and randomize satisfaction value for per location
+		DataParameters.setUnitDecrement(1, 
+						DataParameters.defaultSatisfactionValueByIndex, 
+						DataParameters.minDayStayByIndex);
+		
 		SystemFactory.formatGraph();
 		timer.addLap("Initialization of all data");
 		
