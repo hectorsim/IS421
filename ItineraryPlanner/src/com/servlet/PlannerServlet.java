@@ -151,14 +151,14 @@ public class PlannerServlet extends HttpServlet {
 		factory.GRASPConstruction();
 		timer.addLap("GRASP Constructor");
 		
-		System.out.println(timer.timeToString());
+		user.setProcessingTime(timer.timeToHtml());
 		return user.retrieveOptimalSolution();
 	}
 
 	public JSONObject runOPL(User user, int tripLength, String budget,
 			ArrayList<String> selectedDestination,
 			ArrayList<Integer> satisfactionArray, String startLocation) {
-
+		
 		String startDestination = null;
 		ArrayList<String> airportCodes = new ArrayList<String>();
 
@@ -179,8 +179,10 @@ public class PlannerServlet extends HttpServlet {
 		File datFile = OPLFactory.generateDat(tripLength, budget,
 				selectedDestination, satisfactionArray, startDestination);
 		try {
+			TimeTracker timer = new TimeTracker();
 			OPLFactory.runOPL(user, datFile);
-			OPLFactory.cleanup(datFile);
+			user.setProcessingTime(timer.timeToHtml());
+			//OPLFactory.cleanup(datFile);
 			return OPLFactory.runOPL(user,datFile);
 //			 OPLFactory.cleanup(datFile);
 		} catch (Exception e) {

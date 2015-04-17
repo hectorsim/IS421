@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import com.ItineraryPlanner.Constants;
 import com.entity.Graph;
 import com.entity.User;
 import com.entity.Vertex;
@@ -28,6 +29,34 @@ public class HeuristicFactory {
 	public Graph Dijkstra(Graph graph, int index) {
 		return null;
 	}
+	
+	/*
+	public Solutions multipleGrasp() {
+		ArrayList<Solutions> solutionList = new ArrayList<Solutions>();
+		
+		for (int i=0; i < Constants.GRASPIterationNumber; i++) {
+			resetUserData();
+			System.out.println("Construction " + i + " : ");
+			GRASPConstruction();
+			solutionList.add(user.retrieveOptimalSolution());
+		}
+		
+		return retrieveBestOptimalValue(solutionList);
+	}
+	
+	public Solutions retrieveBestOptimalValue(ArrayList<Solutions> solutionList) {
+		for (Solutions s : solutionList) {
+			System.out.println(s.getTotalPreferences());
+		}
+		return null;
+	}
+	
+	public void resetUserData() {
+		user.getSolutionList().clear();
+		Graph graph = user.getGraph();
+		graph.resetNoOfDays();
+	}
+	*/
 	
 	public void GRASPConstruction() {
 		Graph graph = user.getGraph();

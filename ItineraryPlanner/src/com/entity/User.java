@@ -37,6 +37,8 @@ public class User {
 
 	public ArrayList<Solutions> solutionList;
 
+	public String processingTime = "0";
+	
 	/**
 	 * Constructor to initialize the User object
 	 * 
@@ -292,6 +294,9 @@ public class User {
 		return generateResults(bestSolution);
 	}
 
+	public void setProcessingTime(String processingTime) {
+		this.processingTime = processingTime;
+	}
 	/**
 	 * Generate overall results for the optimal path for user iitnerary
 	 * 
@@ -336,6 +341,8 @@ public class User {
 			jsonHeuristicResults.put("totalCost", solution.getTotalCost());
 			jsonHeuristicResults.put("totalSatisfaction", solution.getTotalPreferences());
 			jsonHeuristicResults.put("allLocations", graph.getAllLocationToJSON());
+			jsonHeuristicResults.put("processingTime", this.processingTime);
+			
 		} else {
 			jsonHeuristicResults.put("Error", "No Optimal Solution Found!");
 		}
@@ -378,6 +385,7 @@ public class User {
 		jsonHeuristicResults.put("totalCost", solution.getTotalCost());
 		jsonHeuristicResults.put("totalSatisfaction", solution.getTotalPreferences());
 		jsonHeuristicResults.put("allLocations", graph.getAllLocationToJSON());
+		jsonHeuristicResults.put("processingTime", this.processingTime);
 		
 		return jsonHeuristicResults;
 	}

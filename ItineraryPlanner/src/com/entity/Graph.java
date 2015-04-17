@@ -162,6 +162,15 @@ public class Graph {
 	}
 	
 	/**
+	 * Reset number of days for all locations
+	 */
+	public void resetNoOfDays() {
+		for(Vertex v : this.vertices.values()) {
+			v.resetNoOfDay();
+		}
+	}
+	
+	/**
 	 * Print out graph data structure
 	 */
 	public String toString() {

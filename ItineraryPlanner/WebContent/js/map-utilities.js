@@ -37,6 +37,8 @@ function initializeGraph(callback) {
 		var result_json = jQuery.parseJSON(results);
 		console.log("Results Output : " + JSON.stringify(result_json));
 		
+		appendResults($("#resultsPanel"), results);
+		
 		var error = result_json.Error;
 		
 		if (error == undefined) {
@@ -82,4 +84,15 @@ function addLocationMarker(locationDetail, callback) {
 			return false;
 		});
 	});
+}
+
+function appendResults(container, json_results) {
+	var json = jQuery.parseJSON(json_results);
+	container.append("Total Satisfaction Value: " + json.totalSatisfaction + "<br/><br/>");
+	container.append("Total Cost: $" + json.totalCost + "<br/><br/>");
+	container.append("Total Processing Time:<br/> " + json.processingTime.replace("\n","<br/>") + "<br/><br/>");
+	container.append("Itinerary Tour: <br/>");
+	for(var k in json.path) {
+		container.append("<label style='font-size: 0.8em;'>Location " + k + " - " + json.path[k].location + "</label><br/>")
+	}
 }
