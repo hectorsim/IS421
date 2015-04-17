@@ -22,7 +22,8 @@ public class PriceMatrix {
 	private int numberOfDestinations;
 	private int numberOfDays;
 
-	public PriceMatrix(ArrayList<String> airportDestinations, int numberOfDays, ArrayList<Integer> satisfactionArray) {
+	public PriceMatrix(ArrayList<String> airportDestinations, int numberOfDays,
+			ArrayList<Integer> satisfactionArray) {
 		this.numberOfDays = numberOfDays;
 		this.airportDestinations = airportDestinations;
 		this.numberOfDestinations = airportDestinations.size() + 1;
@@ -35,7 +36,8 @@ public class PriceMatrix {
 		priceMatrix = new int[numberOfDestinations][numberOfDestinations];
 		CSVReader reader = null;
 		try {
-			InputStream is = this.getClass().getResourceAsStream(Constants.PRICEMATRIXCSV);
+			InputStream is = this.getClass().getResourceAsStream(
+					Constants.PRICEMATRIXCSV);
 			InputStreamReader isr = new InputStreamReader(is);
 			reader = new CSVReader(isr);
 			String[] record = null;
@@ -81,8 +83,8 @@ public class PriceMatrix {
 		String generatedPriceMatrix = generateDATPrice(priceMatrix);
 		String generateCountryData = generateCountryData(countryOrder);
 		String generatedDates = generateDates();
-		String compiledResult = generatedDates + "\n\n" + generateCountryData + "\n\n"
-				+ generatedPriceMatrix;
+		String compiledResult = generatedDates + "\n\n" + generateCountryData
+				+ "\n\n" + generatedPriceMatrix;
 		return compiledResult;
 	}
 
@@ -112,7 +114,8 @@ public class PriceMatrix {
 		String firstDate = "firstdate = 1;";
 		String endDate = "enddate = " + numberOfDays + ";";
 
-		String results = firstDate + "\n" + endDate + "\n" + dates + "\n" + dates_mod;
+		String results = firstDate + "\n" + endDate + "\n" + dates + "\n"
+				+ dates_mod;
 		return results;
 	}
 
@@ -124,23 +127,28 @@ public class PriceMatrix {
 		costOfLiving.append("CostOfLivingOfLocation = [");
 		satisfactionValue.append("InitialSatisfactionOfLocation = [");
 		minCountryStay.append("MinimumDaysStayAtLocation = [");
-		satisfactionValueDecrease.append("UnitDecreaseInSatisfactionPerDay = [");
+		satisfactionValueDecrease
+				.append("UnitDecreaseInSatisfactionPerDay = [");
 		for (int i = 0; i < countryOrder.size(); i++) {
 			String country = countryOrder.get(i);
 			int minStayValue = DataParameters.minDayStay.get(country);
 
 			int satValue = 0;
-			if(satisfactionArray.size()!=0)
-				satValue = satisfactionArray.get(i);
-			else
+			if (satisfactionArray.size() != 0) {
+				if(i < satisfactionArray.size())
+					satValue = satisfactionArray.get(i);
+				else
+					satValue = satisfactionArray.get(0);
+			} else {
 				satValue = DataParameters.defaultSatisfactionValue.get(country);
+			}
+			int unitDecreaseVal = DataParameters.unitDecreasePerLocation
+					.get(country);
 
-			int unitDecreaseVal = DataParameters.unitDecreasePerLocation.get(country);
-			
 			if (i == 0) {
 				startCountry = country;
 			}
-			
+
 			if (i == countryOrder.size() - 1) {
 				endCountry = country + "TWO";
 				locations.append(endCountry);
@@ -150,7 +158,7 @@ public class PriceMatrix {
 			} else {
 				locations.append(country);
 				minCountryStay.append(minStayValue);
-				satisfactionValue.append(satValue);	
+				satisfactionValue.append(satValue);
 				satisfactionValueDecrease.append(unitDecreaseVal);
 			}
 			costOfLiving.append(DataParameters.getCostOfLiving(country));
@@ -171,12 +179,14 @@ public class PriceMatrix {
 		minCountryStay.append("];");
 		startCountry = "startlocation = " + startCountry + ";";
 		endCountry = "endlocation = " + endCountry + ";";
-		String lengthOfLocations = "lengthOfLocations = " + numberOfDestinations + ";";
+		String lengthOfLocations = "lengthOfLocations = "
+				+ numberOfDestinations + ";";
 		String biggerThanLengthOfLocation = "biggerThanLengthOfLocation = "
 				+ (numberOfDestinations + 1) + ";";
-		String result = startCountry + "\n" + endCountry + "\n" + lengthOfLocations + "\n"
-				+ biggerThanLengthOfLocation + "\n" + locations + "\n" + costOfLiving + "\n"
-				+ satisfactionValue + "\n" + minCountryStay + "\n" + satisfactionValueDecrease;
+		String result = startCountry + "\n" + endCountry + "\n"
+				+ lengthOfLocations + "\n" + biggerThanLengthOfLocation + "\n"
+				+ locations + "\n" + costOfLiving + "\n" + satisfactionValue
+				+ "\n" + minCountryStay + "\n" + satisfactionValueDecrease;
 		return result;
 	}
 
@@ -192,9 +202,10 @@ public class PriceMatrix {
 					// if(i!=0)
 					// price
 					int price = value;
-					if(price != Constants.dashValue)
-						price = price + DataParameters.generateSatisfationValue();
-					
+					if (price != Constants.dashValue)
+						price = price
+								+ DataParameters.generateSatisfationValue();
+
 					sb.append(price);
 					if (i + 1 < numberOfDays)
 						sb.append(valueDelimiter);

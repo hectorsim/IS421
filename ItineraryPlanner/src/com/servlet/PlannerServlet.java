@@ -101,7 +101,7 @@ public class PlannerServlet extends HttpServlet {
 					String airport = destinations.get(i);
 					System.out.println("startLocation: \t" + startLocation);
 					System.out.print(airport + "\t");
-					if (i == (Integer.parseInt(startLocation)-1)) {
+					if (i == (Integer.parseInt(startLocation) - 1)) {
 						processedDestinations.add(0, airport);
 					} else {
 						processedDestinations.add(airport);
@@ -114,18 +114,21 @@ public class PlannerServlet extends HttpServlet {
 					int satisfactionValue = Integer.valueOf(values[1]);
 					String country = DataParameters.countryIdByIndex
 							.get(countryIndex);
-					if (countryIndex == Integer.valueOf(startLocation)) {
-						processedDestinations.add(0, country);
-						satisfactionArray.add(0, satisfactionValue);
-					} else {
-						processedDestinations.add(country);
-						satisfactionArray.add(satisfactionValue);
-					}
+					processedDestinations.add(country);
+					satisfactionArray.add(satisfactionValue);
 				}
+
+				// insert start location
+				int startCountryIndex = Integer.valueOf(startLocation);
+				String country = DataParameters.countryIdByIndex
+						.get(startCountryIndex);
+				processedDestinations.add(0, country);
+				satisfactionArray.add(0, 100);
 			}
 
 			// OPL execution
-			runOPL(user,tripLength, strBudget, destinations,satisfactionArray, startLocation);
+			runOPL(user, tripLength, strBudget, processedDestinations,
+					satisfactionArray, startLocation);
 
 		}
 
@@ -148,11 +151,12 @@ public class PlannerServlet extends HttpServlet {
 	}
 
 	public void runOPL(User user, int tripLength, String budget,
-			ArrayList<String> selectedDestination, ArrayList<Integer> satisfactionArray, String startLocation) {
-		
+			ArrayList<String> selectedDestination,
+			ArrayList<Integer> satisfactionArray, String startLocation) {
+
 		String startDestination = null;
 		ArrayList<String> airportCodes = new ArrayList<String>();
-		
+
 		for (int i = 0; i < selectedDestination.size(); i++) {
 			String airport = selectedDestination.get(i);
 			System.out.println(airport + "\t" + startLocation);
@@ -170,8 +174,8 @@ public class PlannerServlet extends HttpServlet {
 		File datFile = OPLFactory.generateDat(tripLength, budget,
 				selectedDestination, satisfactionArray, startDestination);
 		try {
-			OPLFactory.runOPL(user,datFile);
-			 OPLFactory.cleanup(datFile);
+			OPLFactory.runOPL(user, datFile);
+			OPLFactory.cleanup(datFile);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
