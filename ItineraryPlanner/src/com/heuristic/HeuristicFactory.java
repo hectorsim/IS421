@@ -31,14 +31,14 @@ public class HeuristicFactory {
 	
 	public void GRASPConstruction() {
 		Graph graph = user.getGraph();
-		LinkedHashMap<Integer, Double> candidates = candidateList(graph);
-		
+		candidateList(graph);
+		System.out.println("Number of candidates: " + candidates.size());
 		// Attributes required
 		Solutions solution = null;
 		boolean firstNode = false;
 		double tempCost = 0;
 		
-		if (!candidates.isEmpty()) {
+		if (candidates != null || !candidates.isEmpty()) {
 			Vertex startLocation = graph.getStartVertex();
 		
 			ArrayList<Vertex> tempPath = new ArrayList<Vertex>();
@@ -71,11 +71,13 @@ public class HeuristicFactory {
 				}
 			}
 			
+			System.out.println("before insertion " + solution.numberOfPath());
+			
 			while (!candidates.isEmpty()) {
-				Solutions biggerTour = PathSingleInsertion(solution, candidates);
-				
+				Solutions biggerTour = PathSingleInsertion(solution);
+
 				if (biggerTour.numberOfPath() == solution.numberOfPath()) {
-					break; 
+					break;
 				} else {
 					user.addSolution(biggerTour);
 					solution = biggerTour;
@@ -84,25 +86,18 @@ public class HeuristicFactory {
 		}
 	}
 	
-	public Solutions PathSingleInsertion(Solutions solution, HashMap<Integer, Double> candidates) {
-		Solutions newSolution = null;
-		try {
-			newSolution = (Solutions) solution.clone();
-		} catch (CloneNotSupportedException e) {
-			newSolution = solution;
-		}
-		
+	public Solutions PathSingleInsertion(Solutions solution) {
+		Solutions newSolution =  solution.clone();
+
 		Graph graph = newSolution.getGraph();
-		ArrayList<Vertex> newPath = newSolution.getPath();
-		// Remove the end location for the next insertion
-		newPath.remove(newPath.size()-1);
-		
+		ArrayList<Vertex> newPath = newSolution.getPath();		
 		Vertex lastNode = newSolution.getPotentialVertex();
 		boolean inserted = false;
 		// Maximum of run
 		int count = 0;
 		
 		while (!inserted) {
+
 			Random ran = new Random();
 			Integer[] idList = (Integer[]) candidates.keySet().toArray(new Integer[candidates.size()]);
 			int potentialIndex = idList[ran.nextInt(idList.length)];
@@ -111,6 +106,8 @@ public class HeuristicFactory {
 			if (lastNode.isConnected(potentialIndex) && potentialVertex.isConnected(graph.getStartLocationId())) {
 
 				// Divided by total node available excluding start node (Existing node - start node + new node)
+				// Remove the end location for the next insertion
+				newPath.remove(newPath.size()-1);
 				int averageDuration = (user.getNoOfStays()-1)/(newPath.size());
 				
 				if (averageDuration > 1) {
@@ -128,20 +125,25 @@ public class HeuristicFactory {
 					newPath.add(potentialVertex);
 					newPath.add(graph.getStartVertex());
 					double totalCost = user.getRecommendedTotalCost(newPath);
+					System.out.println("My cost incurred:" + totalCost + " and User Budget: " + user.getBudget());
 					
-					count++;
-					if (count < candidates.size()*5) {
-						if (totalCost <= user.getBudget()) {
-							newSolution = new Solutions((ArrayList<Vertex>) newPath, totalCost, 
-									user.getRecommendedTotalSatisfaction(newPath), potentialVertex, graph);
-							candidates.remove(potentialVertex.getId());
-							inserted = true;
-						}
-					} else {
-						break;
+					if (totalCost <= user.getBudget()) {
+						newSolution = new Solutions((ArrayList<Vertex>) newPath, totalCost, 
+								user.getRecommendedTotalSatisfaction(newPath), potentialVertex, graph);
+						candidates.remove(potentialVertex.getId());
+						inserted = true;
 					}
+				} else {
+					newPath.add(graph.getStartVertex());
+					break;
 				}
-				
+			}
+			
+			if (count >= candidates.size()*2) {
+				newPath.add(graph.getStartVertex());
+				break;
+			} else{
+				count++;
 			}
 		}
 		
@@ -149,14 +151,14 @@ public class HeuristicFactory {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public LinkedHashMap<Integer, Double> candidateList(Graph graph) {
+	public void candidateList(Graph graph) {
 		
 		// Sort list by satisfaction from smaller to biggest and remove those larger than mean value
 		HashMap<Integer, Double> prefScore = (HashMap<Integer, Double>) graph.getPreferenecScores().clone();
 		prefScore.remove(graph.getStartLocationId());
 		double meanValue = calculateMean(prefScore);
 		
-		return selectCandidates(prefScore, meanValue);
+		candidates = selectCandidates(prefScore, meanValue);
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

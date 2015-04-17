@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import com.ItineraryPlanner.Constants;
 
@@ -115,7 +116,7 @@ public class Graph {
 	public void setStartLocationId(int startLocationId) {
 		this.startLocationId = startLocationId;
 	}
-
+	
 	/**
 	 * Retrieve the preference scoring
 	 */
@@ -193,5 +194,21 @@ public class Graph {
 		}
 		
 		return dataArray;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public JSONArray getAllLocationToJSON() {
+		JSONArray jsonArray = new JSONArray();
+		
+		for (Vertex v : this.vertices.values()) {
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("location", v.getLocationName());
+			jsonObject.put("costOfLiving", v.getLivingCost());
+			jsonObject.put("noOfDaysStay", v.getNoOfDays());
+			
+			jsonArray.add(jsonObject);
+		}
+		
+		return jsonArray;
 	}
 }

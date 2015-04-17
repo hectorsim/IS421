@@ -121,8 +121,9 @@ public class User {
 			
 			if (i < recommendPath.size()-1) {
 				Vertex next = recommendPath.get(i+1);
+				System.out.println(current.getLocationName() + " - " + next.getLocationName());
 				HashMap<Integer, Double[]> adjList = current.getAdjList();
-				System.out.println(day);
+				
 				Double[] priceList = adjList.get(next.getId());
 				totalCost += priceList[day];
 			}
@@ -261,40 +262,46 @@ public class User {
 	 */
 	@SuppressWarnings("unchecked")
 	public JSONObject generateResults(Solutions solution) {
-		ArrayList<Vertex> path = solution.getPath();
 		JSONObject jsonHeuristicResults = new JSONObject();
 		
-		JSONArray jsonPath = new JSONArray();
-		int day = 0;
-		for (int i = 0; i < path.size(); i++) {
-			JSONObject jsonVertex = new JSONObject();
+		if (solution != null) {
+			ArrayList<Vertex> path = solution.getPath();
+			Graph graph = solution.getGraph();
 			
-			Vertex current = path.get(i);
-			jsonVertex.put("location", current.getLocationName());
-			jsonVertex.put("costOfLiving", "$" + current.getLivingCost() + " per day");
-			jsonVertex.put("noOfDaysStay", current.getNoOfDays() + " Days");
-			
-			day += current.getNoOfDays();
-			
-			if (i < path.size()-1) {
-				Vertex next = path.get(i+1);
-				HashMap<Integer, Double[]> adjList = current.getAdjList();
+			JSONArray jsonPath = new JSONArray();
+			int day = 0;
+			for (int i = 0; i < path.size(); i++) {
+				JSONObject jsonVertex = new JSONObject();
 				
-				Double[] priceList = adjList.get(next.getId());
-				double flightPrice = priceList[day];
+				Vertex current = path.get(i);
+				jsonVertex.put("location", current.getLocationName());
+				jsonVertex.put("costOfLiving", "$" + current.getLivingCost() + " per day");
+				jsonVertex.put("noOfDaysStay", current.getNoOfDays() + " Days");
 				
-				jsonVertex.put("flightPrice", "$" + flightPrice);
-			} else {
-				jsonVertex.put("flightPrice", "$0");
+				day += current.getNoOfDays();
+				
+				if (i < path.size()-1) {
+					Vertex next = path.get(i+1);
+					HashMap<Integer, Double[]> adjList = current.getAdjList();
+					
+					Double[] priceList = adjList.get(next.getId());
+					double flightPrice = priceList[day];
+					
+					jsonVertex.put("flightPrice", "$" + flightPrice);
+				} else {
+					jsonVertex.put("flightPrice", "$0");
+				}
+				
+				jsonPath.add(jsonVertex);
 			}
 			
-			jsonPath.add(jsonVertex);
+			jsonHeuristicResults.put("path", jsonPath);
+			jsonHeuristicResults.put("totalCost", solution.getTotalCost());
+			jsonHeuristicResults.put("totalSatisfaction", solution.getTotalPreferences());
+			jsonHeuristicResults.put("allLocations", graph.getAllLocationToJSON());
+		} else {
+			jsonHeuristicResults.put("Error", "No Optimal Solution Found!");
 		}
-		
-		jsonHeuristicResults.put("path", jsonPath);
-		jsonHeuristicResults.put("totalCost", solution.getTotalCost());
-		jsonHeuristicResults.put("totalSatisfaction", solution.getTotalPreferences());
-		
 		return jsonHeuristicResults;
 	}
 }

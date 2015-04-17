@@ -66,10 +66,11 @@ public class Solutions {
 		return this.path.size();
 	}
 
-	@Override
-	protected Object clone() throws CloneNotSupportedException {
+	protected Solutions clone() {
 		// TODO Auto-generated method stub
-		return super.clone();
+		return new Solutions((ArrayList<Vertex>) this.path.clone(), this.totalCost,
+			this.totalPreferences, this.potentialVertex, this.graph);
 	}
+
 	
 }

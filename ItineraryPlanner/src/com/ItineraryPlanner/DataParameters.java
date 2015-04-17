@@ -229,7 +229,7 @@ public class DataParameters {
 			case PVG: return "Shanghai - Pudong International Airport";
 			case HKG: return "Hong Kong - Hong Kong International Airport";
 			case KIX: return "Osaka - Kansai International Airport";
-			case HND: return "Tokyo - Tokyo International Airport";
+			case HND: return "Tokyo - Tokyo International Airport";
 			case ICN: return "Seoul - Incheon International Airport";
 			case KHH: return "Kaohsiung - Kaohsiung International Airport";
 			case TPE: return "Taipei - Taiwan Taoyuan International Airport";
