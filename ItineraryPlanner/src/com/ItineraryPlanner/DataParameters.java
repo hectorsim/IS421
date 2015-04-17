@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Set;
 
 import com.entity.Graph;
 import com.entity.Vertex;
@@ -49,8 +50,11 @@ public class DataParameters {
 				unitDecreasePerLocationByIndex.put(locationIndex, 100);
 				unitDecreasePerLocation.put(locationId, 100);
 			} else {
-				int unitDecrease = generateUnitDecrease(satisfactionValues.get(locationIndex), 
+				int unitDecrease = -1;
+				if (satisfactionValues.containsKey(locationIndex)) {
+					unitDecrease = generateUnitDecrease(satisfactionValues.get(locationIndex), 
 						minDatStay.get(locationIndex));
+				} 
 				
 				unitDecreasePerLocationByIndex.put(locationIndex, unitDecrease);
 				unitDecreasePerLocation.put(locationId, unitDecrease);				
@@ -85,25 +89,28 @@ public class DataParameters {
 			String[] record = null;
 			
 			while ((record = reader.readNext()) != null) {
-				Vertex currentCountry = graph.getVertexByLocationId(record[0]);
-				
 				HashMap<Integer, Vertex> vertices = graph.getVertices();
-				Iterator<Integer> iter = vertices.keySet().iterator();
 				
-				while(iter.hasNext()) {
-					Integer toLocationIndex = iter.next();
-					String value = record[toLocationIndex];
+				if (vertices.containsKey(DataParameters.countryIndexById.get(record[0]))) {
+					Vertex currentCountry = graph.getVertexByLocationId(record[0]);
 					
-					if (!value.equalsIgnoreCase("-")) {
-						double flightPrice = Double.valueOf(value);
+					Iterator<Integer> iter = vertices.keySet().iterator();
+					
+					while(iter.hasNext()) {
+						Integer toLocationIndex = iter.next();
+						String value = record[toLocationIndex];
 						
-						Double[] priceRange = new Double[totalNumberOfDays];
-						
-						for (int i=0; i < totalNumberOfDays; i++) {
-							priceRange[i] = flightPrice + DataParameters.generateSatisfationValue();
+						if (!value.equalsIgnoreCase("-")) {
+							double flightPrice = Double.valueOf(value);
+							
+							Double[] priceRange = new Double[totalNumberOfDays];
+							
+							for (int i=0; i < totalNumberOfDays; i++) {
+								priceRange[i] = flightPrice + DataParameters.generateSatisfationValue();
+							}
+							
+							currentCountry.setAdj(toLocationIndex, priceRange);
 						}
-						
-						currentCountry.setAdj(toLocationIndex, priceRange);
 					}
 				}
 			}

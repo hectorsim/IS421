@@ -46,6 +46,10 @@ public class SystemFactory {
 		// Get default satisfaction level
 		Graph graph = Constants.GRAPH;
 		
+		for (Vertex v : graph.getVertices().values()) {
+			v.setMinDays(DataParameters.minDayStayByIndex.get(v.getId()));
+		}
+		
 		DataParameters.setPriceMatrix(graph, noOfStays);
 		graph.setStartLocationId(startLocation);
 		
@@ -71,6 +75,7 @@ public class SystemFactory {
 		
 		// Set start location
 		Vertex startVertex = Constants.GRAPH.getVertex(startLocation);
+		startVertex.setMinDays(DataParameters.minDayStayByIndex.get(startVertex.getId()));
 		satisfactionValue.put(startVertex.getId(), 0);
 		
 		graph.addVertex(startVertex.getId(), startVertex);
@@ -81,6 +86,7 @@ public class SystemFactory {
 			satisfactionValue.put(Integer.valueOf(values[0]), Integer.valueOf(values[1]));
 			
 			Vertex v = Constants.GRAPH.getVertex(Integer.valueOf(values[0]));
+			v.setMinDays(DataParameters.minDayStayByIndex.get(v.getId()));
 			graph.addVertex(v.getId(), v);
 		}
 		
