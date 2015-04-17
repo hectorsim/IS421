@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.ItineraryPlanner.Constants;
+import com.ItineraryPlanner.DataParameters;
 
 public class Graph {
 	
@@ -139,7 +139,7 @@ public class Graph {
 			int index = values.getKey();
 			Vertex v = values.getValue();
 			
-			double preferenceScore = calculateCPScore(noOfDays, preferences.get(index), v.getLivingCost()); 
+			double preferenceScore = calculateCPScore(index, noOfDays, preferences.get(index), v.getLivingCost()); 
 			this.prefScore.put(index, preferenceScore);
 		}
 	}
@@ -151,11 +151,11 @@ public class Graph {
 	 * @param livingCost
 	 * @return
 	 */
-	public double calculateCPScore(int noOfDays, int preferenceScore, double livingCost) {
+	public double calculateCPScore(int locationIndex, int noOfDays, int preferenceScore, double livingCost) {
 		double score = 0;
 		
 		for (int i=1; i<=noOfDays; i++) {
-			score += Math.round((i * livingCost * 100 / ((i * preferenceScore)-(i * Constants.satisfactionDecreaseStep * (i-1) / 2))));
+			score += Math.round((i * livingCost * 100 / ((i * preferenceScore)-(i * DataParameters.unitDecreasePerLocationByIndex.get(locationIndex) * (i-1) / 2))));
 		}
 		
 		return score/noOfDays;

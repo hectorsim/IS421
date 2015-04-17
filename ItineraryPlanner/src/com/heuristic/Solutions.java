@@ -66,6 +66,7 @@ public class Solutions {
 		return this.path.size();
 	}
 
+	@SuppressWarnings("unchecked")
 	protected Solutions clone() {
 		// TODO Auto-generated method stub
 		return new Solutions((ArrayList<Vertex>) this.path.clone(), this.totalCost,
