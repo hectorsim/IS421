@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import org.json.simple.JSONObject;
+
 import com.ItineraryPlanner.Constants;
 import com.entity.User;
 import com.heuristic.Solutions;
@@ -77,7 +79,10 @@ public class OPLFactory {
 		return null;
 	}
 
-	public static void runOPL(User user, File datFile) throws Exception {
+	@SuppressWarnings("unchecked")
+	public static JSONObject runOPL(User user, File datFile) throws Exception {
+		JSONObject json_Results = new JSONObject();
+		
 		// Initialization of OPL Factory
 		IloOplFactory.setDebugMode(false);
 		IloOplFactory oplF = new IloOplFactory();
@@ -133,15 +138,20 @@ public class OPLFactory {
 				opl.postProcess();
 				opl.printSolution(System.out);
 				Solutions opl_solution = user.processOPL(opl);
-				System.out.println(user.generateOPL(opl_solution));
+				
+				json_Results = user.generateOPL(opl_solution);
+				System.out.println(json_Results);
+
 			} else {
-				System.out.println("No Solution");
+				json_Results.put("Error", "No Optimal Solution Found!");
 			}
 		} catch (IloException e) {
 			e.printStackTrace();
 		} finally {
 			oplF.end();
 		}
+		
+		return json_Results;
 	}
 
 	public static void cleanup(File datFile) {

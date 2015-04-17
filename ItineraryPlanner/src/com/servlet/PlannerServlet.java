@@ -16,6 +16,7 @@ import org.json.simple.JSONObject;
 import com.ItineraryPlanner.Constants;
 import com.ItineraryPlanner.DataParameters;
 import com.ItineraryPlanner.SystemFactory;
+import com.ItineraryPlanner.TimeTracker;
 import com.entity.User;
 import com.heuristic.HeuristicFactory;
 import com.opl.OPLFactory;
@@ -125,7 +126,7 @@ public class PlannerServlet extends HttpServlet {
 			}
 
 			// OPL execution
-			runOPL(user,tripLength, strBudget, destinations,satisfactionArray, startLocation);
+			results = runOPL(user,tripLength, strBudget, destinations,satisfactionArray, startLocation);
 
 		}
 
@@ -143,11 +144,15 @@ public class PlannerServlet extends HttpServlet {
 	 */
 	public JSONObject runHeuristic(User user) {
 		HeuristicFactory factory = new HeuristicFactory(user);
+		TimeTracker timer = new TimeTracker();
 		factory.GRASPConstruction();
+		timer.addLap("GRASP Constructor");
+		
+		System.out.println(timer.timeToString());
 		return user.retrieveOptimalSolution();
 	}
 
-	public void runOPL(User user, int tripLength, String budget,
+	public JSONObject runOPL(User user, int tripLength, String budget,
 			ArrayList<String> selectedDestination, ArrayList<Integer> satisfactionArray, String startLocation) {
 		
 		String startDestination = null;
@@ -170,10 +175,13 @@ public class PlannerServlet extends HttpServlet {
 		File datFile = OPLFactory.generateDat(tripLength, budget,
 				selectedDestination, satisfactionArray, startDestination);
 		try {
-			OPLFactory.runOPL(user,datFile);
+			return OPLFactory.runOPL(user,datFile);
 //			 OPLFactory.cleanup(datFile);
 		} catch (Exception e) {
-			e.printStackTrace();
+			JSONObject json_results = new JSONObject();
+			json_results.put("Error", e.getMessage());
+			
+			return json_results;
 		}
 	}
 }

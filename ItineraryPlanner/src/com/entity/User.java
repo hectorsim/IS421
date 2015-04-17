@@ -341,6 +341,13 @@ public class User {
 		}
 		return jsonHeuristicResults;
 	}
+	
+	/**
+	 *	Solution for OPL Processing 
+	 * @param solution
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
 	public JSONObject generateOPL(Solutions solution) {
 		ArrayList<Vertex> path = solution.getPath();
 		JSONObject jsonHeuristicResults = new JSONObject();
@@ -370,10 +377,16 @@ public class User {
 		jsonHeuristicResults.put("path", jsonPath);
 		jsonHeuristicResults.put("totalCost", solution.getTotalCost());
 		jsonHeuristicResults.put("totalSatisfaction", solution.getTotalPreferences());
-
+		jsonHeuristicResults.put("allLocations", graph.getAllLocationToJSON());
+		
 		return jsonHeuristicResults;
 	}
 
+	/**
+	 * Solution for OPL Process
+	 * @param opl
+	 * @return
+	 */
 	public Solutions processOPL(IloOplModel opl){
 		IloMap u_raw = opl.getElement("U").asIntMap();
 		IloMap c_raw = opl.getElement("CostOfLivingOfLocation").asNumMap();
