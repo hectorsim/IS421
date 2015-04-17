@@ -284,7 +284,9 @@ public class DataParameters {
 	 * @return
 	 */
 	public static String getLocationName(String locationId) {
-		
+		if(locationId.endsWith("TWO")){
+			locationId = locationId.replace("TWO", "");
+		}
 		Location loc = Location.valueOf(locationId);
 		
 		switch (loc) {

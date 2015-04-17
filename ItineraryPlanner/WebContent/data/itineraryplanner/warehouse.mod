@@ -42,9 +42,9 @@ subject to {
 		}
 	}
 	// Force all last X variable to be 0
-	sum(l in Locations, j in Locations)
+	forall(l in Locations, j in Locations)
 	  X[l][j][enddate] == 0;
-	  
+
 	// No flight from and to same location on any day
 	forall(l in Locations, d in Dates)
 		X[l][l][d] == 0;
@@ -64,10 +64,14 @@ subject to {
 	sum(j in Locations, d in Dates) X[j][startlocation][d] == 0;
 	sum(j in Locations, d in Dates) X[endlocation][j][d] == 0;
 	sum(j in Locations, d in Dates) X[j][endlocation][d] == 1;
-	
-	/** Binatize A from X */
+	// binatize A from U
 	forall(l in Locations)
-	  A[l] == sum(d in Dates, j in Locations)(X[l][j][d]);
+	  999*A[l] >= sum(d in Dates) (U[l][d]);
+	forall(l in Locations)
+	  sum(d in Dates) (U[l][d]) >= A[l];
+	/** Binatize A from X */
+	//forall(l in Locations)
+	//  A[l] == sum(d in Dates, j in Locations)(X[l][j][d]);
 	
 	/** START, END LOCATION must be travelled to*/
 	U[startlocation][firstdate] == 1;

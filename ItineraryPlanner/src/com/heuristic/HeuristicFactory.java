@@ -44,24 +44,24 @@ public class HeuristicFactory {
 			ArrayList<Vertex> tempPath = new ArrayList<Vertex>();
 			tempPath.add(startLocation);
 			
+			int count = 0;
+			
 			while (!firstNode) {
 				
 				Random ran = new Random();
 				Integer[] idList = (Integer[]) candidates.keySet().toArray(new Integer[candidates.size()]);
 				int potentialIndex = idList[ran.nextInt(idList.length)];
 				Vertex potentialVertex = graph.getVertex(potentialIndex);
-				System.out.println(candidates.size());
-				System.out.println("Fuck this shit-1");
+				
 				if (startLocation.isConnected(potentialIndex)) {
-					System.out.println("Fuck this shit-2");
+					
 					potentialVertex.setNoOfDays(user.getNoOfStays()-1);
-					System.out.println("Fuck this shit-3");
 					tempPath.add(potentialVertex);
 					tempPath.add(startLocation);
 					
 					tempCost = user.getRecommendedTotalCost(tempPath);
 					int totalDays = user.getRecommendedTotalDays(tempPath);
-					System.out.println("Fuck this shit-4");
+
 					if (tempCost <= user.getBudget() && totalDays <= user.getNoOfStays()) {
 						solution = new Solutions((ArrayList<Vertex>) tempPath, tempCost, user.getRecommendedTotalSatisfaction(tempPath), potentialVertex, graph);
 						candidates.remove(potentialIndex);
@@ -69,15 +69,20 @@ public class HeuristicFactory {
 						user.addSolution(solution);
 					}
 				} else {
-					tempPath.clear();
+					if (count < candidates.size()*2) {
+						count++;
+						tempPath.clear();
+					} else {
+						break;
+					}
+					
 				}
 			}
 			
-			while (!candidates.isEmpty()) {
+			while (!candidates.isEmpty() && solution != null) {
 				Solutions biggerTour = PathSingleInsertion(solution);
-				System.out.println("Fuck this shit");
+			
 				if (biggerTour.numberOfPath() == solution.numberOfPath()) {
-					System.out.println("Solution Found");
 					break;
 				} else {
 					user.addSolution(biggerTour);
@@ -98,14 +103,13 @@ public class HeuristicFactory {
 		int count = 0;
 		
 		while (!inserted) {
-			System.out.println("Fuck this shit2");
 			Random ran = new Random();
 			Integer[] idList = (Integer[]) candidates.keySet().toArray(new Integer[candidates.size()]);
 			int potentialIndex = idList[ran.nextInt(idList.length)];
 			Vertex potentialVertex = graph.getVertex(potentialIndex);
 			
 			if (lastNode.isConnected(potentialIndex) && potentialVertex.isConnected(graph.getStartLocationId())) {
-
+				
 				// Divided by total node available excluding start node (Existing node - start node + new node)
 				// Remove the end location for the next insertion
 				newPath.remove(newPath.size()-1);
@@ -150,7 +154,6 @@ public class HeuristicFactory {
 			}
 			
 			if (count >= candidates.size()*2) {
-				newPath.add(graph.getStartVertex());
 				break;
 			} else{
 				count++;
