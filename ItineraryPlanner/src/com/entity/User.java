@@ -121,7 +121,7 @@ public class User {
 			
 			if (i < recommendPath.size()-1) {
 				Vertex next = recommendPath.get(i+1);
-				System.out.println(current.getLocationName() + " - " + next.getLocationName());
+				
 				HashMap<Integer, Double[]> adjList = current.getAdjList();
 				
 				Double[] priceList = adjList.get(next.getId());

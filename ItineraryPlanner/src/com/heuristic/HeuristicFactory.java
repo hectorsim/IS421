@@ -32,7 +32,7 @@ public class HeuristicFactory {
 	public void GRASPConstruction() {
 		Graph graph = user.getGraph();
 		candidateList(graph);
-		System.out.println("Number of candidates: " + candidates.size());
+		
 		// Attributes required
 		Solutions solution = null;
 		boolean firstNode = false;
@@ -49,17 +49,19 @@ public class HeuristicFactory {
 				Random ran = new Random();
 				Integer[] idList = (Integer[]) candidates.keySet().toArray(new Integer[candidates.size()]);
 				int potentialIndex = idList[ran.nextInt(idList.length)];
-				
+				Vertex potentialVertex = graph.getVertex(potentialIndex);
+				System.out.println(candidates.size());
+				System.out.println("Fuck this shit-1");
 				if (startLocation.isConnected(potentialIndex)) {
-					Vertex potentialVertex = graph.getVertex(potentialIndex);
+					System.out.println("Fuck this shit-2");
 					potentialVertex.setNoOfDays(user.getNoOfStays()-1);
-					
+					System.out.println("Fuck this shit-3");
 					tempPath.add(potentialVertex);
 					tempPath.add(startLocation);
 					
 					tempCost = user.getRecommendedTotalCost(tempPath);
 					int totalDays = user.getRecommendedTotalDays(tempPath);
-					
+					System.out.println("Fuck this shit-4");
 					if (tempCost <= user.getBudget() && totalDays <= user.getNoOfStays()) {
 						solution = new Solutions((ArrayList<Vertex>) tempPath, tempCost, user.getRecommendedTotalSatisfaction(tempPath), potentialVertex, graph);
 						candidates.remove(potentialIndex);
@@ -71,12 +73,11 @@ public class HeuristicFactory {
 				}
 			}
 			
-			System.out.println("before insertion " + solution.numberOfPath());
-			
 			while (!candidates.isEmpty()) {
 				Solutions biggerTour = PathSingleInsertion(solution);
-
+				System.out.println("Fuck this shit");
 				if (biggerTour.numberOfPath() == solution.numberOfPath()) {
+					System.out.println("Solution Found");
 					break;
 				} else {
 					user.addSolution(biggerTour);
@@ -97,7 +98,7 @@ public class HeuristicFactory {
 		int count = 0;
 		
 		while (!inserted) {
-
+			System.out.println("Fuck this shit2");
 			Random ran = new Random();
 			Integer[] idList = (Integer[]) candidates.keySet().toArray(new Integer[candidates.size()]);
 			int potentialIndex = idList[ran.nextInt(idList.length)];
@@ -116,22 +117,31 @@ public class HeuristicFactory {
 					for (int i=0; i < newPath.size(); i++) {
 						if (i != 0) { // Ignore the first node
 							Vertex v = newPath.get(i);
-							v.setNoOfDays(averageDuration);
-							durationLeft -= averageDuration;
+							int daysUsed = v.setNoOfDays(averageDuration);
+							durationLeft -= daysUsed;
 						}
 					}
 					
-					potentialVertex.setNoOfDays(durationLeft);
-					newPath.add(potentialVertex);
-					newPath.add(graph.getStartVertex());
-					double totalCost = user.getRecommendedTotalCost(newPath);
-					System.out.println("My cost incurred:" + totalCost + " and User Budget: " + user.getBudget());
-					
-					if (totalCost <= user.getBudget()) {
-						newSolution = new Solutions((ArrayList<Vertex>) newPath, totalCost, 
-								user.getRecommendedTotalSatisfaction(newPath), potentialVertex, graph);
-						candidates.remove(potentialVertex.getId());
-						inserted = true;
+					if (durationLeft > 0) {
+						int daysUsed = potentialVertex.setNoOfDays(durationLeft);
+						
+						if (daysUsed <= durationLeft) {
+							newPath.add(potentialVertex);
+							newPath.add(graph.getStartVertex());
+							double totalCost = user.getRecommendedTotalCost(newPath);
+							
+							if (totalCost <= user.getBudget()) {
+								newSolution = new Solutions((ArrayList<Vertex>) newPath, totalCost, 
+										user.getRecommendedTotalSatisfaction(newPath), potentialVertex, graph);
+								candidates.remove(potentialVertex.getId());
+								inserted = true;
+							}
+						} else {
+							potentialVertex.resetNoOfDay();
+						}
+					} else {
+						newPath.add(graph.getStartVertex());
+						break;
 					}
 				} else {
 					newPath.add(graph.getStartVertex());
