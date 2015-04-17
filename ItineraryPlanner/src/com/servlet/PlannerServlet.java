@@ -171,7 +171,7 @@ public class PlannerServlet extends HttpServlet {
 				selectedDestination, satisfactionArray, startDestination);
 		try {
 			OPLFactory.runOPL(user,datFile);
-			 OPLFactory.cleanup(datFile);
+//			 OPLFactory.cleanup(datFile);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

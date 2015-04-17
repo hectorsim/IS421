@@ -239,6 +239,7 @@ public class Vertex {
 		text += "Location Address: " + this.locationName + "\n";
 		text += "Living Cost: " + this.livingCost + "\n";
 		text += "Flight Cost: " + this.flightOutCost + "\n";
+		text += "Number of days: " + this.noOfDays + "\n";
 		text += "Adjacent Locations: \n";
 		
 		if (this.adjList.size() > 0) {

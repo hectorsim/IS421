@@ -167,8 +167,9 @@ public class User {
 		for (Vertex visited : recommendPath) {
 			int noOfDays = visited.getNoOfDays();
 			int satisfaction = satisfactionLevels.get(visited.getId());
+
 			int decreaseInUnit = DataParameters.unitDecreasePerLocationByIndex.get(visited.getId());
-			
+			;
 			totalSatistaction += noOfDays*satisfaction - (((noOfDays*(noOfDays-1)) / 2) * decreaseInUnit);
 		}
 
@@ -399,7 +400,7 @@ public class User {
 			JSONArray f = (JSONArray)(new JSONParser().parse(fjsontext));
 			double flight = 0.0;
 			double living = 0.0;
-		    for(int d=0; d<enddate-1;d++) { // from 1..D-1
+		    for(int d=0; d<enddate;d++) { // from 1..D-1
 		        for(int l=0;l<locations.size();l++){
 		        	long going = (long)((JSONArray)(u.get(l))).get(d);
 		        	if(going==1){ // user is at location
@@ -414,6 +415,9 @@ public class User {
 		        		}
 		        		JSONArray currentLocation = (JSONArray)(u.get(l));
 		        		living += (long)c.get(l);
+		        		if(d+1>=enddate){
+		        			continue;
+		        		}
 			     		if(((long)currentLocation.get(d+1))==1){ // the next day is in the same place
 			    			v.noOfDays++;
 			     		} else { // if not same place tmr, where are you flying to?
@@ -427,7 +431,7 @@ public class User {
 			              		}             		         
 			     		     }        		
 			     		}
-		        	}           
+		        	}
 		        }   
 		    }
 		    for(Vertex z:path){

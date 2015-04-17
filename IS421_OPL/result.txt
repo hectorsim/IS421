@@ -1003,3 +1003,29 @@ Location at Day 9: from MNL flying to PEKTWO with ticket cost at 374
  Flight cost: 1071 + cost of living: 419 = 1490
  Left Budget = 732
 >>>>>>> 24e017fa63e4fa0bca4d31d1e402fe39f5c86e1e
+Result======
+Objective value: 369Time 2.688 seconds.
+Location at Day 1: from SIN flying to MNL with ticket cost at 204
+Location at Day 2: MNL stay and incurring	daily cost 40
+Location at Day 3: MNL stay and incurring	daily cost 40
+Location at Day 4: from MNL flying to BKK with ticket cost at 203
+Location at Day 5: BKK stay and incurring	daily cost 46
+Location at Day 6: BKK stay and incurring	daily cost 46
+Location at Day 7: BKK stay and incurring	daily cost 46
+Location at Day 8: BKK stay and incurring	daily cost 46
+Location at Day 9: from BKK flying to SINTWO with ticket cost at 175
+ Flight cost: 582 + cost of living: 443 = 1025
+ Left Budget = 1975
+Result======
+Objective value: 351Time 1.703 seconds.
+Location at Day 1: from SIN flying to ICN with ticket cost at 555
+Location at Day 2: ICN stay and incurring	daily cost 82
+Location at Day 3: ICN stay and incurring	daily cost 82
+Location at Day 4: ICN stay and incurring	daily cost 82
+Location at Day 5: ICN stay and incurring	daily cost 82
+Location at Day 6: from ICN flying to PEK with ticket cost at 293
+Location at Day 7: PEK stay and incurring	daily cost 48
+Location at Day 8: PEK stay and incurring	daily cost 48
+Location at Day 9: from PEK flying to SINTWO with ticket cost at 188
+ Flight cost: 1036 + cost of living: 647 = 1683
+ Left Budget = 2638
