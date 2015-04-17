@@ -22,8 +22,9 @@ public class Vertex {
 	double flightOutCost;
 	HashMap<Integer, Double[]> adjList;
 	
-	int noOfDays;
-	boolean isVisited;
+	private int minDays;
+	public int noOfDays;
+	private boolean isVisited;
 	
 	/**
 	 * Constructor to initialize a Vertex Object
@@ -39,6 +40,7 @@ public class Vertex {
 		this.livingCost = livingCost;
 		this.adjList = new HashMap<Integer, Double[]>();
 		
+		minDays = 0;
 		noOfDays = 0;
 		this.isVisited = false;
 	}
@@ -58,6 +60,7 @@ public class Vertex {
 		this.livingCost = livingCost;
 		this.adjList = new HashMap<Integer, Double[]>();
 		
+		minDays = 0;
 		noOfDays = 0;
 		this.isVisited = isVisited;
 	}
@@ -169,6 +172,20 @@ public class Vertex {
 	}
 	
 	/**
+	 * @return the minDays
+	 */
+	public int getMinDays() {
+		return minDays;
+	}
+
+	/**
+	 * @param minDays the minDays to set
+	 */
+	public void setMinDays(int minDays) {
+		this.minDays = minDays;
+	}
+
+	/**
 	 * Get the number of days to stay in the vertex
 	 * @return
 	 */
@@ -180,10 +197,23 @@ public class Vertex {
 	 * Set the number of days to stay in the vertex
 	 * @param noOfDays
 	 */
-	public void setNoOfDays(int noOfDays) {
-		this.noOfDays = noOfDays;
+	public int setNoOfDays(int noOfDays) {
+		if (noOfDays <= this.minDays) {
+			this.noOfDays = this.minDays;
+			return this.noOfDays;
+		} else {
+			this.noOfDays = noOfDays;
+			return this.noOfDays;
+		}
 	}
 
+	/** 
+	 * Reset the value of number of days
+	 */
+	public void resetNoOfDay() {
+		this.noOfDays = 0;
+	}
+	
 	/**
 	 * Get the status whether is the vertex visited
 	 * @return

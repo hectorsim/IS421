@@ -9,7 +9,6 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 // Trigger for user interface set up
 initializeGraph(function(markers, path) {
 	var count = 1;
-	
 	// For every path in the graph
 	for (var index in path) {
 		if (count < path.length) {
@@ -18,6 +17,7 @@ initializeGraph(function(markers, path) {
 			
 			// Connect current location to the next location
 			var pointList = [markers[currentLocation.location], markers[nextLocation.location]];
+			
 			var flightPath = new L.Polyline(pointList, {
 			    color: 'black',
 			    weight: 3,
@@ -37,22 +37,29 @@ function initializeGraph(callback) {
 		var result_json = jQuery.parseJSON(results);
 		console.log("Results Output : " + JSON.stringify(result_json));
 		
-		var nodes = result_json.path;
-		var count = 1;
-		var markers = {};
+		var error = result_json.Error;
 		
-		for (var index in nodes) {
-			var nodeDetail = nodes[index];
+		if (error == undefined) {
+			var allLocations = result_json.allLocations;
+			var nodes = result_json.path;
+			var count = 1;
+			var markers = {};
 			
-			addLocationMarker(nodeDetail, function(location, marker) {
-				markers[location] = marker.getLatLng();
+			for (var index in allLocations) {
+				var nodeDetail = allLocations[index];
 				
-				if (count == nodes.length) {
-					callback(markers, nodes);
-				} else {
-					count = count + 1;
-				}
-			});
+				addLocationMarker(nodeDetail, function(location, marker) {
+					markers[location] = marker.getLatLng();
+					
+					if (count == allLocations.length) {
+						callback(markers, nodes);
+					} else {
+						count = count + 1;
+					}
+				});
+			}
+		} else {
+			alert("No Optimal Solution Found!");
 		}
 	});
 };
@@ -63,6 +70,9 @@ function addLocationMarker(locationDetail, callback) {
 	
 	$.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + nodeName, function(data) {
 		
+		if (data.length == 0) {
+			console.log(nodeName + " cannot be found");
+		}
 		$.each(data, function(key, val) {
 			var marker = L.marker([ val.lat ,  val.lon ]).addTo(map);
 			marker.bindPopup("<b>Location: </b>" + val.display_name + "<br/>" +

@@ -19,7 +19,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.ItineraryPlanner.Constants;
+import com.ItineraryPlanner.DataParameters;
 import com.ItineraryPlanner.DataParameters;
 import com.heuristic.Solutions;
 
@@ -145,8 +145,9 @@ public class User {
 
 			if (i < recommendPath.size() - 1) {
 				Vertex next = recommendPath.get(i + 1);
+				
 				HashMap<Integer, Double[]> adjList = current.getAdjList();
-				System.out.println(day);
+				
 				Double[] priceList = adjList.get(next.getId());
 				totalCost += priceList[day];
 			}
@@ -170,6 +171,9 @@ public class User {
 			totalSatistaction += noOfDays
 					* satisfaction
 					- (((noOfDays * (noOfDays - 1)) / 2) * Constants.satisfactionDecreaseStep);
+			int satisfaction = satisfactionLevels.get(visited.getId()); 
+			
+			totalSatistaction += noOfDays*satisfaction - (((noOfDays*(noOfDays-1)) / 2) * DataParameters.unitDecreasePerLocationByIndex.get(visited.getId()));
 		}
 
 		return totalSatistaction;

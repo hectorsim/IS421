@@ -18,13 +18,15 @@ public class PriceMatrix {
 	private int[][] priceMatrix = null;
 	private ArrayList<String> countryOrder;
 	private ArrayList<String> airportDestinations;
+	private ArrayList<Integer> satisfactionArray;
 	private int numberOfDestinations;
 	private int numberOfDays;
 
-	public PriceMatrix(ArrayList<String> airportDestinations, int numberOfDays) {
+	public PriceMatrix(ArrayList<String> airportDestinations, int numberOfDays, ArrayList<Integer> satisfactionArray) {
 		this.numberOfDays = numberOfDays;
 		this.airportDestinations = airportDestinations;
 		this.numberOfDestinations = airportDestinations.size() + 1;
+		this.satisfactionArray = satisfactionArray;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -46,7 +48,7 @@ public class PriceMatrix {
 					row = airportDestinations.indexOf(currentCountry);
 					int col = 0;
 					for (String codes : airportDestinations) {
-						int index = DataParameters.LocationIndex().get(codes);
+						int index = DataParameters.countryIndexById.get(codes);
 						String val = record[index].toString();
 						int price = 0;
 						if (val.equals("-"))
@@ -126,16 +128,20 @@ public class PriceMatrix {
 		for (int i = 0; i < countryOrder.size(); i++) {
 			String country = countryOrder.get(i);
 			int minStayValue = DataParameters.minDayStay.get(country);
-			int satValue = DataParameters.defaultSatisfactionValue.get(country);
-			int unitDecreaseVal = (int) (Math.random()*((satValue / minStayValue) - 1));
+
+			int satValue = 0;
+			if(satisfactionArray.size()!=0)
+				satValue = satisfactionArray.get(i);
+			else
+				satValue = DataParameters.defaultSatisfactionValue.get(country);
+
+			int unitDecreaseVal = DataParameters.unitDecreasePerLocation.get(country);
 			
 			if (i == 0) {
 				startCountry = country;
-				locations.append(country);
-				minCountryStay.append(1);
-				satisfactionValue.append(100);
-				satisfactionValueDecrease.append(100);
-			} else if (i == countryOrder.size() - 1) {
+			}
+			
+			if (i == countryOrder.size() - 1) {
 				endCountry = country + "TWO";
 				locations.append(endCountry);
 				minCountryStay.append(1);
