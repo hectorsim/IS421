@@ -167,13 +167,9 @@ public class User {
 		for (Vertex visited : recommendPath) {
 			int noOfDays = visited.getNoOfDays();
 			int satisfaction = satisfactionLevels.get(visited.getId());
-
-			totalSatistaction += noOfDays
-					* satisfaction
-					- (((noOfDays * (noOfDays - 1)) / 2) * Constants.satisfactionDecreaseStep);
-			int satisfaction = satisfactionLevels.get(visited.getId()); 
+			int decreaseInUnit = DataParameters.unitDecreasePerLocationByIndex.get(visited.getId());
 			
-			totalSatistaction += noOfDays*satisfaction - (((noOfDays*(noOfDays-1)) / 2) * DataParameters.unitDecreasePerLocationByIndex.get(visited.getId()));
+			totalSatistaction += noOfDays*satisfaction - (((noOfDays*(noOfDays-1)) / 2) * decreaseInUnit);
 		}
 
 		return totalSatistaction;
@@ -302,41 +298,46 @@ public class User {
 	 */
 	@SuppressWarnings("unchecked")
 	public JSONObject generateResults(Solutions solution) {
-		ArrayList<Vertex> path = solution.getPath();
 		JSONObject jsonHeuristicResults = new JSONObject();
 
-		JSONArray jsonPath = new JSONArray();
-		int day = 0;
-		for (int i = 0; i < path.size(); i++) {
-			JSONObject jsonVertex = new JSONObject();
-
-			Vertex current = path.get(i);
-			jsonVertex.put("location", current.getLocationName());
-			jsonVertex.put("costOfLiving", "$" + current.getLivingCost()
-					+ " per day");
-			jsonVertex.put("noOfDaysStay", current.getNoOfDays() + " Days");
-
-			day += current.getNoOfDays();
-
-			if (i < path.size() - 1) {
-				Vertex next = path.get(i + 1);
-				HashMap<Integer, Double[]> adjList = current.getAdjList();
-
-				Double[] priceList = adjList.get(next.getId());
-				double flightPrice = priceList[day];
-
-				jsonVertex.put("flightPrice", "$" + flightPrice);
-			} else {
-				jsonVertex.put("flightPrice", "$0");
+		if (solution != null) {
+			ArrayList<Vertex> path = solution.getPath();
+			Graph graph = solution.getGraph();
+			
+			JSONArray jsonPath = new JSONArray();
+			int day = 0;
+			for (int i = 0; i < path.size(); i++) {
+				JSONObject jsonVertex = new JSONObject();
+				
+				Vertex current = path.get(i);
+				jsonVertex.put("location", current.getLocationName());
+				jsonVertex.put("costOfLiving", "$" + current.getLivingCost() + " per day");
+				jsonVertex.put("noOfDaysStay", current.getNoOfDays() + " Days");
+				
+				day += current.getNoOfDays();
+				
+				if (i < path.size()-1) {
+					Vertex next = path.get(i+1);
+					HashMap<Integer, Double[]> adjList = current.getAdjList();
+					
+					Double[] priceList = adjList.get(next.getId());
+					double flightPrice = priceList[day];
+					
+					jsonVertex.put("flightPrice", "$" + flightPrice);
+				} else {
+					jsonVertex.put("flightPrice", "$0");
+				}
+				
+				jsonPath.add(jsonVertex);
 			}
-
-			jsonPath.add(jsonVertex);
+			
+			jsonHeuristicResults.put("path", jsonPath);
+			jsonHeuristicResults.put("totalCost", solution.getTotalCost());
+			jsonHeuristicResults.put("totalSatisfaction", solution.getTotalPreferences());
+			jsonHeuristicResults.put("allLocations", graph.getAllLocationToJSON());
+		} else {
+			jsonHeuristicResults.put("Error", "No Optimal Solution Found!");
 		}
-
-		jsonHeuristicResults.put("path", jsonPath);
-		jsonHeuristicResults.put("totalCost", solution.getTotalCost());
-		jsonHeuristicResults.put("totalSatisfaction", solution.getTotalPreferences());
-
 		return jsonHeuristicResults;
 	}
 	public JSONObject generateOPL(Solutions solution) {
