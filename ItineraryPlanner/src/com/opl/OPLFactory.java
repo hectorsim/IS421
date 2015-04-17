@@ -22,7 +22,7 @@ import com.ItineraryPlanner.Constants;
 public class OPLFactory {
 
 	public static File generateDat(int tripLength, String budget,
-			ArrayList<String> selectedDestination, ArrayList<String> satisfactionArray, 
+			ArrayList<String> selectedDestination, ArrayList<Integer> satisfactionArray, 
 			String startDestination) {
 		
 		System.out.println(tripLength + "\t" + budget + "\t"

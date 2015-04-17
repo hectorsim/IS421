@@ -18,11 +18,11 @@ public class PriceMatrix {
 	private int[][] priceMatrix = null;
 	private ArrayList<String> countryOrder;
 	private ArrayList<String> airportDestinations;
-	private ArrayList<String> satisfactionArray;
+	private ArrayList<Integer> satisfactionArray;
 	private int numberOfDestinations;
 	private int numberOfDays;
 
-	public PriceMatrix(ArrayList<String> airportDestinations, int numberOfDays, ArrayList<String> satisfactionArray) {
+	public PriceMatrix(ArrayList<String> airportDestinations, int numberOfDays, ArrayList<Integer> satisfactionArray) {
 		this.numberOfDays = numberOfDays;
 		this.airportDestinations = airportDestinations;
 		this.numberOfDestinations = airportDestinations.size() + 1;
@@ -129,9 +129,9 @@ public class PriceMatrix {
 			String country = countryOrder.get(i);
 			int minStayValue = DataParameters.minDayStay.get(country);
 
-			int satValue = null;
-			if(satisfactionArray!=null)
-				satValue = Integer.parseInt(satisfactionArray.get(i));
+			int satValue = 0;
+			if(satisfactionArray.size()!=0)
+				satValue = satisfactionArray.get(i);
 			else
 				satValue = DataParameters.defaultSatisfactionValue.get(country);
 

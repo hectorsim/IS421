@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -61,23 +60,23 @@ public class PlannerServlet extends HttpServlet {
 		String startLocation = req.getParameter("startLocation");
 
 		String isDestination = req.getParameter("isDestination");
-		
-		/* Preparation of heuristic data and OPL data
-		 * Requires to create user object to generate results from OPL and Heuristics
+
+		/*
+		 * Preparation of heuristic data and OPL data Requires to create user
+		 * object to generate results from OPL and Heuristics
 		 */
 		User user;
 		String[] selectedLocations = null;
-		
+
 		if (isDestination != null) {
 			selectedLocations = req.getParameterValues("locationList");
-			
+
 			user = SystemFactory.intializesUser(Double.valueOf(strBudget),
-					tripLength,
-					Integer.valueOf(startLocation), selectedLocations);
+					tripLength, Integer.valueOf(startLocation),
+					selectedLocations);
 		} else {
 			user = SystemFactory.intializesUser(Double.valueOf(strBudget),
-					tripLength,
-					Integer.valueOf(startLocation));
+					tripLength, Integer.valueOf(startLocation));
 		}
 		context.setAttribute("User", user);
 
@@ -90,42 +89,44 @@ public class PlannerServlet extends HttpServlet {
 			System.out.println(Constants.GRAPH.toJSON().toJSONString());
 			results = runHeuristic(user);
 		} else {
-			
+
 			// Preparation of OPL data
 			ArrayList<String> destinations = new ArrayList<String>();
 			ArrayList<String> processedDestinations = new ArrayList<String>();
-			ArrayList<String> satisfactionArray = new ArrayList<String>();
-			
+			ArrayList<Integer> satisfactionArray = new ArrayList<Integer>();
+
 			if (selectedLocations == null) {
 				destinations = DataParameters.getAllLocations();
+				for (int i = 0; i < destinations.size(); i++) {
+					String airport = destinations.get(i);
+					System.out.println("startLocation: \t" + startLocation);
+					System.out.print(airport + "\t");
+					if (i == (Integer.parseInt(startLocation)-1)) {
+						processedDestinations.add(0, airport);
+					} else {
+						processedDestinations.add(airport);
+					}
+				}
 			} else {
 				for (String locations : selectedLocations) {
 					String[] values = locations.split(":");
-					processedDestinations.add(Integer.valueOf(values[0]));
-					satisfactionArray.add(Integer.valueOf(values[1]));
-					
-					Vertex v = Constants.GRAPH.getVertex(Integer.valueOf(values[0]));
-					graph.addVertex(v.getId(), v);
-				}
-				// String code = DataParameters.locationIdByIndex(Integer.parseInt());
-
-				// destinations.add()
-			}
-
-
-			for (int i = 0; i < destinations.size(); i++) {
-				String airport = destinations.get(i);
-				System.out.println(airport + "\t" + startLocation);
-				if (i == Integer.parseInt(startLocation)) {
-					startDestination = airport;
-					processedDestinations.add(0, airport);
-				} else {
-					processedDestinations.add(airport);
+					int countryIndex = Integer.valueOf(values[0]);
+					int satisfactionValue = Integer.valueOf(values[1]);
+					String country = DataParameters.countryIdByIndex
+							.get(countryIndex);
+					if (countryIndex == Integer.valueOf(startLocation)) {
+						processedDestinations.add(0, country);
+						satisfactionArray.add(0, satisfactionValue);
+					} else {
+						processedDestinations.add(country);
+						satisfactionArray.add(satisfactionValue);
+					}
 				}
 			}
-			
+
 			// OPL execution
-			runOPL(tripLength, strBudget, processedDestinations, satisfactionArray, startLocation);
+			runOPL(tripLength, strBudget, processedDestinations,
+					satisfactionArray, startLocation);
 		}
 
 		// Store in servlet context and navigate to results.html
@@ -147,15 +148,11 @@ public class PlannerServlet extends HttpServlet {
 	}
 
 	public void runOPL(int tripLength, String budget,
-			ArrayList<String> selectedDestination, ArrayList<String> satisfactionArray, String startLocation) {
-		
-		String startDestination = null;
+			ArrayList<String> selectedDestination,
+			ArrayList<Integer> satisfactionArray, String startDestination) {
 
-		for (String codes : airportCodes)
-			System.out.print(codes + "\t");
-
-		File datFile = OPLFactory.generateDat(tripLength, budget, selectedDestination, satisfactionArray,
-				startDestination);
+		File datFile = OPLFactory.generateDat(tripLength, budget,
+				selectedDestination, satisfactionArray, startDestination);
 		try {
 			OPLFactory.runOPL(datFile);
 			// OPLFactory.cleanup(datFile);

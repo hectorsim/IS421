@@ -853,3 +853,78 @@ Location at Day 18: PEK stay and incurring	daily cost 48
 Location at Day 19: from PEK flying to SINTWO with ticket cost at 110
  Flight cost: 546 + cost of living: 1269 = 1815
  Left Budget = 185
+Result======
+Objective value: -16Time 1.156 seconds.
+Location at Day 1: from SIN flying to HKG with ticket cost at 170
+Location at Day 2: HKG stay and incurring	daily cost 75
+Location at Day 3: HKG stay and incurring	daily cost 75
+Location at Day 4: HKG stay and incurring	daily cost 75
+Location at Day 5: HKG stay and incurring	daily cost 75
+Location at Day 6: HKG stay and incurring	daily cost 75
+Location at Day 7: HKG stay and incurring	daily cost 75
+Location at Day 8: HKG stay and incurring	daily cost 75
+Location at Day 9: HKG stay and incurring	daily cost 75
+Location at Day 10: HKG stay and incurring	daily cost 75
+Location at Day 11: HKG stay and incurring	daily cost 75
+Location at Day 12: HKG stay and incurring	daily cost 75
+Location at Day 13: HKG stay and incurring	daily cost 75
+Location at Day 14: HKG stay and incurring	daily cost 75
+Location at Day 15: HKG stay and incurring	daily cost 75
+Location at Day 16: from HKG flying to PEK with ticket cost at 266
+Location at Day 17: PEK stay and incurring	daily cost 48
+Location at Day 18: PEK stay and incurring	daily cost 48
+Location at Day 19: from PEK flying to SINTWO with ticket cost at 110
+ Flight cost: 546 + cost of living: 1269 = 1815
+ Left Budget = 185
+Result======
+Objective value: 146Time 2.578 seconds.
+Location at Day 1: from PEK flying to SGN with ticket cost at 404
+Location at Day 2: SGN stay and incurring	daily cost 41
+Location at Day 3: SGN stay and incurring	daily cost 41
+Location at Day 4: SGN stay and incurring	daily cost 41
+Location at Day 5: from SGN flying to MNL with ticket cost at 193
+Location at Day 6: MNL stay and incurring	daily cost 40
+Location at Day 7: MNL stay and incurring	daily cost 40
+Location at Day 8: MNL stay and incurring	daily cost 40
+Location at Day 9: from MNL flying to PEKTWO with ticket cost at 393
+ Flight cost: 990 + cost of living: 372 = 1362
+ Left Budget = 1638
+Result======
+Objective value: 147Time 2.094 seconds.
+Location at Day 1: from PEK flying to TPE with ticket cost at 447
+Location at Day 2: TPE stay and incurring	daily cost 57
+Location at Day 3: TPE stay and incurring	daily cost 57
+Location at Day 4: from TPE flying to MNL with ticket cost at 250
+Location at Day 5: MNL stay and incurring	daily cost 40
+Location at Day 6: MNL stay and incurring	daily cost 40
+Location at Day 7: MNL stay and incurring	daily cost 40
+Location at Day 8: MNL stay and incurring	daily cost 40
+Location at Day 9: from MNL flying to PEKTWO with ticket cost at 374
+ Flight cost: 1071 + cost of living: 419 = 1490
+ Left Budget = 732
+Result======
+Objective value: 147Time 1.984 seconds.
+Location at Day 1: from PEK flying to TPE with ticket cost at 447
+Location at Day 2: TPE stay and incurring	daily cost 57
+Location at Day 3: TPE stay and incurring	daily cost 57
+Location at Day 4: from TPE flying to MNL with ticket cost at 250
+Location at Day 5: MNL stay and incurring	daily cost 40
+Location at Day 6: MNL stay and incurring	daily cost 40
+Location at Day 7: MNL stay and incurring	daily cost 40
+Location at Day 8: MNL stay and incurring	daily cost 40
+Location at Day 9: from MNL flying to PEKTWO with ticket cost at 374
+ Flight cost: 1071 + cost of living: 419 = 1490
+ Left Budget = 732
+Result======
+Objective value: 147Time 2.407 seconds.
+Location at Day 1: from PEK flying to TPE with ticket cost at 447
+Location at Day 2: TPE stay and incurring	daily cost 57
+Location at Day 3: TPE stay and incurring	daily cost 57
+Location at Day 4: from TPE flying to MNL with ticket cost at 250
+Location at Day 5: MNL stay and incurring	daily cost 40
+Location at Day 6: MNL stay and incurring	daily cost 40
+Location at Day 7: MNL stay and incurring	daily cost 40
+Location at Day 8: MNL stay and incurring	daily cost 40
+Location at Day 9: from MNL flying to PEKTWO with ticket cost at 374
+ Flight cost: 1071 + cost of living: 419 = 1490
+ Left Budget = 732
