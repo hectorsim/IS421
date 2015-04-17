@@ -144,16 +144,22 @@ public class PlannerServlet extends HttpServlet {
 	 * @return
 	 */
 	public JSONObject runHeuristic(User user) {
+		JSONObject json_results = new JSONObject();
+		
 		HeuristicFactory factory = new HeuristicFactory(user);
 		TimeTracker timer = new TimeTracker();
 		factory.GRASPConstruction();
 		timer.addLap("GRASP Constructor");
 		user.setProcessingTime(timer.timeToHtml());
+		
+		return user.retrieveOptimalSolution();
 	}
 
 	public JSONObject runOPL(User user, int tripLength, String budget,
 			ArrayList<String> selectedDestination,
 			ArrayList<Integer> satisfactionArray, String startLocation) {
+		
+		JSONObject json_results = new JSONObject();
 		
 		String startDestination = null;
 		ArrayList<String> airportCodes = new ArrayList<String>();
@@ -178,12 +184,12 @@ public class PlannerServlet extends HttpServlet {
 			OPLFactory.runOPL(user, datFile);
 			user.setProcessingTime(timer.timeToHtml());
 			//OPLFactory.cleanup(datFile);
-			return OPLFactory.runOPL(user,datFile);
+			json_results = OPLFactory.runOPL(user,datFile);
 //			 OPLFactory.cleanup(datFile);
 		} catch (Exception e) {
-			JSONObject json_results = new JSONObject();
 			json_results.put("Error", e.getMessage());
-			
 		}
+		
+		return json_results;
 	}
 }
