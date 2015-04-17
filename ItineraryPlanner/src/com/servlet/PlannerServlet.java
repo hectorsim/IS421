@@ -93,16 +93,39 @@ public class PlannerServlet extends HttpServlet {
 			
 			// Preparation of OPL data
 			ArrayList<String> destinations = new ArrayList<String>();
+			ArrayList<String> processedDestinations = new ArrayList<String>();
+			ArrayList<String> satisfactionArray = new ArrayList<String>();
 			
 			if (selectedLocations == null) {
 				destinations = DataParameters.getAllLocations();
 			} else {
-				destinations = new ArrayList<String>(
-						Arrays.asList(selectedLocations));
+				for (String locations : selectedLocations) {
+					String[] values = locations.split(":");
+					processedDestinations.add(Integer.valueOf(values[0]));
+					satisfactionArray.add(Integer.valueOf(values[1]));
+					
+					Vertex v = Constants.GRAPH.getVertex(Integer.valueOf(values[0]));
+					graph.addVertex(v.getId(), v);
+				}
+				// String code = DataParameters.locationIdByIndex(Integer.parseInt());
+
+				// destinations.add()
+			}
+
+
+			for (int i = 0; i < destinations.size(); i++) {
+				String airport = destinations.get(i);
+				System.out.println(airport + "\t" + startLocation);
+				if (i == Integer.parseInt(startLocation)) {
+					startDestination = airport;
+					processedDestinations.add(0, airport);
+				} else {
+					processedDestinations.add(airport);
+				}
 			}
 			
 			// OPL execution
-			runOPL(tripLength, strBudget, destinations, startLocation);
+			runOPL(tripLength, strBudget, processedDestinations, satisfactionArray, startLocation);
 		}
 
 		// Store in servlet context and navigate to results.html
@@ -124,26 +147,14 @@ public class PlannerServlet extends HttpServlet {
 	}
 
 	public void runOPL(int tripLength, String budget,
-			ArrayList<String> selectedDestination, String startLocation) {
+			ArrayList<String> selectedDestination, ArrayList<String> satisfactionArray, String startLocation) {
 		
 		String startDestination = null;
-		ArrayList<String> airportCodes = new ArrayList<String>();
-		
-		for (int i = 0; i < selectedDestination.size(); i++) {
-			String airport = selectedDestination.get(i);
-			System.out.println(airport + "\t" + startLocation);
-			if (i == Integer.parseInt(startLocation)) {
-				startDestination = airport;
-				airportCodes.add(0, airport);
-			} else {
-				airportCodes.add(airport);
-			}
-		}
 
 		for (String codes : airportCodes)
 			System.out.print(codes + "\t");
 
-		File datFile = OPLFactory.generateDat(tripLength, budget, airportCodes,
+		File datFile = OPLFactory.generateDat(tripLength, budget, selectedDestination, satisfactionArray,
 				startDestination);
 		try {
 			OPLFactory.runOPL(datFile);

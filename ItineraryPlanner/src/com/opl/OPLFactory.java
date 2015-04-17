@@ -22,12 +22,13 @@ import com.ItineraryPlanner.Constants;
 public class OPLFactory {
 
 	public static File generateDat(int tripLength, String budget,
-			ArrayList<String> selectedDestination, String startDestination) {
+			ArrayList<String> selectedDestination, ArrayList<String> satisfactionArray, 
+			String startDestination) {
 		
 		System.out.println(tripLength + "\t" + budget + "\t"
 				+ selectedDestination.size() + "\t" + startDestination);
 		
-		PriceMatrix pm = new PriceMatrix(selectedDestination, tripLength);
+		PriceMatrix pm = new PriceMatrix(selectedDestination, tripLength, satisfactionArray);
 		String results;
 		try {
 			results = pm.generateDAT();
